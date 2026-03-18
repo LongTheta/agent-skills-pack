@@ -12,7 +12,7 @@ Brief description of changes.
 
 ## Checklist
 
-- [ ] `npm run validate` passes
+- [ ] `npm run validate:full` passes (validation must pass for merge)
 - [ ] Manifest updated (if new skill)
 - [ ] Examples and prompt-template added (for new skills)
 - [ ] Risk tier and security review status set (for new skills)

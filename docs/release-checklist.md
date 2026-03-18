@@ -1,6 +1,6 @@
 # Release Checklist
 
-Use this checklist before tagging a release.
+Use this checklist before tagging a release. For v1 release criteria, see [release-readiness.md](release-readiness.md).
 
 ---
 

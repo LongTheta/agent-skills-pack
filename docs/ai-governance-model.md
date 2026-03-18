@@ -132,3 +132,4 @@ See [release-checklist.md](release-checklist.md) for the full checklist.
 | [supply-chain-security.md](supply-chain-security.md) | SBOM, provenance, artifact integrity |
 | [versioning.md](versioning.md) | Semantic versioning, branch strategy |
 | [release-checklist.md](release-checklist.md) | Pre-release steps |
+| [release-readiness.md](release-readiness.md) | V1 release criteria |

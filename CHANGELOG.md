@@ -7,53 +7,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.1.0] - 2025-03-18
-
-### Added
-
-- **docs/ai-governance-model.md** — Skill approval process, security review requirements, release versioning
-- **SECURITY.md** — Vulnerability reporting, security review process
-- **CODEOWNERS** — Default and security-skill owners
-- **Issue templates** — Bug, feature, security
-- **PR template** — Checklist for contributions
-- **docs/ai-security-model.md** — Trust boundaries, risk tiers (0–3)
-- **docs/skill-authoring-standard.md** — Required sections, structure
-- **docs/supply-chain-security.md** — SBOM, provenance, SLSA alignment
-- **docs/review-model.md** — Author, security, release review
-- **docs/versioning.md** — Semantic versioning, branch strategy
-- **scripts/validate_skills.py** — Section validation, manifest checks
-- **tests/golden/** — Golden prompts for security-evaluator, cve-detect-and-remediate
-- **Manifest schema** — compatibility, risk_tier, required_files, maintainer, last_reviewed, security_reviewed
-
-### Changed
-
-- **skills-manifest.json** — Rich schema with risk_tier, compatibility, maintainer
-- **security-evaluator** — Added Inputs, Outputs, Limitations, Safety Guardrails, Validation Checklist, Portability Notes
-- **README** — Polished; target audience, validation pipeline, roadmap
-- **Validate workflow** — Python validate_skills.py; Setup Python step
-
----
-
 ## [1.0.0] - 2025-03-18
 
 ### Added
 
-- **Repository upgrade** — Production-quality skills platform for Cursor and other AI agent IDEs
-- **README** — Professional open-source README with overview, install instructions, roadmap
-- **skills-manifest.json** — Richer metadata: categories, tags, file manifests per skill
-- **Standardized skills** — All 13 skills now have SKILL.md, examples.md, prompt-template.md, reference.md where appropriate
-- **docs/** — Authoring guide, skill style guide, portability guide, release checklist
-- **Validation tooling** — `scripts/validate-skills.js`, `scripts/generate-manifest.js`
-- **GitHub Actions** — Markdown lint, manifest validation, link checks
-- **LICENSE** — MIT
-- **CONTRIBUTING.md** — Contribution workflow and skill requirements
-- **CHANGELOG.md** — This file; semantic versioning guidance
+**Repository Lifecycle Skills (7 new):**
+
+- **create-repo-foundation** — Scaffold repo: .gitignore, README, LICENSE, CONTRIBUTING, directory layout
+- **test-strategy-designer** — Design test strategy: unit, integration, e2e, coverage targets
+- **repo-docs-writer** — Write or improve README, CONTRIBUTING, API docs, architecture, runbooks
+- **release-pipeline-designer** — Design CI/CD pipelines: build, test, lint, scan, deploy
+- **ai-code-review-guardrails** — Define guardrails for AI-assisted code review
+- **dependency-governance** — Define dependency policy: licenses, pinning, blocklist
+- **observability-bootstrap** — Bootstrap logging, metrics, tracing, dashboards, alerting
+
+**Security & Compliance (7 skills):** ai-agent-architecture, ai-devsecops-policy-enforcement, cve-detect-and-remediate, dod-zero-trust-architect, security-evaluator, tool-evaluator, zero-trust-gitops-enforcement
+
+**IDE & Authoring (6 skills):** create-rule, create-skill, create-subagent, migrate-to-skills, shell, update-cursor-settings
+
+**Governance & Documentation:**
+
+- **docs/ai-governance-model.md** — Skill approval process, security review requirements, release versioning
+- **docs/ai-security-model.md** — Trust boundaries, risk tiers (0–3), prompt injection defenses, tool access rules
+- **docs/release-readiness.md** — V1.0.0 release criteria
+- **docs/review-model.md** — Author, security, release review tiers
+- **docs/supply-chain-security.md** — SBOM, provenance, artifact integrity
+- **docs/versioning.md** — Semantic versioning, branch strategy
+- **docs/skill-authoring-standard.md** — Required sections, structure
+- **SECURITY.md** — Vulnerability reporting, security review process
+- **CODEOWNERS** — Default and security-skill owners
+- **Issue templates** — Bug, feature, security
+- **PR template** — Checklist for contributions
+
+**Validation & CI:**
+
+- **scripts/validate-skills.js** — Node validation: manifest, frontmatter, required files
+- **scripts/validate_skills.py** — Python validation: YAML frontmatter, sections, links, Tier 2/3 enforcement
+- **requirements.txt** — PyYAML for validation
+- **GitHub Actions** — Validate, Lint, Link Check (all block merge on failure)
+- **SBOM** — CycloneDX in sbom.json; generated in CI
+
+**Manifest:**
+
+- **skills-manifest.json** — Full metadata: version, category, risk_tier, triggers, tags, maintainer, last_reviewed, security_reviewed
+- **risk_tiers** — 0 (read-only) through 3 (infra/pipeline impact)
+- **enforcement** — Tier 2 Validation Checklist; Tier 3 human review
 
 ### Changed
 
-- Root README rewritten for public reuse
-- Skill folders standardized with consistent file structure
-- SKILL.md frontmatter normalized across skills
+- **README** — End-to-end pack for repo creation, hardening, testing, release, maintenance
+- **All skills** — Standardized: Inputs, Outputs, Limitations, Safety Guardrails, Validation Checklist, Portability Notes
+- **Lint workflow** — Fail on markdown violations (no `|| true`)
+- **Link workflow** — Fail on broken links (no `continue-on-error`)
 
 ### Preserved
 

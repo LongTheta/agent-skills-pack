@@ -1,6 +1,6 @@
 # Agent Skills Pack
 
-A production-ready, security-focused collection of **Agent Skills** for AI-assisted development—security, compliance, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.
+A production-ready collection of **Agent Skills** for AI-assisted repository creation, security, DevSecOps, Zero Trust, testing, release, and IDE workflows. End-to-end pack for repo creation, hardening, testing, release, and maintenance. Designed for Cursor and other AI agent IDEs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -37,6 +37,18 @@ Each skill is self-contained, versioned independently, and can be used across pr
 | [security-evaluator](security-evaluator/) | Security and compliance evaluation for systems | 0 |
 | [tool-evaluator](tool-evaluator/) | Evaluate tools for enterprise adoption | 0 |
 | [zero-trust-gitops-enforcement](zero-trust-gitops-enforcement/) | Zero Trust principles in CI/CD and GitOps | 2 |
+
+### Repository Lifecycle
+
+| Skill | Description | Risk Tier |
+|-------|-------------|-----------|
+| [create-repo-foundation](create-repo-foundation/) | Scaffold repo: .gitignore, README, LICENSE, CONTRIBUTING | 2 |
+| [test-strategy-designer](test-strategy-designer/) | Design test strategy: unit, integration, e2e, coverage | 1 |
+| [repo-docs-writer](repo-docs-writer/) | Write or improve README, CONTRIBUTING, API docs | 1 |
+| [release-pipeline-designer](release-pipeline-designer/) | Design CI/CD pipelines: build, test, scan, deploy | 2 |
+| [ai-code-review-guardrails](ai-code-review-guardrails/) | Define guardrails for AI-assisted code review | 1 |
+| [dependency-governance](dependency-governance/) | Define dependency policy: licenses, pinning, blocklist | 1 |
+| [observability-bootstrap](observability-bootstrap/) | Bootstrap logging, metrics, tracing, dashboards | 2 |
 
 ### IDE & Authoring
 

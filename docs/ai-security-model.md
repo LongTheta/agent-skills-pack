@@ -64,3 +64,49 @@ Trust boundaries and risk tiers for agent skills in this repository.
 ## Skill Metadata
 
 Each skill declares `risk_tier` in `skills-manifest.json`. High-risk (Tier 3) skills require `security_reviewed: true` and `last_reviewed` date before release.
+
+---
+
+## Prompt Injection Defenses
+
+| Defense | Requirement |
+|---------|-------------|
+| **Input validation** | Treat user prompts, file paths, and query text as untrusted; do not concatenate into system prompts without sanitization |
+| **Delimiter separation** | Use clear boundaries between system instructions and user content; avoid inline injection points |
+| **No blind execution** | Never execute user-provided commands or config without explicit user confirmation |
+| **Output filtering** | Skills that echo or process user input must not treat embedded instructions as authoritative |
+
+Skills must not instruct the agent to "ignore previous instructions" or similar; such patterns indicate prompt injection risk.
+
+---
+
+## Tool Access Rules
+
+| Rule | Applies To | Requirement |
+|------|------------|-------------|
+| **Read-only by default** | Tier 0, Tier 1 | No file writes, no shell execution, no API calls |
+| **Explicit approval** | Tier 2, Tier 3 | File edits require user approval; diff or patch before apply |
+| **Shell/terminal** | Tier 3 only | Execute only when user explicitly invokes /shell with the exact command |
+| **No credential injection** | All tiers | Never pass secrets, API keys, or tokens to tools; use external secrets only |
+
+---
+
+## Output Validation Requirements
+
+| Requirement | Description |
+|-------------|-------------|
+| **Structured output** | Security/compliance skills must produce structured reports (Markdown, JSON) with clear sections |
+| **No fabricated data** | Do not invent CVE IDs, versions, or compliance findings; cite sources when available |
+| **Uncertainty marking** | Mark assumptions, unknowns, and scope limits explicitly |
+| **Advisory disclaimer** | Verdicts, scores, and recommendations are advisory; not a substitute for formal assessment |
+
+---
+
+## Human Review Triggers
+
+| Trigger | Action |
+|---------|--------|
+| **Tier 3 output** | Any command, patch, or config change must not be applied without explicit user approval |
+| **Auto-fix apply** | Use `--mode suggest` or `--mode patch` first; require user confirmation before `--mode apply` |
+| **Major version upgrade** | Dependency remediation: require manual review for major bumps, auth/crypto/db libs |
+| **Production deployment** | Zero Trust GitOps verdict: fail blocks production; user must address High violations before deploy |
