@@ -92,13 +92,48 @@ Skills use a standard structure (`SKILL.md`, `examples.md`, `prompt-template.md`
 
 ---
 
+## Local Development Setup
+
+Git hooks (via [Husky](https://typicode.github.io/husky/)) enforce validation locally so invalid skills are caught before push. CI remains the final gate.
+
+### Install hooks
+
+```bash
+npm run setup
+```
+
+Or, after cloning:
+
+```bash
+npm install
+```
+
+The `prepare` script runs automatically after `npm install` and configures Husky.
+
+### Hooks
+
+| Hook | Runs | Purpose |
+|------|------|---------|
+| **pre-commit** | `npm run validate` | Fast check: manifest, SKILL.md structure, required files |
+| **pre-push** | `npm run validate` + `npm run lint:md` | Full check matching CI (skills + markdown lint) |
+
+### Bypass (emergency only)
+
+```bash
+git push --no-verify
+```
+
+Use sparingly; CI will still block invalid pushes.
+
+---
+
 ## Contribution Model
 
 | Step | Action |
 |------|--------|
 | 1 | Fork; create branch |
 | 2 | Add/update skill per [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md) |
-| 3 | Run `npm run validate` |
+| 3 | Run `npm run validate` (or rely on pre-commit hook) |
 | 4 | Update manifest if new skill |
 | 5 | Open PR with checklist |
 
@@ -110,9 +145,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 
 | Check | Command / CI |
 |-------|--------------|
-| Manifest validation | `node scripts/validate-skills.js` |
+| Manifest validation | `node scripts/validate-skills.js` (pre-commit, pre-push) |
 | Skill structure & sections | `python scripts/validate_skills.py` |
-| Markdown lint | `markdownlint` in CI |
+| Markdown lint | `npm run lint:md` (pre-push), CI |
 | Link check | `linkinator` in CI |
 | SBOM generation | `npm run sbom` in CI |
 
@@ -123,6 +158,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 ```
 agent-skills-pack/
 ├── README.md
+├── .husky/                   # Git hooks (pre-commit, pre-push)
 ├── skills-manifest.json      # Machine-readable catalog (rich schema)
 ├── sbom.json                 # Software Bill of Materials (CycloneDX)
 ├── LICENSE

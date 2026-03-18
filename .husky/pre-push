@@ -1,0 +1,4 @@
+#!/bin/sh
+# Full validation before push — skills + markdown lint (matches CI)
+echo "Running pre-push validation..."
+npm run prepush

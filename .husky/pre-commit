@@ -1,0 +1,3 @@
+#!/bin/sh
+# Fast validation before commit — skills structure only
+npm run validate

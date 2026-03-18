@@ -4,13 +4,20 @@
   "description": "Production-ready Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows",
   "private": true,
   "scripts": {
+    "prepare": "husky",
+    "setup": "npm install && husky",
     "validate": "node scripts/validate-skills.js",
     "validate:full": "node scripts/validate-skills.js && python scripts/validate_skills.py",
     "generate-manifest": "node scripts/generate-manifest.js",
     "generate-manifest:py": "python scripts/generate_manifest.py",
+    "lint:md": "markdownlint '**/*.md' --config .markdownlint.json --ignore node_modules --ignore .git",
+    "lint:md:staged": "markdownlint --config .markdownlint.json",
+    "prepush": "npm run validate && npm run lint:md",
     "sbom": "cyclonedx-npm --output-file sbom.json"
   },
   "devDependencies": {
-    "@cyclonedx/cyclonedx-npm": "^4.2.1"
+    "@cyclonedx/cyclonedx-npm": "^4.2.1",
+    "husky": "^9.1.7",
+    "markdownlint-cli": "^0.48.0"
   }
 }
