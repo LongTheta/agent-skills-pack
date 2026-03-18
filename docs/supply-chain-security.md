@@ -23,7 +23,7 @@ Provenance, integrity, and artifact security for agent-skills-pack.
 
 | Level | Requirements | Status |
 |-------|--------------|--------|
-| **Level 1** | Build provenance | Planned |
+| **Level 1** | Build provenance (GitHub OIDC, attestations) | Roadmap: v1.3; document build steps and provenance generation |
 | **Level 2** | Signed artifacts, two-person review | Planned |
 | **Level 3** | Isolated build, hermetic | Future |
 

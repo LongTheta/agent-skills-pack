@@ -16,8 +16,10 @@
     "3": {"label": "infra/pipeline impact", "description": "Modifies CI/CD, infra, or executes commands; requires human review"}
   },
   "enforcement": {
-    "tier_2": "Must include Validation Checklist section",
-    "tier_3": "Requires human review before applying outputs"
+    "tier_2": "Must include Validation Checklist section; define safe vs unsafe; require approval for unsafe",
+    "tier_3": "Requires human review before applying outputs; high-risk outputs must include warnings",
+    "trust_boundaries": "All skills must include Trust Boundaries section",
+    "output_validation": "All skills must include Output Validation section"
   },
   "skills": [
     {
@@ -104,7 +106,7 @@
       "tags": ["evaluation", "enterprise", "devops", "gitops"],
       "maintainer": "LongTheta",
       "last_reviewed": "2025-03-18",
-      "security_reviewed": false,
+      "security_reviewed": true,
       "summary": "Evaluates tools, platforms, and libraries for real-world adoption in enterprise, DevOps, GitOps, and regulated environments. Assesses data hydration readiness.",
       "status": "active",
       "compatibility": ["cursor"],
@@ -238,7 +240,7 @@
       "triggers": ["create rule", "coding standards", "project conventions", "RULE.md", ".cursor/rules", "AGENTS.md"],
       "tags": ["cursor", "rules", "conventions"],
       "maintainer": "LongTheta",
-      "last_reviewed": null,
+      "last_reviewed": "2025-03-18",
       "security_reviewed": false,
       "summary": "Create Cursor rules for persistent AI guidance. Add coding standards, project conventions, and file-specific patterns.",
       "status": "active",
@@ -268,7 +270,7 @@
       "triggers": ["create subagent", "custom subagent", "task-specific agent", "code reviewer", "debugger"],
       "tags": ["cursor", "subagents", "agents"],
       "maintainer": "LongTheta",
-      "last_reviewed": null,
+      "last_reviewed": "2025-03-18",
       "security_reviewed": false,
       "summary": "Create custom subagents for specialized AI tasks. Configure code reviewers, debuggers, or domain-specific assistants.",
       "status": "active",
@@ -283,7 +285,7 @@
       "triggers": ["migrate rules", "migrate commands", "convert .mdc", "skills format"],
       "tags": ["cursor", "migration", "rules", "commands"],
       "maintainer": "LongTheta",
-      "last_reviewed": null,
+      "last_reviewed": "2025-03-18",
       "security_reviewed": false,
       "summary": "Convert Cursor rules and slash commands to Agent Skills format. Preserves body content verbatim.",
       "status": "active",
@@ -313,7 +315,7 @@
       "triggers": ["change settings", "editor preferences", "theme", "font size", "format on save", "keybindings", "settings.json"],
       "tags": ["cursor", "vscode", "settings"],
       "maintainer": "LongTheta",
-      "last_reviewed": null,
+      "last_reviewed": "2025-03-18",
       "security_reviewed": false,
       "summary": "Modify Cursor/VSCode user settings in settings.json. Change themes, font size, format on save, keybindings, and more.",
       "status": "active",

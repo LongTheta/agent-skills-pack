@@ -35,6 +35,15 @@ Checklist:
 - [ ] Limitations and guardrails documented
 - [ ] `security_reviewed: true` and `last_reviewed` set in manifest
 
+## Risk Tier Enforcement
+
+| Tier | Requirement |
+|------|-------------|
+| **Tier 0** | Read-only; no execution; state assumptions |
+| **Tier 1** | Proposals only; user applies; no auto-apply |
+| **Tier 2** | Validation Checklist required; define safe vs unsafe; require approval for unsafe actions |
+| **Tier 3** | Human review required; security_reviewed and last_reviewed in manifest; high-risk outputs must include warnings |
+
 ## Release Review
 
 - [ ] All skills pass validation

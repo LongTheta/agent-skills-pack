@@ -4,6 +4,8 @@ A production-ready collection of **Agent Skills** for AI-assisted repository cre
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+**Compliance alignment:** NIST AI RMF, NIST SSDF (SP 800-218), NIST Zero Trust, OWASP LLM/Agent security, SLSA-minded supply chain. See [docs/ai-security-model.md](docs/ai-security-model.md) and [docs/supply-chain-security.md](docs/supply-chain-security.md).
+
 ---
 
 ## Overview
@@ -146,6 +148,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 | Check | Command / CI |
 |-------|--------------|
 | Manifest validation | `node scripts/validate-skills.js` (pre-commit, pre-push) |
+| Certification score | `npm run score` (0–10; CI threshold 7.5; see [docs/certification-model.md](docs/certification-model.md)) |
 | Skill structure & sections | `python scripts/validate_skills.py` |
 | Markdown lint | `npm run lint:md` (pre-push), CI |
 | Link check | `linkinator` in CI |
@@ -195,7 +198,7 @@ agent-skills-pack/
 
 - [ ] **v1.1** — Node.js / npm CVE support in cve-detect-and-remediate
 - [ ] **v1.2** — MCP server evaluation skill
-- [ ] **v1.3** — SLSA Level 1 provenance
+- [ ] **v1.3** — SLSA Level 1 provenance (build attestations; see [docs/supply-chain-security.md](docs/supply-chain-security.md))
 - [ ] **v2.0** — Multi-IDE plugin / extension packaging
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.

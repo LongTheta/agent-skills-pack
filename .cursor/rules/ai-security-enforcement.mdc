@@ -1,0 +1,15 @@
+---
+description: AI security enforcement for agent-skills-pack
+alwaysApply: true
+---
+
+# AI Security Enforcement
+
+When creating or editing skills in this repo:
+
+- **Trust Boundaries:** Every SKILL.md must include a Trust Boundaries section.
+- **Output Validation:** Every SKILL.md must include an Output Validation section covering: validate recommendations before execution; highlight assumptions; identify uncertainty; require human review for high-risk actions; avoid unverifiable claims.
+- **Tier 2:** Define safe vs unsafe actions; require validation checklist and user approval for unsafe.
+- **Tier 3:** Require human review; high-risk outputs must include explicit warnings.
+- **High-risk warnings:** Precede commands/patches with "This will execute/modify [X]. Confirm before proceeding."
+- Reference [docs/ai-security-model.md](docs/ai-security-model.md) for full model.

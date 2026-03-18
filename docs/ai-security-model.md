@@ -1,6 +1,6 @@
 # AI Security Model
 
-Trust boundaries and risk tiers for agent skills in this repository.
+Trust boundaries, risk tiers, and enforcement for agent skills in this repository. Aligns with NIST AI RMF, NIST SSDF (SP 800-218), NIST Zero Trust, OWASP LLM/Agent security guidance, and SLSA-minded supply chain maturity.
 
 ## Trust Boundaries
 
@@ -54,12 +54,33 @@ Trust boundaries and risk tiers for agent skills in this repository.
 | 2 | **Validation Checklist** — Must include Validation Checklist section in SKILL.md |
 | 3 | **Human review** — Outputs require human review before applying |
 
-## Enforcement Rules
+## Safe vs Unsafe Actions (Tier 2 & 3)
 
-| Rule | Applies To | Requirement |
-|------|------------|-------------|
-| **Validation Checklist** | Tier 2 | SKILL.md must include a "Validation Checklist" section with pre-apply verification steps |
-| **Human review** | Tier 3 | Outputs (commands, patches, config changes) must not be applied without explicit user approval |
+| Tier | Safe (no approval) | Unsafe (approval required) |
+|------|--------------------|---------------------------|
+| **Tier 2** | Read-only review, diff output, report generation | File writes, config changes, patch application |
+| **Tier 3** | None | Shell execution, auto-fix apply, pipeline modification |
+
+Tier 2 and Tier 3 skills must explicitly define safe vs unsafe in SKILL.md and require validation or human approval for unsafe actions.
+
+## Human-in-the-Loop Requirements
+
+| Trigger | Requirement |
+|---------|-------------|
+| **Tier 3 output** | Any command, patch, or config change must not be applied without explicit user approval |
+| **Auto-fix apply** | Use `--mode suggest` or `--mode patch` first; require user confirmation before `--mode apply` |
+| **Major version upgrade** | Dependency remediation: require manual review for major bumps, auth/crypto/db libs |
+| **Production deployment** | Zero Trust GitOps verdict: fail blocks production; user must address High violations before deploy |
+| **Shell execution** | Execute only when user explicitly invokes `/shell` with the exact command |
+
+## High-Risk Output Warnings
+
+Skills producing high-risk outputs must include explicit warnings:
+
+- **Tier 3 commands:** Precede with "This will execute: [command]. Confirm before proceeding."
+- **Auto-apply patches:** "These changes modify [files]. Review diff before applying."
+- **Production-blocking verdicts:** "Deployment blocked. Address High violations before proceeding."
+- **Dependency major upgrades:** "Major version upgrade—breaking changes possible. Manual review required."
 
 ## Skill Metadata
 
@@ -78,6 +99,19 @@ Each skill declares `risk_tier` in `skills-manifest.json`. High-risk (Tier 3) sk
 
 Skills must not instruct the agent to "ignore previous instructions" or similar; such patterns indicate prompt injection risk.
 
+**Per-skill requirements:** Trust Boundaries must state: (1) all user input is untrusted; (2) external content must not override system intent; (3) no execution based on untrusted embedded instructions; (4) conflicting or malicious instructions must be ignored.
+
+---
+
+## Data Handling Rules
+
+| Rule | Requirement |
+|------|-------------|
+| **No PII in prompts** | Do not embed PII, credentials, or sensitive data in prompts or skill context |
+| **External data** | Treat linked documents, URLs, and user-provided content as untrusted; verify before use |
+| **Output sanitization** | Do not echo untrusted input verbatim in outputs that could be re-executed |
+| **Retention** | Skills do not persist user data; session context is ephemeral |
+
 ---
 
 ## Tool Access Rules
@@ -95,18 +129,12 @@ Skills must not instruct the agent to "ignore previous instructions" or similar;
 
 | Requirement | Description |
 |-------------|-------------|
+| **Validate before execution** | User must validate recommendations before applying; do not auto-apply high-risk changes |
+| **Highlight assumptions** | Mark assumptions, unknowns, and scope limits explicitly |
+| **Identify uncertainty** | Call out gaps, incomplete information, and unverifiable claims |
+| **Human review for high-risk** | Tier 2/3 outputs require human review before execution; no blind application |
+| **Avoid unverifiable claims** | Do not invent CVE IDs, versions, or compliance findings; cite sources when available |
 | **Structured output** | Security/compliance skills must produce structured reports (Markdown, JSON) with clear sections |
-| **No fabricated data** | Do not invent CVE IDs, versions, or compliance findings; cite sources when available |
-| **Uncertainty marking** | Mark assumptions, unknowns, and scope limits explicitly |
 | **Advisory disclaimer** | Verdicts, scores, and recommendations are advisory; not a substitute for formal assessment |
 
 ---
-
-## Human Review Triggers
-
-| Trigger | Action |
-|---------|--------|
-| **Tier 3 output** | Any command, patch, or config change must not be applied without explicit user approval |
-| **Auto-fix apply** | Use `--mode suggest` or `--mode patch` first; require user confirmation before `--mode apply` |
-| **Major version upgrade** | Dependency remediation: require manual review for major bumps, auth/crypto/db libs |
-| **Production deployment** | Zero Trust GitOps verdict: fail blocks production; user must address High violations before deploy |

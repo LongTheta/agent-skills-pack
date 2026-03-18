@@ -47,3 +47,6 @@ jobs:
         with:
           name: sbom
           path: sbom.json
+
+      - name: Certification Score
+        run: node scripts/certification-score.js --threshold=7.5

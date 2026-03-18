@@ -28,7 +28,8 @@ SECTION_ALTERNATIVES = {
     "Safety Guardrails": ["Safety Guardrails", "Validation Checklist", "Enforcement"],
 }
 RECOMMENDED_SECTIONS = [
-    "Inputs", "Outputs", "Limitations", "Validation Checklist", "Portability Notes"
+    "Inputs", "Outputs", "Limitations", "Validation Checklist", "Portability Notes",
+    "Trust Boundaries", "Output Validation"
 ]
 
 IGNORE_DIRS = {"docs", "scripts", "node_modules", ".github", ".git"}

@@ -1,0 +1,26 @@
+---
+description: Project conventions for agent-skills-pack
+alwaysApply: true
+---
+
+# Agent Skills Pack Conventions
+
+## Before Committing
+
+- Run `npm run validate` (skills manifest and structure)
+- Run `npm run lint:md` (markdown lint)
+- Pre-commit runs validate; pre-push runs validate + lint:md
+
+## Adding a New Skill
+
+1. Create skill folder with SKILL.md, examples.md, prompt-template.md, reference.md
+2. Update `skills-manifest.json` with the new skill
+3. Run `npm run validate` to verify
+
+## File Structure
+
+Each skill: `SKILL.md`, `examples.md`, `prompt-template.md`, `reference.md`
+
+## Bypass Hooks
+
+Use `git push --no-verify` only when necessary; CI still enforces validation.

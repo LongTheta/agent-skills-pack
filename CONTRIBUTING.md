@@ -59,6 +59,14 @@ If you add npm or pip dependencies:
 
 ---
 
+## Branch Protection and PR Requirements
+
+**Recommended repository settings:**
+
+- **Branch protection** on `master`/`main`: Require PR before merge; require status checks (Validate, Lint, Link Check)
+- **Required reviewers:** At least one approval for security/compliance skills (see CODEOWNERS)
+- **Status checks:** All CI workflows must pass; no merge on failure
+
 ## Pull Request Process
 
 1. Ensure all CI checks pass (lint, validate, links)
