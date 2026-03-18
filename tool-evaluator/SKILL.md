@@ -1,11 +1,31 @@
 ---
 name: tool-evaluator
+risk_tier: 0
 description: Evaluates tools, platforms, libraries, MCP servers, SaaS products, CLIs, AI agents, dashboards, and internal engineering utilities for real-world adoption in enterprise, DevOps, platform engineering, GitOps, observability, and regulated environments. Use when the user asks to evaluate a tool or platform, compare multiple tools, assess architectural fit, recommend adopt/reject/pilot, identify hidden risks or implementation burden, create a scorecard or decision memo, or review a tool for DevSecOps, GitOps, Grafana, Kubernetes, ArgoCD, GitLab, AI agent, MCP, or cloud-native workflows.
 ---
 
 # Tool Evaluator
 
 Evaluates tools for adoption decisions. Assesses not only features but whether a tool can realistically work in the target environment—including security, compliance, integration burden, operational ownership, and **data hydration readiness**. Produces structured, practical recommendations. Direct, technical, enterprise-aware, decision-oriented.
+
+## Inputs
+
+- Tool or platform name and category
+- Use case and target environment (team size, stack, hosting, constraints)
+- Optional: comparison tools, specific requirements
+
+## Outputs
+
+- Structured evaluation with scorecard
+- Data hydration assessment
+- Recommendation (Strong fit | Fit with caveats | Pilot first | Not recommended | Need more information)
+- Next steps
+
+## Limitations
+
+- Relies on information provided; cannot run or test tools
+- Recommendations are advisory; users must validate for their context
+- May not cover proprietary or undocumented features
 
 ## When to Use
 
@@ -171,6 +191,13 @@ Examples: run PoC, validate integrations, confirm data availability, perform sec
 | **Not recommended** | Poor fit, high risk, or better alternatives exist |
 | **Need more information** | Gaps prevent a decision; list what to gather |
 
+## Safety Guardrails
+
+- **Read-only (Tier 0)**: This skill produces evaluations and recommendations only. No commands, file writes, or API calls.
+- **State assumptions**: Explicitly list what you assumed (versions, environment, scale).
+- **Highlight unknowns**: Mark areas where information was missing or uncertain.
+- **No legal/compliance guarantee**: Recommendations are advisory; users must validate for their context.
+
 ## Guidelines
 
 - **No fluff**: Skip marketing language; focus on evidence and tradeoffs.
@@ -179,6 +206,17 @@ Examples: run PoC, validate integrations, confirm data availability, perform sec
 - **Be practical**: Recommend a clear path forward, not vague “consider” statements.
 
 ---
+
+## Validation Checklist
+
+- [ ] All 7 evaluation categories addressed or scoped out
+- [ ] Assumptions and unknowns called out
+- [ ] Data hydration readiness assessed
+- [ ] Clear recommendation with rationale
+
+## Portability Notes
+
+Evaluation framework is tool-agnostic. Categories apply to any tool (SaaS, CLI, MCP, library). Cursor-specific paths or integrations mentioned only where relevant.
 
 ## Invocation Prompt Template
 

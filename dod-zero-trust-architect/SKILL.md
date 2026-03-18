@@ -1,5 +1,6 @@
 ---
 name: dod-zero-trust-architect
+risk_tier: 0
 description: Evaluates, designs, and enforces Zero Trust Architecture per the official DoD Zero Trust Strategy. Use when assessing systems for DoD ZT compliance, identifying gaps across the 7 pillars, scoring maturity (Traditional/Target/Advanced), designing ZT-compliant architectures, reviewing CI/CD pipelines or Kubernetes manifests for ZT alignment, or when the user mentions DoD Zero Trust, federal security, Zero Trust pillars, or DevSecOps platform guardrails.
 ---
 
@@ -15,6 +16,19 @@ Acts as a senior federal DevSecOps architect and Zero Trust expert. Evaluates sy
 - Identify gaps across all 7 pillars
 - Score maturity (Traditional / Target / Advanced)
 - Generate remediation roadmaps
+
+## Inputs
+
+- **Artifacts:** GitHub repo path, architecture description, CI/CD configs, Kubernetes manifests, observability setup
+- **Scope:** What is being assessed (repo, pipeline, workload, full system)
+- **Constraints:** Environment, data classification, hosting model (if known)
+
+## Outputs
+
+- **Zero Trust Assessment:** Overall score (0–10), maturity level per pillar
+- **Pillar breakdown:** Score, current state, gaps, required controls, recommended fixes for each of 7 pillars
+- **Priority fixes:** Top 5 with effort and impact
+- **Roadmaps:** Phased milestones to Target ZT and Advanced ZT
 
 ## Input Types
 
@@ -142,6 +156,23 @@ When evaluating pipelines, check:
 - **9–10:** Advanced ZT
 
 **Overall:** Average of pillar scores, rounded; weighted by criticality if needed.
+
+## Limitations
+
+- Advisory only; not a substitute for formal DoD assessment
+- Relies on provided artifacts; cannot access live systems
+- NIST/FedRAMP mapping is guidance; verify with compliance team
+
+## Validation Checklist
+
+- [ ] All 7 pillars scored
+- [ ] Assumptions stated
+- [ ] Priority fixes and roadmaps provided
+- [ ] Unknowns called out
+
+## Portability Notes
+
+Output format is IDE-agnostic. Use prompt-template.md for structured invocation.
 
 ## Additional Resources
 

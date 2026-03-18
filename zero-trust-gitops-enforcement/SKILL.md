@@ -1,5 +1,6 @@
 ---
 name: zero-trust-gitops-enforcement
+risk_tier: 2
 description: >-
   Enforces Zero Trust principles in CI/CD and GitOps workflows. Reviews
   repositories, pipelines, and deployment manifests for identity, supply chain,
@@ -24,6 +25,20 @@ Review the provided repository, pipeline, and deployment manifests. Identify vio
 - User asks for Zero Trust compliance check on CI/CD or GitOps
 - User mentions pipeline security gate, production deployment approval, or supply chain security
 - User wants a blocking assessment before deployment
+
+## Inputs
+
+- **Pipeline configs:** GitHub Actions workflows, GitLab CI configs
+- **GitOps manifests:** Argo CD Application YAML, Kubernetes manifests
+- **Artifacts:** Dockerfile, Helm charts, values files
+- **Repo path:** Repository root for resolving relative paths
+
+## Outputs
+
+- **Verdict:** Pass or Fail (Fail when any High-severity violation exists)
+- **Violations table:** Area, violation description, severity
+- **Required fixes:** Actionable checklist for High/Medium violations
+- **Compliance alignment:** DoD ZT, NIST 800-53, SLSA mapping
 
 ## Enforcement Areas
 
@@ -136,6 +151,23 @@ Use this template. Be strict; do not pass when critical controls are missing.
 | Kubernetes manifests | Image tags, secrets, RBAC, resource limits |
 | Dockerfile | Base image pins, build provenance |
 | Helm charts | Values, image references, secrets handling |
+
+## Limitations
+
+- Advisory only; cannot enforce controls; user must apply fixes
+- Relies on provided artifacts; cannot fetch remote configs
+- Verdict is guidance; production deployment decisions remain with user
+
+## Validation Checklist
+
+- [ ] All enforcement areas evaluated
+- [ ] Violations cite file/line where possible
+- [ ] Required fixes are actionable
+- [ ] Unknowns called out
+
+## Portability Notes
+
+Output format is IDE-agnostic. Use prompt-template.md for structured invocation.
 
 ## Guidelines
 

@@ -1,5 +1,6 @@
 name: Validate
 
+# Run on every push to main/master and every pull request
 on:
   push:
     branches: [master, main]
@@ -18,8 +19,31 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Validate skills
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate skills (Node)
         run: node scripts/validate-skills.js
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate skills (Python)
+        run: python scripts/validate_skills.py
 
       - name: Validate manifest JSON
         run: node -e "JSON.parse(require('fs').readFileSync('skills-manifest.json','utf8')); console.log('Valid JSON');"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate SBOM
+        run: npm run sbom
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.json

@@ -1,0 +1,2 @@
+# For scripts/validate_skills.py (YAML frontmatter parsing)
+PyYAML>=6.0

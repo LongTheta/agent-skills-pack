@@ -1,5 +1,6 @@
 ---
 name: create-skill
+risk_tier: 1
 description: >-
   Guides users through creating effective Agent Skills for Cursor. Use when you
   want to create, write, or author a new skill, or asks about skill structure,
@@ -8,6 +9,26 @@ description: >-
 # Creating Skills in Cursor
 
 This skill guides you through creating effective Agent Skills for Cursor. Skills are markdown files that teach the agent how to perform specific tasks: reviewing PRs using team standards, generating commit messages in a preferred format, querying database schemas, or any specialized workflow.
+
+## When to Use
+
+- User wants to create, write, or author a new skill
+- User asks about skill structure, best practices, or SKILL.md format
+- User needs guidance on Agent Skills for Cursor
+- User wants to add a specialized workflow or domain knowledge to the agent
+
+## Inputs
+
+- Skill purpose and primary use case
+- Target location: personal (~/.cursor/skills/) or project (.cursor/skills/)
+- Trigger scenarios and domain knowledge
+- Output format preferences; existing patterns to follow
+
+## Outputs
+
+- Skill directory with SKILL.md, examples.md, prompt-template.md, reference.md
+- YAML frontmatter with `name`, `description`, optional `risk_tier`
+- Body with When to Use, Workflow, Limitations, Safety Guardrails, Validation Checklist
 
 ## Before You Begin: Gather Requirements
 
@@ -417,6 +438,23 @@ If you have access to the AskQuestion tool, use it for efficient structured gath
 4. Verify all file references are one level deep
 5. Test that the skill can be discovered and applied
 
+## Limitations
+
+- Cursor-specific paths and formats; adapt for other IDEs per portability guide
+- Cannot execute scripts; guides user to run them
+- Skill discovery depends on description quality
+
+## Validation Checklist
+
+- [ ] Description includes trigger terms
+- [ ] SKILL.md under 500 lines
+- [ ] Examples and prompt-template present
+- [ ] File references one level deep
+
+## Portability Notes
+
+Skill structure (SKILL.md, examples, reference) is IDE-agnostic. Cursor paths (`~/.cursor/skills/`) differ for other IDEs; see [portability-guide.md](../docs/portability-guide.md).
+
 ---
 
 ## Complete Example
@@ -427,7 +465,7 @@ Here's a complete example of a well-structured skill:
 ```
 code-review/
 ├── SKILL.md
-├── STANDARDS.md
+├── reference.md
 └── examples.md
 ```
 
@@ -467,7 +505,7 @@ Format feedback as:
 
 ## Additional Resources
 
-- For detailed coding standards, see [STANDARDS.md](STANDARDS.md)
+- For detailed coding standards, see [reference.md](reference.md)
 - For example reviews, see [examples.md](examples.md)
 ```
 

@@ -1,5 +1,6 @@
 ---
 name: update-cursor-settings
+risk_tier: 2
 description: >-
   Modify Cursor/VSCode user settings in settings.json. Use when you want to
   change editor settings, preferences, configuration, themes, font size, tab
@@ -8,6 +9,29 @@ description: >-
 # Updating Cursor Settings
 
 This skill guides you through modifying Cursor/VSCode user settings. Use this when you want to change editor settings, preferences, configuration, themes, keybindings, or any `settings.json` values.
+
+## When to Use
+
+- User wants to change editor settings, preferences, or configuration
+- User asks about themes, font size, tab size, format on save, auto save, keybindings
+- User wants to modify `settings.json` values
+- User asks "how do I change X in Cursor" for editor/workbench settings
+
+## Inputs
+
+- User's intent: which setting to change (e.g., font size, theme, format on save)
+- Current settings file path (or infer from OS)
+
+## Outputs
+
+- Updated settings.json with requested change(s)
+- Confirmation of change; note if reload/restart required
+
+## Limitations
+
+- Cursor/VSCode-specific; paths and settings differ for other editors
+- Some settings require UI (e.g., Agent Attribution); cannot modify via settings.json
+- JSON with comments; preserve comments when possible
 
 ## Settings File Location
 
@@ -109,6 +133,19 @@ If user says "use dark theme" or "change my theme":
 | "bracket matching" | `editor.bracketPairColorization.enabled` |
 | "cursor style" | `editor.cursorStyle` |
 | "smooth scrolling" | `editor.smoothScrolling` |
+
+## Validation Checklist
+
+Before applying settings changes:
+
+- [ ] Confirm the setting path (settings.json vs cli-config.json vs UI)
+- [ ] Validate JSON syntax before writing
+- [ ] Preserve existing settings; only modify the requested key(s)
+- [ ] Inform user if reload or restart is needed
+
+## Portability Notes
+
+Settings paths and keys are Cursor/VSCode-specific. Other editors (e.g., JetBrains, Sublime) use different config formats and locations.
 
 ## Workflow
 

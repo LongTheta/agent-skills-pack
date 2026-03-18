@@ -2,6 +2,8 @@
 
 Thank you for your interest in contributing. This document covers how to propose changes and add new skills.
 
+**Governance:** Skill approval process, security review requirements, and release versioning are defined in [docs/ai-governance-model.md](docs/ai-governance-model.md).
+
 ---
 
 ## How to Contribute
@@ -17,7 +19,7 @@ Thank you for your interest in contributing. This document covers how to propose
 1. **Fork** the repository
 2. **Create a branch** from `master`: `git checkout -b feature/my-skill`
 3. **Make changes** following the [Authoring Guide](docs/authoring-guide.md) and [Skill Style Guide](docs/skill-style-guide.md)
-4. **Validate**: Run `npm run validate`
+4. **Validate**: Run `npm run validate` (Node); `npm run validate:full` for full checks (Node + Python)
 5. **Commit** with clear messages: `feat(skill): add observability-evaluator`
 6. **Push** and open a Pull Request
 
@@ -41,10 +43,19 @@ See [docs/authoring-guide.md](docs/authoring-guide.md) for detailed authoring gu
 
 ## Skill Requirements
 
-- **SKILL.md**: YAML frontmatter with `name` and `description`; body under 500 lines
+- **SKILL.md**: YAML frontmatter with `name` and `description`; required sections per [skill-authoring-standard](docs/skill-authoring-standard.md); body under 500 lines
 - **name**: Lowercase, hyphens only, max 64 chars; must match directory name
 - **description**: Third person; include trigger terms; max 1024 chars
 - **Content**: Direct, technical, enterprise-friendly; no marketing language
+
+---
+
+## Adding Dependencies
+
+If you add npm or pip dependencies:
+
+1. Run `npm run sbom` (or `npm install && npm run sbom`) to regenerate the SBOM
+2. Commit updated `sbom.json` and `package-lock.json`
 
 ---
 
@@ -53,7 +64,8 @@ See [docs/authoring-guide.md](docs/authoring-guide.md) for detailed authoring gu
 1. Ensure all CI checks pass (lint, validate, links)
 2. Request review from maintainers
 3. Address feedback
-4. Maintainers will merge when approved
+4. **Skill approval**: New skills and Tier 3 changes require security review per [docs/ai-governance-model.md](docs/ai-governance-model.md)
+5. Maintainers will merge when approved
 
 ---
 

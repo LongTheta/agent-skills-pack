@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2025-03-18
+
+### Added
+
+- **docs/ai-governance-model.md** — Skill approval process, security review requirements, release versioning
+- **SECURITY.md** — Vulnerability reporting, security review process
+- **CODEOWNERS** — Default and security-skill owners
+- **Issue templates** — Bug, feature, security
+- **PR template** — Checklist for contributions
+- **docs/ai-security-model.md** — Trust boundaries, risk tiers (0–3)
+- **docs/skill-authoring-standard.md** — Required sections, structure
+- **docs/supply-chain-security.md** — SBOM, provenance, SLSA alignment
+- **docs/review-model.md** — Author, security, release review
+- **docs/versioning.md** — Semantic versioning, branch strategy
+- **scripts/validate_skills.py** — Section validation, manifest checks
+- **tests/golden/** — Golden prompts for security-evaluator, cve-detect-and-remediate
+- **Manifest schema** — compatibility, risk_tier, required_files, maintainer, last_reviewed, security_reviewed
+
+### Changed
+
+- **skills-manifest.json** — Rich schema with risk_tier, compatibility, maintainer
+- **security-evaluator** — Added Inputs, Outputs, Limitations, Safety Guardrails, Validation Checklist, Portability Notes
+- **README** — Polished; target audience, validation pipeline, roadmap
+- **Validate workflow** — Python validate_skills.py; Setup Python step
+
+---
+
 ## [1.0.0] - 2025-03-18
 
 ### Added

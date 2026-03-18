@@ -1,0 +1,17 @@
+# CODEOWNERS: Default owners for the repository
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: repository maintainers
+* @LongTheta
+
+# Security and compliance skills require review (Tier 2/3)
+/security-evaluator/ @LongTheta
+/cve-detect-and-remediate/ @LongTheta
+/ai-devsecops-policy-enforcement/ @LongTheta
+/dod-zero-trust-architect/ @LongTheta
+/zero-trust-gitops-enforcement/ @LongTheta
+/shell/ @LongTheta
+
+# Manifest and validation
+/skills-manifest.json @LongTheta
+/scripts/ @LongTheta

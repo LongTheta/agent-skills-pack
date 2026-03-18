@@ -1,5 +1,6 @@
 ---
 name: ai-devsecops-policy-enforcement
+risk_tier: 3
 description: >-
   Runs and interprets the AI DevSecOps Policy Enforcement Agent for CI/CD and
   GitOps. Use when reviewing pipelines (GitLab CI, GitHub Actions), Argo CD
@@ -20,6 +21,25 @@ Guides the agent to run, interpret, and integrate the policy enforcement tool fo
 - User mentions DevSecOps, policy enforcement, supply chain, SBOM, compliance
 - User wants remediation suggestions or auto-fix for pipeline/GitOps configs
 - User wants PR/MR comments for policy findings
+
+## Inputs
+
+- **Pipeline configs:** Paths to GitHub Actions (`.github/workflows/*.yml`), GitLab CI (`.gitlab-ci.yml`), or equivalent
+- **GitOps manifests:** Argo CD Application YAML, Kubernetes manifests
+- **Artifact directory:** `--artifact-dir` path for review outputs
+- **Auto-fix input:** `review-result.json` from prior run (for `auto-fix --input`)
+- **Policy:** Optional policy YAML path; defaults to `policies/default.yaml`
+
+## Outputs
+
+- **Verdict:** `pass` | `pass_with_warnings` | `fail` (exit code 1 on fail)
+- **Artifacts:** `review-result.json`, `policy-summary.json`, `report.md`, `comments.json`, `remediations.json`
+- **Patches:** When `--mode patch` or `--mode apply`: modified pipeline/GitOps files
+- **PR/MR comments:** Ready-to-post format when `--artifact-dir` used
+
+## Enforcement (Tier 3)
+
+**Human review required.** For `auto-fix --mode apply`, outputs modify files. Use `--mode suggest` or `--mode patch` first; require explicit user approval before applying. Never auto-apply without user confirmation.
 
 ## Quick Commands
 
@@ -112,6 +132,22 @@ python -m ai_devsecops_agent.cli auto-fix --pipeline ci.yml --gitops argo.yaml -
 2. Generate artifacts with `--artifact-dir`
 3. Fail on policy violations (exit code 1 when verdict is FAIL)
 4. Optionally run `auto-fix --mode suggest` or `--mode patch` for reviewable fixes
+
+## Limitations
+
+- Requires external AI DevSecOps Policy Enforcement Agent; not self-contained
+- Auto-fix apply modifies files; use suggest/patch first for review
+- Policy coverage depends on policy YAML; default may not match all environments
+
+## Validation Checklist
+
+- [ ] Verdict and findings reviewed before auto-fix
+- [ ] Safe fixes only for auto-apply
+- [ ] Artifacts generated for CI integration
+
+## Portability Notes
+
+Skill guides invocation of external tool. Output format and CLI are tool-specific.
 
 ## Prerequisites
 

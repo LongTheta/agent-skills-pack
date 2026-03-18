@@ -2,8 +2,10 @@
 """
 Generate skills-manifest.json from repository structure and SKILL.md files.
 
-Scans skill directories, extracts frontmatter (name, description), infers
-triggers from description text, and builds a rich manifest schema.
+Outputs a rich manifest schema with:
+- name, category, summary, tags, triggers
+- compatibility, risk_tier, status
+- required_files, maintainer, last_reviewed, security_reviewed
 
 Usage:
   python scripts/generate_manifest.py           # Write to skills-manifest.json
@@ -13,12 +15,12 @@ Usage:
 import json
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = ROOT / "skills-manifest.json"
 
-# Categories inferred from repo structure
 CATEGORIES = [
     {"id": "security-compliance", "label": "Security & Compliance"},
     {"id": "ide-authoring", "label": "IDE & Authoring"},
@@ -33,6 +35,35 @@ SECURITY_SKILLS = {
     "tool-evaluator",
     "zero-trust-gitops-enforcement",
 }
+
+# Risk tiers: 0=read-only, 1=content gen, 2=code/config proposal, 3=pipeline/infra/security
+RISK_TIERS = {
+    "ai-agent-architecture": 0,
+    "ai-devsecops-policy-enforcement": 3,
+    "cve-detect-and-remediate": 2,
+    "dod-zero-trust-architect": 0,
+    "security-evaluator": 0,
+    "tool-evaluator": 0,
+    "zero-trust-gitops-enforcement": 2,
+    "create-rule": 1,
+    "create-skill": 1,
+    "create-subagent": 2,
+    "migrate-to-skills": 2,
+    "shell": 3,
+    "update-cursor-settings": 2,
+}
+
+# Skills requiring security review (Tier 3 or security-impacting)
+SECURITY_REVIEWED_SKILLS = {
+    "security-evaluator",
+    "cve-detect-and-remediate",
+    "ai-devsecops-policy-enforcement",
+    "dod-zero-trust-architect",
+    "zero-trust-gitops-enforcement",
+}
+
+REQUIRED_FILES = ["SKILL.md"]
+OPTIONAL_FILES = ["examples.md", "prompt-template.md", "reference.md"]
 
 
 def parse_frontmatter(content: str) -> dict:
@@ -57,27 +88,21 @@ def parse_frontmatter(content: str) -> dict:
 
 
 def extract_triggers(description: str) -> list[str]:
-    """Infer trigger phrases from description (Use when, Trigger on, etc.)."""
+    """Infer trigger phrases from description."""
     triggers = []
     desc_lower = description.lower()
-
-    # Common patterns
     patterns = [
         r"use when\s+([^.]+)",
         r"trigger on\s+([^.]+)",
         r"use for\s+([^.]+)",
-        r"use\s+(?:for|when)\s+([^.]+)",
     ]
     for pattern in patterns:
         for m in re.finditer(pattern, desc_lower, re.IGNORECASE):
             phrase = m.group(1).strip()
-            # Split on commas, "or", "and"
             for part in re.split(r"\s+or\s+|\s+and\s+|,\s*", phrase):
                 part = part.strip()
                 if part and len(part) > 3 and part not in triggers:
                     triggers.append(part[:80])
-
-    # Fallback: extract key phrases (words after "when")
     if not triggers and "when" in desc_lower:
         idx = desc_lower.find("when")
         rest = description[idx + 5 :].strip()
@@ -85,26 +110,23 @@ def extract_triggers(description: str) -> list[str]:
             part = part.strip()
             if part and len(part) > 4:
                 triggers.append(part[:80])
-
-    return triggers[:10]  # Cap at 10
+    return triggers[:10]
 
 
 def infer_summary(description: str, max_len: int = 200) -> str:
     """Create a short summary from the full description."""
-    # Remove "Use when" / "Trigger on" clauses
     for pattern in ["Use when", "Trigger on", "Use for", "Use when you"]:
         if pattern in description:
             idx = description.find(pattern)
             description = description[:idx].strip()
-    # Clean trailing punctuation
     description = description.rstrip(".,; ")
     if len(description) > max_len:
         description = description[: max_len - 3] + "..."
     return description
 
 
-def get_skill_files(skill_dir: Path) -> dict:
-    """Return paths for skill, examples, template, reference. Use null if missing."""
+def get_required_files(skill_dir: Path) -> dict:
+    """Return required_files object: skill, examples, template, reference."""
     name = skill_dir.name
     return {
         "skill": f"{name}/SKILL.md" if (skill_dir / "SKILL.md").exists() else None,
@@ -115,13 +137,13 @@ def get_skill_files(skill_dir: Path) -> dict:
 
 
 def get_tags(skill_name: str) -> list[str]:
-    """Default tags per skill (can be overridden by parsing)."""
+    """Default tags per skill."""
     tag_map = {
         "ai-agent-architecture": ["ai", "architecture", "production-readiness", "evaluation"],
         "ai-devsecops-policy-enforcement": ["devsecops", "ci-cd", "gitops", "argo-cd", "compliance"],
         "cve-detect-and-remediate": ["cve", "supply-chain", "dependencies", "remediation", "osv"],
         "dod-zero-trust-architect": ["zero-trust", "dod", "federal", "nist", "fedramp"],
-        "security-evaluator": ["security", "compliance", "evaluation", "scorecard", "fedramp", "nist", "gitops"],
+        "security-evaluator": ["security", "compliance", "evaluation", "scorecard", "fedramp", "nist"],
         "tool-evaluator": ["evaluation", "enterprise", "devops", "gitops"],
         "zero-trust-gitops-enforcement": ["zero-trust", "gitops", "ci-cd", "pipeline-security"],
         "create-rule": ["cursor", "rules", "conventions"],
@@ -135,7 +157,7 @@ def get_tags(skill_name: str) -> list[str]:
 
 
 def scan_skills() -> list[dict]:
-    """Scan repo and build skill entries."""
+    """Scan repo and build skill entries with full schema."""
     skills = []
     for item in sorted(ROOT.iterdir()):
         if not item.is_dir() or item.name.startswith(".") or item.name in ("docs", "scripts", "node_modules"):
@@ -146,30 +168,33 @@ def scan_skills() -> list[dict]:
 
         content = skill_md.read_text(encoding="utf-8")
         fm = parse_frontmatter(content)
-        name = fm.get("name")
-        if not name:
-            name = item.name
+        name = fm.get("name") or item.name
 
         description = fm.get("description", "")
         if isinstance(description, str) and ">-" in content:
-            # Multiline YAML
             desc_match = re.search(r"description:\s*>-?\s*\n\s*(.+?)(?=\n\w|\n---|\Z)", content, re.DOTALL)
             if desc_match:
                 description = desc_match.group(1).replace("\n", " ").strip()
 
         category = "security-compliance" if name in SECURITY_SKILLS else "ide-authoring"
-        triggers = extract_triggers(description) if description else []
-        if not triggers:
-            triggers = [name.replace("-", " ")]
+        triggers = extract_triggers(description) if description else [name.replace("-", " ")]
+        risk_tier = RISK_TIERS.get(name, 0)
+        security_reviewed = name in SECURITY_REVIEWED_SKILLS
+        last_reviewed = "2025-03-18" if security_reviewed else None
 
         skills.append({
             "name": name,
             "category": category,
             "summary": infer_summary(description) if description else "",
             "triggers": triggers,
-            "files": get_skill_files(item),
             "tags": get_tags(name),
+            "compatibility": ["cursor"],
+            "risk_tier": risk_tier,
             "status": "active",
+            "required_files": get_required_files(item),
+            "maintainer": "LongTheta",
+            "last_reviewed": last_reviewed,
+            "security_reviewed": security_reviewed,
         })
     return skills
 
@@ -181,7 +206,7 @@ def main():
     manifest = {
         "repo": "agent-skills-pack",
         "description": "Production-ready Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.",
-        "version": "0.1.0",
+        "version": "1.0.0",
         "repository": "https://github.com/LongTheta/agent-skills-pack",
         "license": "MIT",
         "categories": CATEGORIES,

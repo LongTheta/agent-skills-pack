@@ -1,195 +1,218 @@
 {
   "repo": "agent-skills-pack",
+  "version": "1.0.0",
   "description": "Production-ready Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.",
-  "version": "0.1.0",
   "repository": "https://github.com/LongTheta/agent-skills-pack",
   "license": "MIT",
   "categories": [
     {"id": "security-compliance", "label": "Security & Compliance"},
     {"id": "ide-authoring", "label": "IDE & Authoring"}
   ],
+  "risk_tiers": {
+    "0": {"label": "read-only", "description": "Guidance only; no execution, no file writes"},
+    "1": {"label": "content generation", "description": "Generates text, docs, templates; user applies manually"},
+    "2": {"label": "code/config", "description": "Proposes diffs, patches, config changes; requires validation checklist"},
+    "3": {"label": "infra/pipeline impact", "description": "Modifies CI/CD, infra, or executes commands; requires human review"}
+  },
+  "enforcement": {
+    "tier_2": "Must include Validation Checklist section",
+    "tier_3": "Requires human review before applying outputs"
+  },
   "skills": [
     {
       "name": "ai-agent-architecture",
+      "version": "1.0.0",
       "category": "security-compliance",
-      "summary": "Design and evaluate AI agent systems across seven layers—model, memory, tooling, orchestration, communication, infrastructure, and evaluation.",
+      "risk_tier": 0,
       "triggers": ["architecture review", "production-readiness", "implementation planning", "gap analysis", "design agent system"],
-      "files": {
-        "skill": "ai-agent-architecture/SKILL.md",
-        "examples": "ai-agent-architecture/examples.md",
-        "template": "ai-agent-architecture/prompt-template.md",
-        "reference": "ai-agent-architecture/reference.md"
-      },
       "tags": ["ai", "architecture", "production-readiness", "evaluation"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": true,
+      "summary": "Design and evaluate AI agent systems across seven layers—model, memory, tooling, orchestration, communication, infrastructure, and evaluation.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "ai-agent-architecture/SKILL.md", "examples": "ai-agent-architecture/examples.md", "template": "ai-agent-architecture/prompt-template.md", "reference": "ai-agent-architecture/reference.md"}
     },
     {
       "name": "ai-devsecops-policy-enforcement",
+      "version": "1.0.0",
       "category": "security-compliance",
-      "summary": "Runs and interprets policy enforcement for CI/CD and GitOps pipelines. Generates findings, remediation suggestions, and auto-fix patches.",
+      "risk_tier": 3,
       "triggers": ["review pipelines", "Argo CD", "Kubernetes configs", "DevSecOps", "policy enforcement", "supply chain", "SBOM", "compliance review"],
-      "files": {
-        "skill": "ai-devsecops-policy-enforcement/SKILL.md",
-        "examples": "ai-devsecops-policy-enforcement/examples.md",
-        "template": "ai-devsecops-policy-enforcement/prompt-template.md",
-        "reference": "ai-devsecops-policy-enforcement/reference.md"
-      },
       "tags": ["devsecops", "ci-cd", "gitops", "argo-cd", "compliance"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": true,
+      "summary": "Runs and interprets policy enforcement for CI/CD and GitOps pipelines. Generates findings, remediation suggestions, and auto-fix patches.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "ai-devsecops-policy-enforcement/SKILL.md", "examples": "ai-devsecops-policy-enforcement/examples.md", "template": "ai-devsecops-policy-enforcement/prompt-template.md", "reference": "ai-devsecops-policy-enforcement/reference.md"}
     },
     {
       "name": "cve-detect-and-remediate",
+      "version": "1.0.0",
       "category": "security-compliance",
-      "summary": "Detects vulnerable dependencies and proposes or applies safe remediations. Uses OSV, NVD, CISA KEV, and Dependabot.",
+      "risk_tier": 2,
       "triggers": ["scan for CVEs", "fix vulnerable dependencies", "supply chain security", "dependency remediation"],
-      "files": {
-        "skill": "cve-detect-and-remediate/SKILL.md",
-        "examples": "cve-detect-and-remediate/examples.md",
-        "template": "cve-detect-and-remediate/prompt-template.md",
-        "reference": "cve-detect-and-remediate/reference.md"
-      },
       "tags": ["cve", "supply-chain", "dependencies", "remediation", "osv"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": true,
+      "summary": "Detects vulnerable dependencies and proposes or applies safe remediations. Uses OSV, NVD, CISA KEV, and Dependabot.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "cve-detect-and-remediate/SKILL.md", "examples": "cve-detect-and-remediate/examples.md", "template": "cve-detect-and-remediate/prompt-template.md", "reference": "cve-detect-and-remediate/reference.md"}
     },
     {
       "name": "dod-zero-trust-architect",
+      "version": "1.0.0",
       "category": "security-compliance",
-      "summary": "Evaluates and designs Zero Trust Architecture per DoD Zero Trust Strategy. Scores maturity across 7 pillars.",
+      "risk_tier": 0,
       "triggers": ["DoD ZT compliance", "Zero Trust pillars", "federal security", "ZT architecture", "CI/CD ZT alignment", "Kubernetes ZT"],
-      "files": {
-        "skill": "dod-zero-trust-architect/SKILL.md",
-        "examples": "dod-zero-trust-architect/examples.md",
-        "template": "dod-zero-trust-architect/prompt-template.md",
-        "reference": "dod-zero-trust-architect/reference.md"
-      },
       "tags": ["zero-trust", "dod", "federal", "nist", "fedramp"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": true,
+      "summary": "Evaluates and designs Zero Trust Architecture per DoD Zero Trust Strategy. Scores maturity across 7 pillars.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "dod-zero-trust-architect/SKILL.md", "examples": "dod-zero-trust-architect/examples.md", "template": "dod-zero-trust-architect/prompt-template.md", "reference": "dod-zero-trust-architect/reference.md"}
     },
     {
       "name": "security-evaluator",
+      "version": "1.0.0",
       "category": "security-compliance",
-      "summary": "Evaluates tools, architectures, workflows, and systems from a security and compliance perspective. Produces scorecards and mitigation plans.",
+      "risk_tier": 0,
       "triggers": ["security review", "compliance gaps", "risk assessment", "security scorecard", "mitigation plan", "enterprise use", "government use"],
-      "files": {
-        "skill": "security-evaluator/SKILL.md",
-        "examples": "security-evaluator/examples.md",
-        "template": "security-evaluator/prompt-template.md",
-        "reference": "security-evaluator/reference.md"
-      },
       "tags": ["security", "compliance", "evaluation", "scorecard", "fedramp", "nist", "gitops"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": true,
+      "summary": "Evaluates tools, architectures, workflows, and systems from a security and compliance perspective. Produces scorecards and mitigation plans.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "security-evaluator/SKILL.md", "examples": "security-evaluator/examples.md", "template": "security-evaluator/prompt-template.md", "reference": "security-evaluator/reference.md"}
     },
     {
       "name": "tool-evaluator",
+      "version": "1.0.0",
       "category": "security-compliance",
-      "summary": "Evaluates tools, platforms, and libraries for real-world adoption in enterprise, DevOps, GitOps, and regulated environments. Assesses data hydration readiness.",
+      "risk_tier": 0,
       "triggers": ["evaluate tool", "compare tools", "architectural fit", "adopt/reject/pilot", "implementation burden", "scorecard", "decision memo", "DevSecOps", "MCP"],
-      "files": {
-        "skill": "tool-evaluator/SKILL.md",
-        "examples": "tool-evaluator/examples.md",
-        "template": "tool-evaluator/prompt-template.md",
-        "reference": "tool-evaluator/reference.md"
-      },
       "tags": ["evaluation", "enterprise", "devops", "gitops"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": false,
+      "summary": "Evaluates tools, platforms, and libraries for real-world adoption in enterprise, DevOps, GitOps, and regulated environments. Assesses data hydration readiness.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "tool-evaluator/SKILL.md", "examples": "tool-evaluator/examples.md", "template": "tool-evaluator/prompt-template.md", "reference": "tool-evaluator/reference.md"}
     },
     {
       "name": "zero-trust-gitops-enforcement",
+      "version": "1.0.0",
       "category": "security-compliance",
-      "summary": "Enforces Zero Trust principles in CI/CD and GitOps workflows. Reviews pipelines and manifests for identity, supply chain, deployment integrity, and secrets.",
+      "risk_tier": 2,
       "triggers": ["Zero Trust GitOps", "pipeline security", "blocking production", "review pipelines", "Argo CD", "Kubernetes configs"],
-      "files": {
-        "skill": "zero-trust-gitops-enforcement/SKILL.md",
-        "examples": "zero-trust-gitops-enforcement/examples.md",
-        "template": "zero-trust-gitops-enforcement/prompt-template.md",
-        "reference": "zero-trust-gitops-enforcement/reference.md"
-      },
       "tags": ["zero-trust", "gitops", "ci-cd", "pipeline-security"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": true,
+      "summary": "Enforces Zero Trust principles in CI/CD and GitOps workflows. Reviews pipelines and manifests for identity, supply chain, deployment integrity, and secrets.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "zero-trust-gitops-enforcement/SKILL.md", "examples": "zero-trust-gitops-enforcement/examples.md", "template": "zero-trust-gitops-enforcement/prompt-template.md", "reference": "zero-trust-gitops-enforcement/reference.md"}
     },
     {
       "name": "create-rule",
+      "version": "1.0.0",
       "category": "ide-authoring",
-      "summary": "Create Cursor rules for persistent AI guidance. Add coding standards, project conventions, and file-specific patterns.",
+      "risk_tier": 1,
       "triggers": ["create rule", "coding standards", "project conventions", "RULE.md", ".cursor/rules", "AGENTS.md"],
-      "files": {
-        "skill": "create-rule/SKILL.md",
-        "examples": "create-rule/examples.md",
-        "template": "create-rule/prompt-template.md",
-        "reference": "create-rule/reference.md"
-      },
       "tags": ["cursor", "rules", "conventions"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": null,
+      "security_reviewed": false,
+      "summary": "Create Cursor rules for persistent AI guidance. Add coding standards, project conventions, and file-specific patterns.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "create-rule/SKILL.md", "examples": "create-rule/examples.md", "template": "create-rule/prompt-template.md", "reference": "create-rule/reference.md"}
     },
     {
       "name": "create-skill",
+      "version": "1.0.0",
       "category": "ide-authoring",
-      "summary": "Guides users through creating effective Agent Skills. Covers structure, best practices, and SKILL.md format.",
+      "risk_tier": 1,
       "triggers": ["create skill", "author skill", "skill structure", "SKILL.md format"],
-      "files": {
-        "skill": "create-skill/SKILL.md",
-        "examples": "create-skill/examples.md",
-        "template": "create-skill/prompt-template.md",
-        "reference": "create-skill/reference.md"
-      },
       "tags": ["cursor", "skills", "authoring"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": false,
+      "summary": "Guides users through creating effective Agent Skills. Covers structure, best practices, and SKILL.md format.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "create-skill/SKILL.md", "examples": "create-skill/examples.md", "template": "create-skill/prompt-template.md", "reference": "create-skill/reference.md"}
     },
     {
       "name": "create-subagent",
+      "version": "1.0.0",
       "category": "ide-authoring",
-      "summary": "Create custom subagents for specialized AI tasks. Configure code reviewers, debuggers, or domain-specific assistants.",
+      "risk_tier": 2,
       "triggers": ["create subagent", "custom subagent", "task-specific agent", "code reviewer", "debugger"],
-      "files": {
-        "skill": "create-subagent/SKILL.md",
-        "examples": "create-subagent/examples.md",
-        "template": "create-subagent/prompt-template.md",
-        "reference": "create-subagent/reference.md"
-      },
       "tags": ["cursor", "subagents", "agents"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": null,
+      "security_reviewed": false,
+      "summary": "Create custom subagents for specialized AI tasks. Configure code reviewers, debuggers, or domain-specific assistants.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "create-subagent/SKILL.md", "examples": "create-subagent/examples.md", "template": "create-subagent/prompt-template.md", "reference": "create-subagent/reference.md"}
     },
     {
       "name": "migrate-to-skills",
+      "version": "1.0.0",
       "category": "ide-authoring",
-      "summary": "Convert Cursor rules and slash commands to Agent Skills format. Preserves body content verbatim.",
+      "risk_tier": 2,
       "triggers": ["migrate rules", "migrate commands", "convert .mdc", "skills format"],
-      "files": {
-        "skill": "migrate-to-skills/SKILL.md",
-        "examples": "migrate-to-skills/examples.md",
-        "template": "migrate-to-skills/prompt-template.md",
-        "reference": "migrate-to-skills/reference.md"
-      },
       "tags": ["cursor", "migration", "rules", "commands"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": null,
+      "security_reviewed": false,
+      "summary": "Convert Cursor rules and slash commands to Agent Skills format. Preserves body content verbatim.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "migrate-to-skills/SKILL.md", "examples": "migrate-to-skills/examples.md", "template": "migrate-to-skills/prompt-template.md", "reference": "migrate-to-skills/reference.md"}
     },
     {
       "name": "shell",
+      "version": "1.0.0",
       "category": "ide-authoring",
-      "summary": "Runs the rest of a /shell request as a literal shell command. Use only when user explicitly invokes /shell.",
+      "risk_tier": 3,
       "triggers": ["/shell", "shell command", "run command"],
-      "files": {
-        "skill": "shell/SKILL.md",
-        "examples": "shell/examples.md",
-        "template": "shell/prompt-template.md",
-        "reference": "shell/reference.md"
-      },
       "tags": ["shell", "terminal", "cursor"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": "2025-03-18",
+      "security_reviewed": true,
+      "summary": "Runs the rest of a /shell request as a literal shell command. Use only when user explicitly invokes /shell.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "shell/SKILL.md", "examples": "shell/examples.md", "template": "shell/prompt-template.md", "reference": "shell/reference.md"}
     },
     {
       "name": "update-cursor-settings",
+      "version": "1.0.0",
       "category": "ide-authoring",
-      "summary": "Modify Cursor/VSCode user settings in settings.json. Change themes, font size, format on save, keybindings, and more.",
+      "risk_tier": 2,
       "triggers": ["change settings", "editor preferences", "theme", "font size", "format on save", "keybindings", "settings.json"],
-      "files": {
-        "skill": "update-cursor-settings/SKILL.md",
-        "examples": "update-cursor-settings/examples.md",
-        "template": "update-cursor-settings/prompt-template.md",
-        "reference": "update-cursor-settings/reference.md"
-      },
       "tags": ["cursor", "vscode", "settings"],
-      "status": "active"
+      "maintainer": "LongTheta",
+      "last_reviewed": null,
+      "security_reviewed": false,
+      "summary": "Modify Cursor/VSCode user settings in settings.json. Change themes, font size, format on save, keybindings, and more.",
+      "status": "active",
+      "compatibility": ["cursor"],
+      "required_files": {"skill": "update-cursor-settings/SKILL.md", "examples": "update-cursor-settings/examples.md", "template": "update-cursor-settings/prompt-template.md", "reference": "update-cursor-settings/reference.md"}
     }
   ]
 }

@@ -6,7 +6,8 @@ Use this checklist before tagging a release.
 
 ## Pre-Release
 
-- [ ] All skills pass `npm run validate`
+- [ ] All skills pass `npm run validate:full`
+- [ ] SBOM up to date: run `npm install && npm run sbom` and commit `sbom.json` if deps changed
 - [ ] Manifest is valid: `npm run generate-manifest -- --dry-run`
 - [ ] CHANGELOG.md updated with version and changes
 - [ ] No broken links (CI link check passes)

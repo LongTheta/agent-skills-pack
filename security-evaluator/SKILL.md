@@ -1,5 +1,6 @@
 ---
 name: security-evaluator
+risk_tier: 0
 description: Evaluates tools, architectures, code changes, CI/CD workflows, GitOps platforms, dashboards, integrations, AI agents, MCP servers, and cloud-native systems from a security and compliance perspective. Use when the user asks to review something for security risk, assess a design for security concerns, evaluate a tool for enterprise or government use, identify compliance gaps, or create a security scorecard or mitigation plan.
 ---
 
@@ -114,6 +115,45 @@ Use this template. Be concise; avoid filler.
 - **State assumptions**: Explicitly list what you assumed (versions, environment, data classification).
 - **Highlight unknowns**: Mark areas where information was missing or uncertain.
 - **Be practical**: Recommend a clear path forward, not vague “consider” statements.
+
+## Inputs
+
+| Input | Description |
+|-------|-------------|
+| Tool/architecture name | What is being evaluated |
+| Category | CI/CD, MCP server, GitOps tool, etc. |
+| Intended use case | How it will be used |
+| Environment | Cloud, on-prem, regulated |
+| Data sensitivity | Public, PII, CUI |
+| Hosting model | SaaS, self-hosted |
+| Integrations | IdP, SIEM, vault, etc. |
+
+## Outputs
+
+Structured security evaluation with: Summary, Scorecard, Risks, Mitigations, Final Recommendation. See Output Structure above.
+
+## Limitations
+
+- Advisory only; not a substitute for formal security assessment or penetration test
+- Cannot access live systems; relies on provided context
+- Compliance claims are guidance; verify with legal/compliance team
+
+## Safety Guardrails
+
+- **Tier 0 (read-only)**: No commands, no file writes; guidance only
+- State assumptions explicitly; never fabricate evidence
+- Call out unknowns; do not overstate confidence
+
+## Validation Checklist
+
+- [ ] All relevant security domains addressed
+- [ ] Assumptions and unknowns listed
+- [ ] Recommendation matches evidence
+- [ ] Next validation steps provided
+
+## Portability Notes
+
+Output format is IDE-agnostic. Use prompt-template.md for structured invocation. Adapts to Copilot, Windsurf, Zed via standard markdown.
 
 ---
 

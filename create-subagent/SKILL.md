@@ -1,5 +1,6 @@
 ---
 name: create-subagent
+risk_tier: 2
 description: >-
   Create custom subagents for specialized AI tasks. Use when you want to create
   a new type of subagent, set up task-specific agents, configure code reviewers,
@@ -20,6 +21,24 @@ Subagents help you:
 ### Inferring from Context
 
 If you have previous conversation context, infer the subagent's purpose and behavior from what was discussed. Create the subagent based on specialized tasks or workflows that emerged in the conversation.
+
+## Inputs
+
+- **Task purpose:** What the subagent should do when invoked (e.g., code review, debugging, data analysis)
+- **Scope:** Project (`.cursor/agents/`) or user (`~/.cursor/agents/`)
+- **System prompt content:** Instructions, workflow, output format, constraints
+
+## Outputs
+
+- **Subagent file:** `.md` in `.cursor/agents/` or `~/.cursor/agents/`
+- **Frontmatter:** `name` (lowercase, hyphens), `description` (delegation trigger)
+- **Body:** System prompt (markdown) that defines behavior when invoked
+
+## Limitations
+
+- Cursor-specific paths and format; not portable to other AI IDEs without adaptation
+- Subagent invocation is delegated by the main agent; user cannot directly invoke
+- No built-in sandboxing; subagent runs with same access as main agent
 
 ## Subagent Locations
 
@@ -171,6 +190,15 @@ For each analysis:
 Always ensure queries are efficient and cost-effective.
 ```
 
+## Validation Checklist
+
+Before applying subagent or agent changes:
+
+- [ ] Verify `name` and `description` in frontmatter are set
+- [ ] Confirm agent file path (project vs user) matches intent
+- [ ] Review system prompt for sensitive or project-specific content
+- [ ] Test agent invocation before committing
+
 ## Subagent Creation Workflow
 
 ### Step 1: Decide the Scope
@@ -223,3 +251,7 @@ Use the my-agent subagent to [task description]
 - Ensure file is in `.cursor/agents/` or `~/.cursor/agents/`
 - Check file has `.md` extension
 - Verify YAML frontmatter syntax is valid
+
+## Portability Notes
+
+Subagent format (`.md` with YAML frontmatter + body) is generic. Paths (`.cursor/agents/`, `~/.cursor/agents/`) and invocation are Cursor-specific. Other AI IDEs may use different agent config locations (e.g., `~/.config/ide/agents/`) and delegation mechanisms.

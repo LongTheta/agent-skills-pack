@@ -1,0 +1,31 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-03-18T00:00:00.000Z",
+    "tools": [
+      {
+        "vendor": "CycloneDX",
+        "name": "cyclonedx-npm",
+        "version": "4.2.1"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:npm/agent-skills-pack@1.0.0",
+      "name": "agent-skills-pack",
+      "version": "1.0.0",
+      "description": "Production-ready Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.",
+      "purl": "pkg:npm/agent-skills-pack@1.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    }
+  },
+  "components": []
+}

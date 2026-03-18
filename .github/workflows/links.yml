@@ -20,7 +20,7 @@ jobs:
           node-version: '20'
 
       - name: Install linkinator
-        run: npm install -g linkinator
+        run: npm install -g linkinator@7.6.1
 
       - name: Check internal links
         run: linkinator . --recurse --skip "https://" --skip "http://" --format csv 2>/dev/null || true

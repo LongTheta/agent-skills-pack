@@ -1,6 +1,11 @@
 ---
 name: ai-agent-architecture
-description: Design, evaluate, or harden AI agent systems across seven layers—model, memory/context, tooling, orchestration, communication, infrastructure, and evaluation. Use for architecture reviews, production-readiness assessments, implementation planning, gap analysis, or designing new agent systems from scratch.
+risk_tier: 0
+description: >-
+  Design, evaluate, or harden AI agent systems across seven layers—model,
+  memory/context, tooling, orchestration, communication, infrastructure, and
+  evaluation. Use for architecture reviews, production-readiness assessments,
+  implementation planning, gap analysis, or designing new agent systems from scratch.
 ---
 
 # AI Agent Architecture
@@ -85,6 +90,24 @@ You are an AI platform architect and production-readiness reviewer. Design, asse
 
 For detailed evaluation criteria and questions per layer, see [reference.md](reference.md).
 
+## Inputs
+
+- Description or diagram of the agent system (existing or proposed)
+- Repo path, platform plan, or architecture doc (optional)
+- User's goals: review, design, production-readiness, gap analysis
+
+## Outputs
+
+- Structured architecture review (see Output Format below)
+- 7-layer assessment with scores and recommendations
+- Production readiness scorecard and implementation plan
+
+## Limitations
+
+- Relies on information provided; cannot inspect running systems
+- Scores and verdicts are advisory; not a formal security or compliance audit
+- May not cover proprietary or undocumented components
+
 ## Output Format
 
 Use this structure by default:
@@ -135,6 +158,12 @@ Where relevant: prompt design, tool contracts, retrieval boundaries, eventing/AP
 | 7–8 | Solid |
 | 9–10 | Production-grade |
 
+## Safety Guardrails
+
+- **Read-only (Tier 0)**: This skill produces guidance and assessments only. No commands, file writes, or API calls.
+- **State assumptions**: Call out unknowns, incomplete information, and scope limits.
+- **No legal/compliance guarantee**: Verdicts and scores are advisory; users must validate for their context.
+
 ## Anti-Patterns to Flag
 
 - "We picked a model, so we have an agent platform"
@@ -174,6 +203,17 @@ If the user provides a repo, diagram, or platform plan:
 - Recommend boring, reliable patterns where possible
 - Call out overengineering clearly
 - Tie suggestions to observability, security, maintainability
+
+## Validation Checklist
+
+- [ ] All 7 layers assessed or explicitly scoped out
+- [ ] Assumptions and unknowns called out
+- [ ] Weakest layers identified with rationale
+- [ ] Recommendations are actionable and prioritized
+
+## Portability Notes
+
+Architecture model is platform-agnostic. Layer names and evaluation criteria apply to any AI agent stack (LangChain, Semantic Kernel, custom, etc.).
 
 ## Additional Resources
 

@@ -1,5 +1,6 @@
 ---
 name: migrate-to-skills
+risk_tier: 2
 description: >-
   Convert 'Applied intelligently' Cursor rules (.cursor/rules/*.mdc) and slash
   commands (.cursor/commands/*.md) to Agent Skills format (.cursor/skills/). Use
@@ -12,6 +13,30 @@ disable-model-invocation: true
 Convert Cursor rules ("Applied intelligently") and slash commands to Agent Skills format.
 
 **CRITICAL: Preserve the exact body content. Do not modify, reformat, or "improve" it - copy verbatim.**
+
+## When to Use
+
+- User wants to migrate rules or commands to skills format
+- User asks to convert `.mdc` rules to SKILL.md format
+- User wants to consolidate commands into the skills directory
+- User has "Applied intelligently" rules or slash commands to migrate
+
+## Inputs
+
+- Project or user `.cursor/rules/*.mdc` and `.cursor/commands/*.md`
+- "Applied intelligently" rules (have `description`, no `globs`, no `alwaysApply: true`)
+- Slash commands (plain markdown)
+
+## Outputs
+
+- `.cursor/skills/{skill-name}/SKILL.md` for each migrated rule or command
+- Original files optionally deleted after verification
+
+## Limitations
+
+- Only migrates "Applied intelligently" rules; always-apply and glob rules are excluded
+- Preserves body content verbatim; does not improve or reformat
+- Cursor-specific paths; other IDEs have different structures
 
 ## Locations
 
@@ -106,6 +131,15 @@ Changes: Add frontmatter with `name` (from filename), `description` (infer from 
 
 **CRITICAL: Copy the body content character-for-character. Do not reformat, fix typos, or "improve" anything.**
 
+## Validation Checklist
+
+Before applying migration:
+
+- [ ] Confirm files to migrate (rules with `description`, no `globs`, no `alwaysApply: true`; commands always)
+- [ ] Verify target `.cursor/skills/` or `~/.cursor/skills/` exists
+- [ ] Spot-check one migrated SKILL.md for content fidelity
+- [ ] Ensure user knows how to undo (ask agent to restore)
+
 ## Workflow
 
 If you have the Task tool available:
@@ -132,3 +166,7 @@ If you don't have the Task tool available:
 6. [ ] Delete the original file. DO NOT use the terminal to delete these files. Use the delete tool.
 7. [ ] Summarize the results to the user. IMPORTANT: Make sure to let them know if they want to undo the migration, to ask you to.
 8. [ ] If the user asks you to undo the migration, do the opposite of the above steps to restore the original files.
+
+## Portability Notes
+
+Migration targets Cursor's skills format. Other AI IDEs may use different skill/rule structures; adapt paths and frontmatter accordingly.

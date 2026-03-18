@@ -5,7 +5,12 @@
   "private": true,
   "scripts": {
     "validate": "node scripts/validate-skills.js",
+    "validate:full": "node scripts/validate-skills.js && python scripts/validate_skills.py",
     "generate-manifest": "node scripts/generate-manifest.js",
-    "generate-manifest:py": "python scripts/generate_manifest.py"
+    "generate-manifest:py": "python scripts/generate_manifest.py",
+    "sbom": "cyclonedx-npm --output-file sbom.json"
+  },
+  "devDependencies": {
+    "@cyclonedx/cyclonedx-npm": "^4.2.1"
   }
 }

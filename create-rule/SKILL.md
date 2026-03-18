@@ -1,5 +1,6 @@
 ---
 name: create-rule
+risk_tier: 1
 description: >-
   Create Cursor rules for persistent AI guidance. Use when you want to create a
   rule, add coding standards, set up project conventions, configure
@@ -9,6 +10,31 @@ description: >-
 # Creating Cursor Rules
 
 Create project rules in `.cursor/rules/` to provide persistent context for the AI agent.
+
+## When to Use
+
+- User wants to create a rule, add coding standards, or set up project conventions
+- User asks about `.cursor/rules/`, RULE.md, or AGENTS.md
+- User wants file-specific patterns (e.g., TypeScript conventions when editing `.ts` files)
+- User needs persistent AI guidance for a project
+
+## Inputs
+
+- User's intent: what to enforce or teach
+- Scope: always apply vs. file-specific
+- File patterns (if file-specific): e.g., `**/*.ts`, `backend/**/*.py`
+
+## Outputs
+
+- `.mdc` rule file in `.cursor/rules/`
+- Frontmatter with `description`, optional `globs`, `alwaysApply`
+- Rule body with clear, actionable content
+
+## Limitations
+
+- Rules are Cursor-specific; format differs for other IDEs
+- Max ~50 lines recommended; split large rules into focused pieces
+- Cannot execute code; rules are static guidance only
 
 ## Gather Requirements
 
@@ -156,9 +182,19 @@ alwaysApply: false
 
 ---
 
-## Checklist
+## Safety Guardrails
+
+- **Tier 1 (content generation)**: Proposals only; user applies manually. No auto-apply of rules.
+- **Keep rules concise**: Under 50 lines; one concern per rule.
+- **No secrets**: Do not include API keys, credentials, or sensitive data in rules.
+
+## Validation Checklist
 
 - [ ] File is `.mdc` format in `.cursor/rules/`
 - [ ] Frontmatter configured correctly
 - [ ] Content under 500 lines
 - [ ] Includes concrete examples
+
+## Portability Notes
+
+Rules use Cursor's `.mdc` format and `.cursor/rules/` path. Other IDEs use different rule systems (e.g., Copilot's `.github/copilot-instructions.md`).

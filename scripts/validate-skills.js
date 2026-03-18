@@ -81,7 +81,8 @@ function validateSkill(skillDir, skillId, manifestFiles) {
         }
       }
     } else if (typeof manifestFiles === 'object') {
-      for (const [key, relPath] of Object.entries(manifestFiles)) {
+      const filesToCheck = manifestFiles.required_files || manifestFiles.files || manifestFiles;
+      for (const [key, relPath] of Object.entries(filesToCheck)) {
         if (relPath) {
           const filePath = path.join(ROOT, relPath);
           if (!fs.existsSync(filePath)) {
@@ -113,7 +114,7 @@ function main() {
 
   for (const skill of skills) {
     const id = typeof skill === 'string' ? skill : (skill.name || skill.id);
-    const files = typeof skill === 'object' ? skill.files : undefined;
+    const files = typeof skill === 'object' ? (skill.required_files || skill.files) : undefined;
     const errs = validateSkill(id, id, files);
     allErrors.push(...errs);
   }

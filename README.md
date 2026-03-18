@@ -1,6 +1,6 @@
 # Agent Skills Pack
 
-A production-ready collection of **Agent Skills** for AI-assisted development—security, compliance, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.
+A production-ready, security-focused collection of **Agent Skills** for AI-assisted development—security, compliance, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -14,7 +14,7 @@ Each skill is self-contained, versioned independently, and can be used across pr
 
 ---
 
-## Who This Is For
+## Target Audience
 
 - **Platform engineers** — GitOps, CI/CD, Kubernetes, DevSecOps
 - **Security teams** — Compliance, vulnerability remediation, Zero Trust
@@ -24,43 +24,45 @@ Each skill is self-contained, versioned independently, and can be used across pr
 
 ---
 
-## Supported Use Cases
-
-| Use Case | Skills |
-|----------|--------|
-| **Security & compliance** | Security Evaluator, Policy Enforcement, CVE Remediation |
-| **Zero Trust** | DoD Zero Trust Architect, Zero Trust GitOps Enforcement |
-| **AI agent design** | AI Agent Architecture |
-| **Tool adoption** | Tool Evaluator |
-| **IDE & workflows** | Create Rule, Create Skill, Create Subagent, Update Settings |
-| **Migration** | Migrate to Skills |
-
----
-
 ## Skill Categories
 
 ### Security & Compliance
 
-| Skill | Description |
-|-------|-------------|
-| [ai-agent-architecture](ai-agent-architecture/) | Design and evaluate AI agent systems across 7 layers |
-| [ai-devsecops-policy-enforcement](ai-devsecops-policy-enforcement/) | Policy enforcement for CI/CD and GitOps pipelines |
-| [cve-detect-and-remediate](cve-detect-and-remediate/) | Detect vulnerable dependencies and propose remediations |
-| [dod-zero-trust-architect](dod-zero-trust-architect/) | DoD Zero Trust Architecture evaluation and design |
-| [security-evaluator](security-evaluator/) | Security and compliance evaluation for systems |
-| [tool-evaluator](tool-evaluator/) | Evaluate tools for enterprise adoption |
-| [zero-trust-gitops-enforcement](zero-trust-gitops-enforcement/) | Zero Trust principles in CI/CD and GitOps |
+| Skill | Description | Risk Tier |
+|-------|-------------|-----------|
+| [ai-agent-architecture](ai-agent-architecture/) | Design and evaluate AI agent systems across 7 layers | 0 |
+| [ai-devsecops-policy-enforcement](ai-devsecops-policy-enforcement/) | Policy enforcement for CI/CD and GitOps pipelines | 3 |
+| [cve-detect-and-remediate](cve-detect-and-remediate/) | Detect vulnerable dependencies and propose remediations | 2 |
+| [dod-zero-trust-architect](dod-zero-trust-architect/) | DoD Zero Trust Architecture evaluation and design | 0 |
+| [security-evaluator](security-evaluator/) | Security and compliance evaluation for systems | 0 |
+| [tool-evaluator](tool-evaluator/) | Evaluate tools for enterprise adoption | 0 |
+| [zero-trust-gitops-enforcement](zero-trust-gitops-enforcement/) | Zero Trust principles in CI/CD and GitOps | 2 |
 
 ### IDE & Authoring
 
-| Skill | Description |
-|-------|-------------|
-| [create-rule](create-rule/) | Create rules for persistent AI guidance |
-| [create-skill](create-skill/) | Create new Agent Skills |
-| [create-subagent](create-subagent/) | Create subagents for complex tasks |
-| [migrate-to-skills](migrate-to-skills/) | Migrate rules and commands to skills format |
-| [shell](shell/) | Shell and terminal operations |
-| [update-cursor-settings](update-cursor-settings/) | Modify Cursor/VSCode user settings |
+| Skill | Description | Risk Tier |
+|-------|-------------|-----------|
+| [create-rule](create-rule/) | Create rules for persistent AI guidance | 1 |
+| [create-skill](create-skill/) | Create new Agent Skills | 1 |
+| [create-subagent](create-subagent/) | Create subagents for complex tasks | 2 |
+| [migrate-to-skills](migrate-to-skills/) | Migrate rules and commands to skills format | 2 |
+| [shell](shell/) | Shell and terminal operations | 3 |
+| [update-cursor-settings](update-cursor-settings/) | Modify Cursor/VSCode user settings | 2 |
+
+---
+
+## Quick Start
+
+1. **Clone** the repository:
+   ```bash
+   git clone https://github.com/LongTheta/agent-skills-pack.git
+   ```
+
+2. **Link skills** to Cursor:
+   - Copy desired skill folders into `~/.cursor/skills/` (or `%APPDATA%\Cursor\skills\` on Windows)
+   - Or use symlinks for live updates
+
+3. **Validate** (optional): `npm run validate`
 
 ---
 
@@ -68,29 +70,39 @@ Each skill is self-contained, versioned independently, and can be used across pr
 
 ### Cursor
 
-1. **Clone or sync** this repository:
-   ```bash
-   git clone https://github.com/LongTheta/agent-skills-pack.git
-   ```
-
-2. **Link skills** to Cursor:
-   - **Copy**: Copy desired skill folders into `~/.cursor/skills/` (or `%APPDATA%\Cursor\skills\` on Windows)
-   - **Symlink** (recommended for updates):
-     ```bash
-     # macOS / Linux
-     ln -s "$(pwd)/agent-skills-pack/security-evaluator" ~/.cursor/skills/security-evaluator
-
-     # Windows (PowerShell, run as Administrator)
-     New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.cursor\skills\security-evaluator" -Target "C:\path\to\agent-skills-pack\security-evaluator"
-     ```
-
-3. **Project-level** (optional): Copy skills into `.cursor/skills/` in your project to share with your team.
-
-4. **Managed install**: If your Cursor setup supports managed skills, install via Cursor Settings → Skills.
+1. **Copy** or **symlink** skill folders into `~/.cursor/skills/`
+2. **Project-level**: Copy into `.cursor/skills/` to share with your team
+3. **Managed install**: Cursor Settings → Skills (if supported)
 
 ### Other AI IDEs
 
-Skills use a standard structure (`SKILL.md`, `examples.md`, `reference.md`, `prompt-template.md`). See [docs/portability-guide.md](docs/portability-guide.md) for adapting skills to other AI coding assistants (e.g., GitHub Copilot, Windsurf, Zed, Continue).
+Skills use a standard structure (`SKILL.md`, `examples.md`, `prompt-template.md`, `reference.md`). See [docs/portability-guide.md](docs/portability-guide.md) for adapting to GitHub Copilot, Windsurf, Zed, Continue.
+
+---
+
+## Contribution Model
+
+| Step | Action |
+|------|--------|
+| 1 | Fork; create branch |
+| 2 | Add/update skill per [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md) |
+| 3 | Run `npm run validate` |
+| 4 | Update manifest if new skill |
+| 5 | Open PR with checklist |
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+
+---
+
+## Validation Pipeline
+
+| Check | Command / CI |
+|-------|--------------|
+| Manifest validation | `node scripts/validate-skills.js` |
+| Skill structure & sections | `python scripts/validate_skills.py` |
+| Markdown lint | `markdownlint` in CI |
+| Link check | `linkinator` in CI |
+| SBOM generation | `npm run sbom` in CI |
 
 ---
 
@@ -98,51 +110,47 @@ Skills use a standard structure (`SKILL.md`, `examples.md`, `reference.md`, `pro
 
 ```
 agent-skills-pack/
-├── README.md                 # This file
-├── skills-manifest.json      # Machine-readable skill catalog
+├── README.md
+├── skills-manifest.json      # Machine-readable catalog (rich schema)
+├── sbom.json                 # Software Bill of Materials (CycloneDX)
 ├── LICENSE
 ├── CONTRIBUTING.md
+├── SECURITY.md
+├── CODEOWNERS
 ├── CHANGELOG.md
-├── docs/                     # Authoring and portability guides
+├── docs/
+│   ├── ai-security-model.md
 │   ├── authoring-guide.md
+│   ├── skill-authoring-standard.md
 │   ├── skill-style-guide.md
 │   ├── portability-guide.md
+│   ├── supply-chain-security.md
+│   ├── review-model.md
+│   ├── versioning.md
 │   └── release-checklist.md
-├── scripts/                  # Validation and tooling
+├── scripts/
 │   ├── validate-skills.js
+│   ├── validate_skills.py
 │   ├── generate-manifest.js
-│   └── generate_manifest.py   # Rich manifest with triggers (npm run generate-manifest:py)
-├── .github/workflows/        # CI: lint, manifest validation, link checks
-└── <skill-name>/             # One directory per skill
-    ├── SKILL.md              # Required — main skill definition
-    ├── examples.md           # Example prompts
-    ├── prompt-template.md    # Invocation templates
-    └── reference.md          # Detailed reference material
+│   └── generate_manifest.py
+├── tests/golden/             # Golden test cases for flagship skills
+└── <skill-name>/
+    ├── SKILL.md
+    ├── examples.md
+    ├── prompt-template.md
+    └── reference.md
 ```
-
----
-
-## Contributing
-
-We welcome contributions. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for:
-
-- How to propose new skills
-- Skill structure and style requirements
-- Pull request workflow
-- Code of conduct expectations
-
-See [docs/authoring-guide.md](docs/authoring-guide.md) for detailed authoring guidance.
 
 ---
 
 ## Roadmap
 
-- [ ] **v1.1** — Additional skills for observability, cost optimization
-- [ ] **v1.2** — Node.js / npm CVE support in cve-detect-and-remediate
-- [ ] **v1.3** — MCP server evaluation skill
+- [ ] **v1.1** — Node.js / npm CVE support in cve-detect-and-remediate
+- [ ] **v1.2** — MCP server evaluation skill
+- [ ] **v1.3** — SLSA Level 1 provenance
 - [ ] **v2.0** — Multi-IDE plugin / extension packaging
 
-See [CHANGELOG.md](CHANGELOG.md) for version history and semantic versioning.
+See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ---
 
