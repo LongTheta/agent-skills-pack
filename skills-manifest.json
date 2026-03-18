@@ -1,0 +1,19 @@
+{
+  "repo": "IDE_Skills",
+  "description": "Cursor/IDE skills - each skill in its own directory",
+  "skills": [
+    "ai-agent-architecture",
+    "ai-devsecops-policy-enforcement",
+    "cve-detect-and-remediate",
+    "dod-zero-trust-architect",
+    "security-evaluator",
+    "tool-evaluator",
+    "zero-trust-gitops-enforcement",
+    "create-rule",
+    "create-skill",
+    "create-subagent",
+    "migrate-to-skills",
+    "shell",
+    "update-cursor-settings"
+  ]
+}
