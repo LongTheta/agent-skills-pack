@@ -107,7 +107,7 @@ function main() {
   }
 
   const dirs = fs.readdirSync(ROOT, { withFileTypes: true })
-    .filter(d => d.isDirectory() && !d.name.startsWith('.') && d.name !== 'node_modules' && d.name !== 'scripts' && d.name !== 'docs' && d.name !== '.github')
+    .filter(d => d.isDirectory() && !d.name.startsWith('.') && !['node_modules', 'scripts', 'docs', '.github', 'tests'].includes(d.name))
     .map(d => d.name);
 
   let allErrors = [];
