@@ -1,0 +1,11 @@
+{
+  "name": "agent-skills-pack",
+  "version": "1.0.0",
+  "description": "Production-ready Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate-skills.js",
+    "generate-manifest": "node scripts/generate-manifest.js",
+    "generate-manifest:py": "python scripts/generate_manifest.py"
+  }
+}

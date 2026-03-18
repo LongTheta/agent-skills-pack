@@ -12,3 +12,6 @@ Thumbs.db
 .env
 .env.local
 *.local
+
+# Node (optional - scripts run with system Node)
+node_modules/

@@ -1,0 +1,27 @@
+name: Link Check
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  linkcheck:
+    name: Check Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install linkinator
+        run: npm install -g linkinator
+
+      - name: Check internal links
+        run: linkinator . --recurse --skip "https://" --skip "http://" --format csv 2>/dev/null || true
+        continue-on-error: true
