@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Security vulnerability
-    url: https://github.com/LongTheta/agent-skills-pack/security
+    url: https://github.com/ai-devsecops-packs/jade-cicd-agent-skills-pack/security
     about: Report a security vulnerability privately

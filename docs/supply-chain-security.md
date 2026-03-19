@@ -1,6 +1,6 @@
 # Supply Chain Security
 
-Provenance, integrity, and artifact security for agent-skills-pack.
+Provenance, integrity, and artifact security for the Jade CI/CD Agent Skills Pack.
 
 **Governance:** Skill approval and release versioning are defined in [ai-governance-model.md](ai-governance-model.md).
 

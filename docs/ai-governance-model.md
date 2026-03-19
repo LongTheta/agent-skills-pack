@@ -1,6 +1,6 @@
 # AI Governance Model
 
-Governance for agent-skills-pack: skill approval, security review, and release versioning.
+Governance for the Jade CI/CD Agent Skills Pack: skill approval, security review, and release versioning.
 
 ---
 

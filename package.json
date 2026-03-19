@@ -1,7 +1,7 @@
 {
-  "name": "agent-skills-pack",
+  "name": "jade-cicd-agent-skills-pack",
   "version": "1.0.0",
-  "description": "Production-ready Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows",
+  "description": "Jade CI/CD Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows",
   "private": true,
   "scripts": {
     "prepare": "husky",

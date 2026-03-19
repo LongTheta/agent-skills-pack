@@ -1,6 +1,6 @@
 # Release Readiness
 
-Criteria for considering agent-skills-pack production-ready for public v1 release.
+Criteria for considering the Jade CI/CD Agent Skills Pack production-ready for public v1 release.
 
 ---
 

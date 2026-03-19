@@ -1,12 +1,12 @@
-# Skill Assessment Report — agent-skills-pack
+# Skill Assessment Report — Jade CI/CD Agent Skills Pack
 
-Assessment of the agent-skills-pack repository using Security Evaluator, Zero Trust GitOps Enforcement, and CVE Detect skills.
+Assessment of the Jade CI/CD Agent Skills Pack repository using Security Evaluator, Zero Trust GitOps Enforcement, and CVE Detect skills.
 
 ---
 
 # Zero Trust GitOps Enforcement Report
 
-**Repository:** agent-skills-pack  
+**Repository:** jade-cicd-agent-skills-pack  
 **Artifacts analyzed:** `.github/workflows/lint.yml`, `validate.yml`, `links.yml`
 
 ## Pass / Fail
@@ -47,7 +47,7 @@ Assessment of the agent-skills-pack repository using Security Evaluator, Zero Tr
 
 # Security Evaluator Report
 
-**Tool/architecture name:** agent-skills-pack  
+**Tool/architecture name:** Jade CI/CD Agent Skills Pack  
 **Category:** Open-source skills repository / Markdown content platform  
 **Intended use case:** Reusable Agent Skills for Cursor and other AI IDEs  
 **Environment:** Public GitHub; consumed locally or via clone  
@@ -56,7 +56,7 @@ Assessment of the agent-skills-pack repository using Security Evaluator, Zero Tr
 
 ## 1. Security Summary
 
-agent-skills-pack is a low-risk, content-only repository. It contains Markdown skills, JSON manifests, Node.js and Python scripts (stdlib only), and GitHub Actions for lint/validate. No secrets, no runtime services, no external API calls. Main risks are supply chain (unpinned npm global installs in CI) and dependency hygiene if future deps are added.
+The Jade CI/CD Agent Skills Pack is a low-risk, content-only repository. It contains Markdown skills, JSON manifests, Node.js and Python scripts (stdlib only), and GitHub Actions for lint/validate. No secrets, no runtime services, no external API calls. Main risks are supply chain (unpinned npm global installs in CI) and dependency hygiene if future deps are added.
 
 ## 2. Threat / Risk Areas
 
@@ -119,7 +119,7 @@ agent-skills-pack is a low-risk, content-only repository. It contains Markdown s
 
 # CVE Detect and Remediate — Summary
 
-**Scope:** agent-skills-pack dependencies
+**Scope:** Jade CI/CD Agent Skills Pack dependencies
 
 **Findings:** No lockfiles or dependency manifests with third-party packages. `package.json` has no `dependencies` or `devDependencies`. Python scripts use only stdlib (`json`, `re`, `sys`, `pathlib`). Node scripts use only `fs` and `path`.
 

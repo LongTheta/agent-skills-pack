@@ -1,6 +1,6 @@
 # Skill Authoring Standard
 
-Required structure and sections for skills in agent-skills-pack.
+Required structure and sections for skills in the Jade CI/CD Agent Skills Pack.
 
 ## SKILL.md Structure
 

@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2025-03-19
+
+### Changed
+
+- **Jade project focus** — Renamed and updated all documentation to reflect the Jade CI/CD Agent Skills Pack
+- **README** — Title, description, and clone URL updated for Jade project
+- **package.json** — Name set to `jade-cicd-agent-skills-pack`
+- **skills-manifest.json** — Repo, description, and repository URL updated
+- **docs/** — ai-governance-model, authoring-guide, release-readiness, skill-authoring-standard, supply-chain-security
+- **.cursor/rules** — ai-security-enforcement, skill-authoring, project-conventions
+- **scripts** — generate-manifest.js, generate_manifest.py, certification-score.js
+- **sbom.json** — Package name and description
+- **SKILL_ASSESSMENT_REPORT.md** — Repository references
+- **.github/ISSUE_TEMPLATE** — Security URL
+
+---
+
 ## [1.0.0] - 2025-03-18
 
 ### Added

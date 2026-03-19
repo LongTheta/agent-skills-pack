@@ -1,9 +1,9 @@
 ---
-description: Project conventions for agent-skills-pack
+description: Project conventions for Jade CI/CD Agent Skills Pack
 alwaysApply: true
 ---
 
-# Agent Skills Pack Conventions
+# Jade CI/CD Agent Skills Pack Conventions
 
 ## Before Committing
 

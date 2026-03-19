@@ -1,6 +1,6 @@
-# Agent Skills Pack
+# Jade CI/CD Agent Skills Pack
 
-A production-ready collection of **Agent Skills** for AI-assisted repository creation, security, DevSecOps, Zero Trust, testing, release, and IDE workflows. End-to-end pack for repo creation, hardening, testing, release, and maintenance. Designed for Cursor and other AI agent IDEs.
+A production-ready collection of **Agent Skills** for the **Jade** project—AI-assisted CI/CD, repository creation, security, DevSecOps, Zero Trust, testing, release, and IDE workflows. End-to-end pack for repo creation, hardening, testing, release, and maintenance. Designed for Cursor and other AI agent IDEs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -10,9 +10,9 @@ A production-ready collection of **Agent Skills** for AI-assisted repository cre
 
 ## Overview
 
-Agent Skills are specialized instructions that teach AI agents how to perform domain-specific tasks. This repository provides a curated, reusable set of skills for teams building secure, compliant, and production-grade systems.
+Agent Skills are specialized instructions that teach AI agents how to perform domain-specific tasks. This repository provides a curated, reusable set of skills for the **Jade** CI/CD agent and teams building secure, compliant, and production-grade systems.
 
-Each skill is self-contained, versioned independently, and can be used across projects or adapted for other AI coding assistants.
+Each skill is self-contained, versioned independently, and can be used across Jade workflows or adapted for other AI coding assistants.
 
 ---
 
@@ -69,7 +69,7 @@ Each skill is self-contained, versioned independently, and can be used across pr
 
 1. **Clone** the repository:
    ```bash
-   git clone https://github.com/LongTheta/agent-skills-pack.git
+   git clone https://github.com/ai-devsecops-packs/jade-cicd-agent-skills-pack.git
    ```
 
 2. **Link skills** to Cursor:
@@ -159,7 +159,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 ## Repository Structure
 
 ```
-agent-skills-pack/
+jade-cicd-agent-skills-pack/
 ├── README.md
 ├── .husky/                   # Git hooks (pre-commit, pre-push)
 ├── skills-manifest.json      # Machine-readable catalog (rich schema)

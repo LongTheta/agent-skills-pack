@@ -1,8 +1,8 @@
 {
-  "repo": "agent-skills-pack",
+  "repo": "jade-cicd-agent-skills-pack",
   "version": "1.0.0",
-  "description": "Production-ready Agent Skills for repository creation, security, DevSecOps, Zero Trust, testing, release, and IDE workflows. End-to-end pack for AI-assisted repo creation, hardening, testing, release, and maintenance. Designed for Cursor and other AI agent IDEs.",
-  "repository": "https://github.com/LongTheta/agent-skills-pack",
+  "description": "Jade CI/CD Agent Skills for repository creation, security, DevSecOps, Zero Trust, testing, release, and IDE workflows. End-to-end pack for the Jade agent: AI-assisted repo creation, hardening, testing, release, and maintenance. Designed for Cursor and other AI agent IDEs.",
+  "repository": "https://github.com/ai-devsecops-packs/jade-cicd-agent-skills-pack",
   "license": "MIT",
   "categories": [
     {"id": "security-compliance", "label": "Security & Compliance"},

@@ -204,10 +204,10 @@ def main():
     skills = scan_skills()
 
     manifest = {
-        "repo": "agent-skills-pack",
-        "description": "Production-ready Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.",
+        "repo": "jade-cicd-agent-skills-pack",
+        "description": "Jade CI/CD Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.",
         "version": "1.0.0",
-        "repository": "https://github.com/LongTheta/agent-skills-pack",
+        "repository": "https://github.com/ai-devsecops-packs/jade-cicd-agent-skills-pack",
         "license": "MIT",
         "categories": CATEGORIES,
         "skills": skills,

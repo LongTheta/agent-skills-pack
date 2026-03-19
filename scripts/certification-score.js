@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Certification scoring for agent-skills-pack.
+ * Certification scoring for Jade CI/CD Agent Skills Pack.
  * Evaluates repository against federal-grade AI, DevSecOps, and security best practices.
  * Exit code: 0 if score >= threshold, 1 otherwise. Default threshold: 7.5.
  *

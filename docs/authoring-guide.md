@@ -1,6 +1,6 @@
 # Authoring Guide
 
-How to create and maintain Agent Skills for the agent-skills-pack repository.
+How to create and maintain Agent Skills for the Jade CI/CD Agent Skills Pack repository.
 
 ---
 
