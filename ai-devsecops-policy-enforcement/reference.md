@@ -94,6 +94,16 @@ rules:
     enabled: true
 ```
 
+## MITRE ATLAS Alignment
+
+Supply chain and model artifact review aligns with MITRE ATLAS tactics:
+
+- **Initial Access** — AI Supply Chain Compromise (model artifacts, datasets in pipelines)
+- **Resource Development** — Poisoned datasets, malicious packages in dependencies
+- **Defense Evasion** — Corrupt AI Model (AML.T0076): model scanners should handle models that cannot be fully deserialized
+
+When reviewing pipelines that pull or scan AI models, ensure scanning does not assume successful deserialization. See [docs/mitre-atlas-reference.md](../docs/mitre-atlas-reference.md).
+
 ## Project Location
 
 Default path: `C:\Users\Cathy\OneDrive\Documents\Coding Exercises\Learning_Path\New_Development\ai-devsecops-policy-enforcement-agent`

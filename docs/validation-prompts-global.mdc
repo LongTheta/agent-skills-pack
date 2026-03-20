@@ -13,7 +13,7 @@ When the user is working in a project with validation/quality scripts, **proacti
 - **When starting a session involving skills, architecture, or review work** — Offer: "Want me to run validation or score?"
 
 **Common commands (project-dependent):**
-- jade-cicd-agent-skills-pack: `npm run validate`, `npm run lint:md`, `npm run score`
+- agent-skills-pack: `npm run validate`, `npm run lint:md`, `npm run score`
 - aws-repo-well-architected-advisor: `npm run validate`, `npm run validate:schemas`, `npm run test`, `npm run score`
 
 Do not be repetitive; prompt once per relevant context. If the user declines or has already run checks, do not prompt again in the same thread.

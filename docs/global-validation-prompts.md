@@ -1,6 +1,6 @@
 # Account-Level Validation Prompts
 
-Use these rules so the agent proactively prompts you to run validation when coding in Jade projects or any project with validation scripts.
+Use these rules so the agent proactively prompts you to run validation when coding in any project.
 
 ## Option 1: Cursor Settings > Rules (Recommended for Global)
 
@@ -30,14 +30,17 @@ A pre-built file is in this repo at `docs/validation-prompts-global.mdc` — cop
 
 ## Option 3: Project-Specific Rules
 
-Each Jade project can have its own `.cursor/rules/` with project-specific commands:
+Each project can have its own `.cursor/rules/` with project-specific commands:
 
 | Project | Validation Commands |
 |---------|---------------------|
-| jade-cicd-agent-skills-pack | `npm run validate`, `npm run lint:md`, `npm run score` |
+| agent-skills-pack | `npm run validate`, `npm run lint:md`, `npm run score` |
 | aws-repo-well-architected-advisor | `npm run validate`, `npm run validate:schemas`, `npm run test`, `npm run score` |
+
+The AWS Well-Architected repo already has `validation-prompts.mdc` in `.cursor/rules/`.
 
 ## Summary
 
 - **Account-level (all projects):** Use Option 1 (Settings > Rules) or Option 2 (global rules folder)
-- **jade-cicd-agent-skills-pack:** Has `project-conventions.mdc` with validation prompts in `.cursor/rules/`
+- **AWS Well-Architected repo:** Already has `validation-prompts.mdc` with repo-specific commands
+- **agent-skills-pack:** Has `project-conventions.mdc` with validation prompts

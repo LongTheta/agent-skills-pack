@@ -2,7 +2,7 @@
 
 ## Overview
 
-All 20 SKILL.md files in **Jade CI/CD Agent Skills Pack** were refactored to follow a strict, consistent structure. Security-evaluator was already in the target format and served as the reference template.
+All 20 SKILL.md files in agent-skills-pack were refactored to follow a strict, consistent structure. Security-evaluator was already in the target format and served as the reference template.
 
 ## Files Changed
 
@@ -80,8 +80,8 @@ All 20 SKILL.md files in **Jade CI/CD Agent Skills Pack** were refactored to fol
 
 ### Gaps
 
-- **create-skill:** Reference to `portability-guide.md` in Portability Notes — Jade has `docs/portability-guide.md`; reference is valid.
-- **Nested skills:** Some skills may have nested folders; only the top-level SKILL.md in each manifest skill was refactored.
+- **create-skill:** Reference to `portability-guide.md` in Portability Notes — file may not exist at `../docs/portability-guide.md`; left as reference for future addition.
+- **Nested skills:** Some skills (e.g., ai-agent-architecture, dod-zero-trust-architect) have nested folders (e.g., `ai-agent-architecture/ai-agent-architecture/`); only the top-level SKILL.md in each manifest skill was refactored.
 
 ### Overlaps
 
@@ -99,4 +99,5 @@ All 20 SKILL.md files in **Jade CI/CD Agent Skills Pack** were refactored to fol
 ## Recommendations
 
 1. Run `npm run validate:full` and `npm run lint:md` before committing.
-2. Consider adding Purpose to frontmatter `description` for skills where it would improve discovery.
+2. Add `docs/portability-guide.md` if create-skill Portability Notes reference is to be resolved.
+3. Consider adding Purpose to frontmatter `description` for skills where it would improve discovery.

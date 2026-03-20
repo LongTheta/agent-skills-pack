@@ -1,6 +1,6 @@
-# Contributing to Jade CI/CD Agent Skills Pack
+# Contributing to Agent Skills Pack
 
-Thank you for contributing to the Jade project's CI/CD agent skills. This guide covers how to propose changes, add skills, and meet quality standards.
+Thank you for contributing to Agent Skills Pack. This guide covers how to propose changes, add skills, and meet quality standards.
 
 **Governance:** Skill approval, security review, and release versioning are defined in [docs/ai-governance-model.md](docs/ai-governance-model.md).
 

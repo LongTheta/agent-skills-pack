@@ -23,6 +23,7 @@ Designs, evaluates, and improves AI agent systems using a 7-layer architecture m
 - Repo or platform review for AI agent maturity
 - DORA AI Capabilities assessment (AI stance, data ecosystem, platforms)
 - DX or HEART alignment for AI-enabled engineering
+- Threat modeling or adversarial risk assessment for an agent system
 
 ## Inputs
 
@@ -120,6 +121,7 @@ Phased: Phase 1 (prototype), Phase 2 (production hardening), Phase 3 (scale and 
 - **Output Validation:** Mark assumptions and unknowns explicitly. Do not fabricate architecture details; cite sources when available. Recommendations are advisory; not a substitute for formal assessment.
 - **Limitations:** Relies on information provided; cannot inspect running systems. Scores and verdicts are advisory; not a formal security or compliance audit. May not cover proprietary or undocumented components.
 - **Safety Guardrails (Tier 0):** Read-only; guidance and assessments only. No commands, file writes, or API calls. State assumptions; call out unknowns. No legal/compliance guarantee.
+- **Threat modeling:** When assessing production readiness, consider MITRE ATLAS adversarial tactics (e.g., LLM Prompt Injection, AI Agent Tool Invocation, RAG Poisoning, LLM Jailbreak) mapped to the 7 layers. See [docs/ai-security-model.md](../docs/ai-security-model.md#adversarial-threat-modeling-mitre-atlas).
 
 ## Examples
 

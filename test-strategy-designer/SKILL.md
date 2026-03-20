@@ -12,7 +12,7 @@ description: >-
 
 ## Purpose
 
-Produces a structured test strategy document for a repository. Defines test tiers, coverage targets, CI integration, and the test pyramid. Output is a proposal document; user applies it. Use before or alongside release-pipeline-designer for CI test steps. Tier 1: proposals only; no file writes unless explicitly requested.
+Produces a structured test strategy document for a repository. Defines test tiers, coverage targets, CI integration, and the test pyramid. Supports DORA metric: change failure rate. Output is a proposal document; user applies it. Use before or alongside release-pipeline-designer for CI test steps. Tier 1: proposals only; no file writes unless explicitly requested.
 
 ## When to Use
 
