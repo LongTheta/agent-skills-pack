@@ -34,15 +34,15 @@ const REQUIRED_SECTIONS = [
   'When to Use',
   'Inputs',
   'Outputs',
-  'Workflow',
-  'Limitations',
-  'Safety Guardrails',
+  'Steps',
+  'Behavior',
+  'Constraints',
   'Validation Checklist',
   'Portability Notes',
 ];
 const SECTION_ALTERNATIVES = {
-  'Safety Guardrails': ['Safety Guardrails', 'Validation Checklist', 'Enforcement'],
-  'Workflow': ['Workflow', 'Evaluation Workflow', 'Conversion Format', 'Process', 'Steps', 'Gather Requirements'],
+  'Steps': ['Steps', 'Steps / Behavior', 'Workflow', 'Evaluation Workflow', 'Process', 'Behavior', 'Gather Requirements'],
+  'Constraints': ['Constraints', 'Safety Guardrails', 'Enforcement'],
 };
 
 const AI_SECURITY_REQUIRED = [
@@ -204,8 +204,14 @@ function scoreTrustBoundaries(issues) {
   let withTb = 0;
   for (const dir of dirs) {
     const content = readFile(path.join(dir, 'SKILL.md'));
-    if (content && /##\s+Trust Boundaries/im.test(content)) withTb++;
-    else issues.block.push(`${dir}: missing Trust Boundaries section`);
+    const hasTb = content && (
+      /##\s+Trust Boundaries/im.test(content) ||
+      /###\s+Trust Boundaries/im.test(content) ||
+      /\*\*Trust Boundaries\*\*:/im.test(content) ||
+      /\btrust boundaries\b/i.test(content)
+    );
+    if (hasTb) withTb++;
+    else issues.block.push(`${dir}: missing Trust Boundaries (section or within Constraints)`);
   }
   return (withTb / dirs.length) * 10;
 }
@@ -216,8 +222,14 @@ function scoreOutputValidation(issues) {
   let withOv = 0;
   for (const dir of dirs) {
     const content = readFile(path.join(dir, 'SKILL.md'));
-    if (content && /##\s+Output Validation/im.test(content)) withOv++;
-    else issues.block.push(`${dir}: missing Output Validation section`);
+    const hasOv = content && (
+      /##\s+Output Validation/im.test(content) ||
+      /###\s+Output Validation/im.test(content) ||
+      /\*\*Output Validation\*\*:/im.test(content) ||
+      /\boutput validation\b/i.test(content)
+    );
+    if (hasOv) withOv++;
+    else issues.block.push(`${dir}: missing Output Validation (section or within Constraints)`);
   }
   return (withOv / dirs.length) * 10;
 }

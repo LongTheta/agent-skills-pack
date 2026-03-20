@@ -24,3 +24,5 @@ When creating or editing skills, follow the structure in [docs/skill-authoring-s
 ## Validation
 
 Run `npm run validate` before committing. Pre-commit hook enforces this.
+
+**Prompt in chat:** When the user is editing SKILL.md, proactively remind them: "Run `npm run validate` before committing, or I can run it for you." Offer to run `npm run score` for certification.

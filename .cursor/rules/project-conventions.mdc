@@ -5,6 +5,17 @@ alwaysApply: true
 
 # Jade CI/CD Agent Skills Pack Conventions
 
+## Prompt the User in Chat
+
+When the user is working in this Jade pack, **proactively prompt them in chat** to run validation and certification when relevant:
+
+- **After editing SKILL.md or skill-related files** — Remind: "You've edited skill files. Run `npm run validate` before committing, or I can run it for you."
+- **When the user mentions commit, push, or "ready to ship"** — Remind: "Before committing, run `npm run validate` and `npm run lint:md`. For certification score: `npm run score`."
+- **When the user asks about project health or status** — Offer: "I can run validation and certification score for you. Say 'run validation' or 'run score'."
+- **When starting a session involving skills** — If context suggests skill work, offer: "Want me to run validation or certification score?"
+
+Do not be repetitive; prompt once per relevant context. If the user declines or has already run checks, do not prompt again in the same thread.
+
 ## Before Committing
 
 - Run `npm run validate` (skills manifest and structure)

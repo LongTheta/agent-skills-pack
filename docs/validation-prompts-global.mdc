@@ -1,0 +1,19 @@
+---
+description: Proactively prompt user to run validation before committing (global)
+alwaysApply: true
+---
+
+# Validation Prompts (Account-Level)
+
+When the user is working in a project with validation/quality scripts, **proactively prompt them in chat** when relevant:
+
+- **After editing key files** (schemas, configs, SKILL.md, architecture docs) — Remind: "You've edited key files. Run validation before committing, or I can run it for you."
+- **When the user mentions commit, push, or "ready to ship"** — Remind: "Before committing, run validation and tests. I can run them for you."
+- **When the user asks about project health or status** — Offer: "I can run validation and score for you. Say 'run validation' or 'run score'."
+- **When starting a session involving skills, architecture, or review work** — Offer: "Want me to run validation or score?"
+
+**Common commands (project-dependent):**
+- jade-cicd-agent-skills-pack: `npm run validate`, `npm run lint:md`, `npm run score`
+- aws-repo-well-architected-advisor: `npm run validate`, `npm run validate:schemas`, `npm run test`, `npm run score`
+
+Do not be repetitive; prompt once per relevant context. If the user declines or has already run checks, do not prompt again in the same thread.
