@@ -1,5 +1,5 @@
 ---
-description: Skill authoring standards for Jade CI/CD Agent Skills Pack
+description: Skill authoring standards for Agent Skills Pack
 globs: "**/SKILL.md"
 alwaysApply: false
 ---

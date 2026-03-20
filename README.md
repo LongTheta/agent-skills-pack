@@ -1,10 +1,29 @@
-# Jade CI/CD Agent Skills Pack
+# Agent Skills Pack
 
-**Production-ready Agent Skills for the Jade project—AI-assisted CI/CD, repository creation, security, DevSecOps, Zero Trust, testing, release, and IDE workflows.** End-to-end pack for repo creation, hardening, testing, release, and maintenance. Designed for Cursor and other AI agent IDEs.
+**Engineering Intelligence and DevSecOps platform for AI-assisted development.** Production-ready Agent Skills for security, Zero Trust, repository lifecycle, and IDE workflows—aligned with DORA metrics, DORA AI Capabilities, Developer Experience (DX), and HEART framework. A measurable, auditable, scalable framework for Cursor and other AI agent IDEs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **Compliance alignment:** NIST AI RMF, NIST SSDF (SP 800-218), NIST Zero Trust, OWASP LLM/Agent security, SLSA-minded supply chain. See [docs/ai-security-model.md](docs/ai-security-model.md) and [docs/supply-chain-security.md](docs/supply-chain-security.md).
+
+---
+
+## Engineering Intelligence Framework
+
+This pack implements a unified measurement model that goes beyond code quality to measure:
+
+| Dimension | What We Measure |
+|-----------|-----------------|
+| **Delivery Performance** | DORA: lead time, deployment frequency, change failure rate, MTTR |
+| **Developer Experience** | DX: friction, cognitive load, bottlenecks, real vs perceived AI value |
+| **AI Effectiveness** | DORA AI Capabilities: AI stance, data ecosystem, version control, platforms |
+| **Product Success** | HEART: happiness, engagement, adoption, retention, task success |
+| **Risk & Governance** | AI dependency, human validation, traceability, secure AI usage |
+
+**Core principle:** Metrics are indicators, not targets. Combine quantitative data with qualitative feedback.
+
+→ Full model: [docs/engineering-intelligence-framework.md](docs/engineering-intelligence-framework.md)  
+→ Upgrade summary: [ENGINEERING_INTELLIGENCE_UPGRADE.md](ENGINEERING_INTELLIGENCE_UPGRADE.md)
 
 ---
 
@@ -20,7 +39,12 @@
 
 ## Value Proposition
 
-Jade CI/CD Agent Skills Pack delivers 20+ curated skills for the Jade CI/CD agent and teams building secure, compliant, production-grade systems. Use them for GitOps, vulnerability remediation, Zero Trust architecture, test strategy, release pipelines, and IDE configuration. Each skill is self-contained, versioned, and enterprise-ready. Target: platform engineers, security teams, federal/regulated environments.
+Agent Skills Pack delivers 20+ curated, self-contained skills that teach AI agents domain-specific tasks. Use them to harden CI/CD, evaluate security, design Zero Trust architectures, scaffold repos, and configure IDEs. Each skill is versioned, validated, and enterprise-ready.
+
+**Platform engineering standard** — DORA-aligned delivery, small-batch changes, rollback readiness.  
+**DevSecOps operating model** — Security gates, supply chain, Zero Trust pipelines.  
+**AI-enabled engineering system** — Clear AI stance, human validation, traceability.  
+**Measurable, auditable framework** — Delivery performance, DX, product impact, AI effectiveness.
 
 ---
 
@@ -29,10 +53,10 @@ Jade CI/CD Agent Skills Pack delivers 20+ curated skills for the Jade CI/CD agen
 | Layer | Purpose |
 |-------|---------|
 | **Skills** | Domain instructions in `SKILL.md` + `examples.md` + `prompt-template.md` + `reference.md`. Loaded from `~/.cursor/skills/` or `.cursor/skills/`. |
-| **Rules** | Project-level Cursor rules in `.cursor/rules/`. Enforce Jade conventions, security, and validation prompts. |
+| **Rules** | Project-level Cursor rules in `.cursor/rules/`. Enforce conventions, security, and validation prompts. |
 | **CI/CD** | GitHub Actions: manifest validation, Python structure checks, markdown lint, link check, certification score (threshold 7.5), SBOM generation. |
 
-Skills and rules work together: skills provide task-specific behavior for Jade workflows; rules enforce governance and safety across the repo.
+Skills and rules work together: skills provide task-specific behavior; rules enforce governance and safety across the repo.
 
 ---
 
@@ -54,8 +78,8 @@ Skills and rules work together: skills provide task-specific behavior for Jade w
 **1. Clone**
 
 ```bash
-git clone https://github.com/ai-devsecops-packs/jade-cicd-agent-skills-pack.git
-cd jade-cicd-agent-skills-pack
+git clone https://github.com/LongTheta/agent-skills-pack.git
+cd agent-skills-pack
 ```
 
 **2. Install dependencies**
@@ -101,8 +125,8 @@ npm run score
 | Mode | What to Install | Use Case |
 |------|-----------------|----------|
 | **Skills only** | Copy/symlink selected skill folders into `~/.cursor/skills/` | Use skills in any project; no repo rules |
-| **Rules only** | Copy `.cursor/rules/*.mdc` into your repo's `.cursor/rules/` | Enforce Jade conventions without skills |
-| **Skills + Rules** | Skills in `~/.cursor/skills/` + rules in `.cursor/rules/` | Full Jade AI guidance; rules apply when working in this repo |
+| **Rules only** | Copy `.cursor/rules/*.mdc` into your repo's `.cursor/rules/` | Enforce conventions without skills |
+| **Skills + Rules** | Skills in `~/.cursor/skills/` + rules in `.cursor/rules/` | Full AI guidance; rules apply when working in this repo |
 | **Full DevSecOps** | Clone repo, `npm install`, symlink skills, use rules in repo | Development, contribution, CI validation |
 
 **Project-level skills:** Copy skill folders into `.cursor/skills/` at repo root to share with your team.
@@ -144,7 +168,7 @@ Agent: [Uses release-pipeline-designer] Produces GitHub Actions or GitLab CI con
 ## Repository Structure
 
 ```
-jade-cicd-agent-skills-pack/
+agent-skills-pack/
 ├── README.md
 ├── CONTRIBUTING.md
 ├── SECURITY.md
@@ -154,13 +178,16 @@ jade-cicd-agent-skills-pack/
 ├── skills-manifest.json      # Machine-readable catalog
 ├── sbom.json                 # CycloneDX SBOM (CI-generated)
 ├── .husky/                   # pre-commit, pre-push
-├── .cursor/rules/            # Jade project rules (skill-authoring, ai-security-enforcement, etc.)
+├── .cursor/rules/            # Project rules (skill-authoring, ai-security-enforcement, etc.)
 ├── .github/workflows/        # validate.yml, lint.yml, links.yml
 ├── docs/
 │   ├── README.md              # Documentation index
+│   ├── engineering-intelligence-framework.md   # Unified measurement model
+│   ├── dora-alignment.md      # DORA metrics + Goodhart's law
 │   ├── ai-security-model.md
 │   ├── skill-authoring-standard.md
 │   ├── authoring-guide.md
+│   ├── certification-model.md
 │   ├── portability-guide.md
 │   └── ...
 ├── scripts/
@@ -209,8 +236,10 @@ Rules in `.cursor/rules/` apply when working in this repo:
 
 | Rule | Purpose |
 |------|---------|
+| `platform-engineering-behavior.mdc` | Always-on: secure-by-default, DORA, DX, HEART, AI governance; decision framework; what to prevent/encourage |
+| `engineering-intelligence.mdc` | DORA, AI, DX, HEART alignment; small batches, safe deployments, rollback readiness, secure AI usage |
 | `project-conventions.mdc` | Validation prompts, commit reminders, skill authoring steps |
-| `ai-security-enforcement.mdc` | Trust Boundaries, Output Validation, tier-specific guardrails |
+| `ai-security-enforcement.mdc` | Trust Boundaries, Output Validation, tier-specific guardrails, AI-generated code validation |
 | `skill-authoring.mdc` | Skill structure, required sections |
 | `markdown-style.mdc` | Markdown formatting standards |
 
@@ -218,8 +247,11 @@ Rules are always-on for this repo; skills are invoked when the user's request ma
 
 ---
 
-## DevSecOps Alignment
+## DevSecOps & Engineering Intelligence Alignment
 
+- **DORA:** Lead time, deployment frequency, change failure rate, MTTR ([docs/dora-alignment.md](docs/dora-alignment.md))
+- **DORA AI Capabilities:** AI stance, data ecosystem, version control, platforms ([docs/engineering-intelligence-framework.md](docs/engineering-intelligence-framework.md))
+- **DX + HEART:** Developer experience, product impact, metrics that matter
 - **NIST SSDF (SP 800-218):** Secure development practices, supply chain integrity
 - **NIST AI RMF:** Trustworthy AI; risk tiers and guardrails
 - **NIST Zero Trust:** Zero Trust principles in pipelines (zero-trust-gitops-enforcement, dod-zero-trust-architect)

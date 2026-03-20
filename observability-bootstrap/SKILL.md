@@ -13,7 +13,7 @@ description: >-
 
 ## Purpose
 
-Bootstraps observability for a repository. Produces config proposals for logging, metrics, tracing, dashboards, and alerting. Output is config for user to review and apply. Use for new or existing repos; security-evaluator can assess the observability setup for security and compliance. Tier 2: validation checklist and user approval required.
+Bootstraps observability for a repository. Produces config proposals for logging, metrics, tracing, dashboards, and alerting. Supports DORA metrics: MTTR, recovery time. Enables bottleneck detection and flow visibility. Output is config for user to review and apply. Use for new or existing repos; security-evaluator can assess the observability setup for security and compliance. Tier 2: validation checklist and user approval required.
 
 ## When to Use
 
@@ -21,6 +21,7 @@ Bootstraps observability for a repository. Produces config proposals for logging
 - User asks for logging, metrics, or tracing setup
 - User needs Prometheus, Grafana, OpenTelemetry, or similar config
 - User wants dashboards or alerting bootstrap
+- User needs bottleneck detection or flow visibility for value stream
 
 ## Inputs
 

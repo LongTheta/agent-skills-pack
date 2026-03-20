@@ -8,7 +8,7 @@ description: Evaluates tools, platforms, libraries, MCP servers, SaaS products, 
 
 ## Purpose
 
-Evaluates tools for adoption decisions. Assesses not only features but whether a tool can realistically work in the target environment—including security, compliance, integration burden, operational ownership, and data hydration readiness. Produces structured, practical recommendations. Read-only; advisory only. Aligns with NIST, FedRAMP, and enterprise security expectations.
+Evaluates tools for adoption decisions. Assesses not only features but whether a tool can realistically work in the target environment—including security, compliance, integration burden, operational ownership, and data hydration readiness. Supports DX (developer friction, cognitive load) and HEART (adoption, engagement) evaluation. Produces structured, practical recommendations. Read-only; advisory only. Aligns with NIST, FedRAMP, and enterprise security expectations.
 
 ## When to Use
 
@@ -19,6 +19,7 @@ Evaluates tools for adoption decisions. Assesses not only features but whether a
 - Identify hidden risks or implementation burden
 - Create a scorecard or decision memo
 - Review a tool for DevSecOps, GitOps, Grafana, Kubernetes, ArgoCD, GitLab, AI agent, MCP, or cloud-native workflows
+- Assess DX impact (developer friction, cognitive load) or HEART (adoption, engagement)
 
 ## Inputs
 

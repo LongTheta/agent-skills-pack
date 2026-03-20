@@ -12,7 +12,7 @@ description: >-
 
 ## Purpose
 
-Designs, evaluates, and improves AI agent systems using a 7-layer architecture model. Treats the agent as a full engineered system—model, memory, tooling, orchestration, communication, infrastructure, and evaluation. Read-only; advisory guidance only. Aligns with DevSecOps, GitOps, and production-readiness expectations.
+Designs, evaluates, and improves AI agent systems using a 7-layer architecture model. Treats the agent as a full engineered system—model, memory, tooling, orchestration, communication, infrastructure, and evaluation. Supports DORA AI Capabilities (clear AI stance, data ecosystem, version control, platforms, learning culture) and Engineering Intelligence Framework. Read-only; advisory guidance only. Aligns with DevSecOps, GitOps, and production-readiness expectations.
 
 ## When to Use
 
@@ -21,6 +21,8 @@ Designs, evaluates, and improves AI agent systems using a 7-layer architecture m
 - Implementation planning or gap analysis
 - Designing a new agent system from scratch
 - Repo or platform review for AI agent maturity
+- DORA AI Capabilities assessment (AI stance, data ecosystem, platforms)
+- DX or HEART alignment for AI-enabled engineering
 
 ## Inputs
 
