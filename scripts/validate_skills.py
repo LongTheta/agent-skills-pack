@@ -25,11 +25,11 @@ MANIFEST_PATH = ROOT / "skills-manifest.json"
 
 REQUIRED_SECTIONS = ["When to Use", "Safety Guardrails"]
 SECTION_ALTERNATIVES = {
-    "Safety Guardrails": ["Safety Guardrails", "Validation Checklist", "Enforcement"],
+    "Safety Guardrails": ["Safety Guardrails", "Validation Checklist", "Enforcement", "Constraints"],
 }
 RECOMMENDED_SECTIONS = [
-    "Inputs", "Outputs", "Limitations", "Validation Checklist", "Portability Notes",
-    "Trust Boundaries", "Output Validation"
+    "Inputs", "Outputs", "Validation Checklist", "Portability Notes",
+    "Purpose", "Steps", "Behavior", "Constraints", "Examples"
 ]
 
 IGNORE_DIRS = {"docs", "scripts", "node_modules", ".github", ".git"}
