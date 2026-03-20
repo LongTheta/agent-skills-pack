@@ -8,7 +8,7 @@ description: Evaluates tools, architectures, code changes, CI/CD workflows, GitO
 
 ## Purpose
 
-Evaluates tools, architectures, and systems from a security and compliance perspective. Produces structured assessments with scorecards, risks, mitigations, and practical recommendations. Read-only; no execution or file writes. Aligns with NIST, FedRAMP, and enterprise security expectations.
+Evaluates tools, architectures, and systems from a security and compliance perspective. Produces structured assessments with scorecards, risks, mitigations, and practical recommendations. Supports AI risk assessment (over-reliance, hidden defects, traceability, shadow AI). Read-only; no execution or file writes. Aligns with NIST, FedRAMP, and enterprise security expectations.
 
 ## When to Use
 
@@ -19,6 +19,7 @@ Invoke this skill when the user:
 - Asks to evaluate a tool for enterprise or government use
 - Mentions compliance gaps, security scorecard, or mitigation plan
 - Provides a tool, architecture, workflow, or integration to evaluate
+- Asks to assess AI risk (over-reliance, generated code, traceability)
 
 ## Inputs
 

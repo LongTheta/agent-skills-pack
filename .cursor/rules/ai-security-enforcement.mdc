@@ -12,4 +12,7 @@ When creating or editing skills in this repo:
 - **Tier 2:** Define safe vs unsafe actions; require validation checklist and user approval for unsafe.
 - **Tier 3:** Require human review; high-risk outputs must include explicit warnings.
 - **High-risk warnings:** Precede commands/patches with "This will execute/modify [X]. Confirm before proceeding."
-- Reference [docs/ai-security-model.md](docs/ai-security-model.md) for full model.
+- **AI-generated code:** Enforce human validation; no auto-apply without approval. Ensure traceability of AI-assisted changes.
+- **Shadow AI:** Skills must not encourage unapproved AI tools; align with organizational AI stance.
+
+Reference [docs/ai-security-model.md](docs/ai-security-model.md) for full model. See [docs/engineering-intelligence-framework.md](docs/engineering-intelligence-framework.md) for AI risk management.

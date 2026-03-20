@@ -1,0 +1,47 @@
+---
+description: Engineering Intelligence—DORA, AI, DX, HEART alignment for delivery, experience, and risk
+alwaysApply: true
+---
+
+# Engineering Intelligence
+
+When working in this repo, align with the [Engineering Intelligence Framework](docs/engineering-intelligence-framework.md). This rule enforces delivery performance, developer experience, AI safety, and product impact.
+
+## Delivery Performance (DORA)
+
+- **Small batch changes** — Prefer smaller, focused changes over large monoliths. Reduces blast radius and failure rate.
+- **Safe deployments** — Ensure rollback readiness: immutable artifacts, versioned deploys, feature flags when applicable.
+- **Rollback readiness** — Every deployment path should have a documented rollback procedure.
+- **Deployment confidence** — Automated tests, observability, and quality gates before production.
+
+## AI Safety and Governance
+
+- **Secure AI usage** — Use only approved AI tools; no shadow AI. Human validation required for high-risk outputs.
+- **Traceability** — AI-assisted changes must be attributable: clear commit messages, PR descriptions, review notes.
+- **Human validation** — No auto-apply of AI-generated code/config for Tier 2/3 without explicit user approval.
+- **Version control and rollback** — AI-generated code must be versioned; support rollback if defects are found.
+
+## Code and Maintainability
+
+- **DRY** — Avoid duplication; extract reusable patterns.
+- **Maintainable code** — Clear structure, documented intent, testable.
+- **Observability and logging** — Changes that affect runtime behavior should include logging/telemetry where appropriate.
+- **Testability** — Code should be testable; favor dependency injection and clear boundaries.
+
+## Minimal Blast Radius
+
+- **Scope changes narrowly** — Limit impact to what is necessary.
+- **Feature flags** — Consider feature flags for risky or experimental changes.
+- **Canary / phased rollout** — Prefer gradual rollout over big-bang when possible.
+
+## Metrics as Indicators
+
+- Do not optimize for metrics as targets (Goodhart's law).
+- Use DORA, DX, HEART metrics to inform decisions, not to judge.
+- Combine quantitative data with qualitative feedback.
+
+## Reference
+
+- [platform-engineering-behavior.mdc](platform-engineering-behavior.mdc) — Always-on behavior for every request
+- [docs/engineering-intelligence-framework.md](docs/engineering-intelligence-framework.md)
+- [docs/dora-alignment.md](docs/dora-alignment.md)

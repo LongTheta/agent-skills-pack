@@ -1,10 +1,29 @@
 # Agent Skills Pack
 
-**Production-ready Agent Skills for AI-assisted development: security, DevSecOps, Zero Trust, repository lifecycle, and IDE workflows.** A generic framework for Cursor and other AI agent IDEs. Copy-paste usable. No fluff.
+**Engineering Intelligence and DevSecOps platform for AI-assisted development.** Production-ready Agent Skills for security, Zero Trust, repository lifecycle, and IDE workflows—aligned with DORA metrics, DORA AI Capabilities, Developer Experience (DX), and HEART framework. A measurable, auditable, scalable framework for Cursor and other AI agent IDEs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **Compliance alignment:** NIST AI RMF, NIST SSDF (SP 800-218), NIST Zero Trust, OWASP LLM/Agent security, SLSA-minded supply chain. See [docs/ai-security-model.md](docs/ai-security-model.md) and [docs/supply-chain-security.md](docs/supply-chain-security.md).
+
+---
+
+## Engineering Intelligence Framework
+
+This pack implements a unified measurement model that goes beyond code quality to measure:
+
+| Dimension | What We Measure |
+|-----------|-----------------|
+| **Delivery Performance** | DORA: lead time, deployment frequency, change failure rate, MTTR |
+| **Developer Experience** | DX: friction, cognitive load, bottlenecks, real vs perceived AI value |
+| **AI Effectiveness** | DORA AI Capabilities: AI stance, data ecosystem, version control, platforms |
+| **Product Success** | HEART: happiness, engagement, adoption, retention, task success |
+| **Risk & Governance** | AI dependency, human validation, traceability, secure AI usage |
+
+**Core principle:** Metrics are indicators, not targets. Combine quantitative data with qualitative feedback.
+
+→ Full model: [docs/engineering-intelligence-framework.md](docs/engineering-intelligence-framework.md)  
+→ Upgrade summary: [ENGINEERING_INTELLIGENCE_UPGRADE.md](ENGINEERING_INTELLIGENCE_UPGRADE.md)
 
 ---
 
@@ -20,7 +39,12 @@
 
 ## Value Proposition
 
-Agent Skills Pack delivers 20+ curated, self-contained skills that teach AI agents domain-specific tasks. Use them to harden CI/CD, evaluate security, design Zero Trust architectures, scaffold repos, and configure IDEs. Each skill is versioned, validated, and enterprise-ready. Designed for platform engineers, security teams, and federal/regulated environments.
+Agent Skills Pack delivers 20+ curated, self-contained skills that teach AI agents domain-specific tasks. Use them to harden CI/CD, evaluate security, design Zero Trust architectures, scaffold repos, and configure IDEs. Each skill is versioned, validated, and enterprise-ready.
+
+**Platform engineering standard** — DORA-aligned delivery, small-batch changes, rollback readiness.  
+**DevSecOps operating model** — Security gates, supply chain, Zero Trust pipelines.  
+**AI-enabled engineering system** — Clear AI stance, human validation, traceability.  
+**Measurable, auditable framework** — Delivery performance, DX, product impact, AI effectiveness.
 
 ---
 
@@ -158,6 +182,8 @@ agent-skills-pack/
 ├── .github/workflows/        # validate.yml, lint.yml, links.yml
 ├── docs/
 │   ├── README.md              # Documentation index
+│   ├── engineering-intelligence-framework.md   # Unified measurement model
+│   ├── dora-alignment.md      # DORA metrics + Goodhart's law
 │   ├── ai-security-model.md
 │   ├── skill-authoring-standard.md
 │   ├── authoring-guide.md
@@ -210,8 +236,10 @@ Rules in `.cursor/rules/` apply when working in this repo:
 
 | Rule | Purpose |
 |------|---------|
+| `platform-engineering-behavior.mdc` | Always-on: secure-by-default, DORA, DX, HEART, AI governance; decision framework; what to prevent/encourage |
+| `engineering-intelligence.mdc` | DORA, AI, DX, HEART alignment; small batches, safe deployments, rollback readiness, secure AI usage |
 | `project-conventions.mdc` | Validation prompts, commit reminders, skill authoring steps |
-| `ai-security-enforcement.mdc` | Trust Boundaries, Output Validation, tier-specific guardrails |
+| `ai-security-enforcement.mdc` | Trust Boundaries, Output Validation, tier-specific guardrails, AI-generated code validation |
 | `skill-authoring.mdc` | Skill structure, required sections |
 | `markdown-style.mdc` | Markdown formatting standards |
 
@@ -219,8 +247,11 @@ Rules are always-on for this repo; skills are invoked when the user's request ma
 
 ---
 
-## DevSecOps Alignment
+## DevSecOps & Engineering Intelligence Alignment
 
+- **DORA:** Lead time, deployment frequency, change failure rate, MTTR ([docs/dora-alignment.md](docs/dora-alignment.md))
+- **DORA AI Capabilities:** AI stance, data ecosystem, version control, platforms ([docs/engineering-intelligence-framework.md](docs/engineering-intelligence-framework.md))
+- **DX + HEART:** Developer experience, product impact, metrics that matter
 - **NIST SSDF (SP 800-218):** Secure development practices, supply chain integrity
 - **NIST AI RMF:** Trustworthy AI; risk tiers and guardrails
 - **NIST Zero Trust:** Zero Trust principles in pipelines (zero-trust-gitops-enforcement, dod-zero-trust-architect)

@@ -13,7 +13,7 @@ description: >-
 
 ## Purpose
 
-Defines guardrails and rules for AI-assisted code review. Produces a structured document specifying what to check, severity levels, feedback format, and boundaries. Use to establish consistent review standards; security-evaluator handles security-specific assessments. Tier 1: proposals only; human must approve merge.
+Defines guardrails and rules for AI-assisted code review. Produces a structured document specifying what to check, severity levels, feedback format, and boundaries. Supports DORA metrics: lead time for changes, change failure rate. Addresses AI risk: review bottlenecks from AI-generated code, human validation requirements, traceability. Use to establish consistent review standards; security-evaluator handles security-specific assessments. Tier 1: proposals only; human must approve merge.
 
 ## When to Use
 
@@ -21,6 +21,7 @@ Defines guardrails and rules for AI-assisted code review. Produces a structured 
 - User asks what an AI reviewer should check or avoid
 - User needs severity levels, feedback format, or review boundaries
 - User is configuring a code review bot or PR automation
+- User wants to address AI-generated code review bottlenecks or AI risk in review
 
 ## Inputs
 

@@ -4,6 +4,8 @@ Reference documentation for Agent Skills Pack.
 
 | Document | Purpose |
 |----------|---------|
+| [engineering-intelligence-framework.md](engineering-intelligence-framework.md) | Unified measurement model: DORA + DORA AI Capabilities + DX + HEART; metrics that matter |
+| [dora-alignment.md](dora-alignment.md) | DORA metrics and pillars mapping to skills; triggers for DORA-related invocation |
 | [ai-security-model.md](ai-security-model.md) | Trust boundaries, risk tiers, guardrails, human-in-the-loop |
 | [skill-authoring-standard.md](skill-authoring-standard.md) | Required SKILL.md structure and sections |
 | [authoring-guide.md](authoring-guide.md) | How to create and maintain skills |

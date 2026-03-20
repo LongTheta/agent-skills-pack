@@ -32,6 +32,10 @@ Do not be repetitive; prompt once per relevant context. If the user declines or 
 
 Each skill: `SKILL.md`, `examples.md`, `prompt-template.md`, `reference.md`
 
+## Engineering Intelligence
+
+This pack aligns with DORA, DORA AI Capabilities, DX, and HEART. See [docs/engineering-intelligence-framework.md](docs/engineering-intelligence-framework.md). Rules enforce small batches, safe deployments, rollback readiness, and secure AI usage.
+
 ## Bypass Hooks
 
 Use `git push --no-verify` only when necessary; CI still enforces validation.

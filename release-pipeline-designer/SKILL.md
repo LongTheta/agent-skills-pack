@@ -13,7 +13,7 @@ description: >-
 
 ## Purpose
 
-Designs CI/CD release pipelines. Produces pipeline config proposals (GitHub Actions, GitLab CI) with build, test, lint, security scan, and deployment stages. Output is config for user to review and apply. Use before or alongside zero-trust-gitops-enforcement and ai-devsecops-policy-enforcement for security review. Tier 2: validation checklist and user approval required.
+Designs CI/CD release pipelines. Produces pipeline config proposals (GitHub Actions, GitLab CI) with build, test, lint, security scan, and deployment stages. Supports DORA metrics: deployment frequency, lead time for changes, deployment stability. Favors small batch changes, rollback readiness, and minimal blast radius. Output is config for user to review and apply. Use before or alongside zero-trust-gitops-enforcement and ai-devsecops-policy-enforcement for security review. Tier 2: validation checklist and user approval required.
 
 ## When to Use
 
@@ -21,6 +21,7 @@ Designs CI/CD release pipelines. Produces pipeline config proposals (GitHub Acti
 - User asks to design release stages, build pipeline, or deployment flow
 - User needs GitHub Actions or GitLab CI workflow proposals
 - User wants to add security scanning, testing, or artifact build to CI
+- User needs rollback capability or deployment stability improvements
 
 ## Inputs
 
