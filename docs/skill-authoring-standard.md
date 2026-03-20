@@ -1,21 +1,22 @@
 # Skill Authoring Standard
 
-Required structure and sections for skills in the Jade CI/CD Agent Skills Pack.
+Required structure and sections for skills in the Agent Skills Pack.
 
 ## SKILL.md Structure
 
-Every SKILL.md must include:
+Every SKILL.md must include (in order):
 
 | Section | Required | Purpose |
 |---------|----------|---------|
-| **YAML frontmatter** | Yes | `name`, `description`; optional `disable-model-invocation` |
-| **When to Use** | Yes | Trigger scenarios; when agent should apply |
+| **YAML frontmatter** | Yes | `name`, `description`, `risk_tier`; optional `disable-model-invocation` |
+| **Purpose** | Yes | 1–2 sentences: scope, what it does, when to invoke |
+| **When to Use** | Yes | Trigger scenarios; explicit trigger conditions |
 | **Inputs** | Yes | What the skill expects (table or list) |
 | **Outputs** | Yes | What the skill produces |
-| **Workflow** | Yes | Steps or process |
-| **Limitations** | Yes | What the skill cannot do; advisory scope |
-| **Safety Guardrails** | Yes | Risk tier; constraints; no auto-apply where inappropriate |
-| **Validation Checklist** | Yes | Pre-output verification |
+| **Steps / Behavior** | Yes | Workflow, process, numbered steps |
+| **Constraints** | Yes | Trust Boundaries + Output Validation + Limitations + Safety Guardrails (consolidated) |
+| **Examples** | Recommended | Reference to examples.md or inline |
+| **Validation Checklist** | Yes (Tier 2/3) | Pre-output verification; safe vs unsafe |
 | **Portability Notes** | Recommended | IDE compatibility; adaptation guidance |
 
 ## Frontmatter
