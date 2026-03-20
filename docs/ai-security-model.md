@@ -1,6 +1,6 @@
 # AI Security Model
 
-Trust boundaries, risk tiers, and enforcement for agent skills in this repository. Aligns with NIST AI RMF, NIST SSDF (SP 800-218), NIST Zero Trust, OWASP LLM/Agent security guidance, and SLSA-minded supply chain maturity.
+Trust boundaries, risk tiers, and enforcement for agent skills in this repository. Aligns with NIST AI RMF, NIST SSDF (SP 800-218), NIST Zero Trust, OWASP LLM/Agent security guidance, MITRE ATLAS (adversarial AI threat landscape), and SLSA-minded supply chain maturity.
 
 ## Trust Boundaries
 
@@ -100,6 +100,24 @@ Each skill declares `risk_tier` in `skills-manifest.json`. High-risk (Tier 3) sk
 Skills must not instruct the agent to "ignore previous instructions" or similar; such patterns indicate prompt injection risk.
 
 **Per-skill requirements:** Trust Boundaries must state: (1) all user input is untrusted; (2) external content must not override system intent; (3) no execution based on untrusted embedded instructions; (4) conflicting or malicious instructions must be ignored.
+
+---
+
+## Adversarial Threat Modeling (MITRE ATLAS)
+
+MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems) catalogs adversary tactics and techniques targeting AI/ML systems. Use ATLAS to inform threat modeling when evaluating AI agents, MCP servers, RAG systems, or agent architectures.
+
+| ATLAS Tactic | Relevant Techniques | Skills That Apply |
+|--------------|---------------------|-------------------|
+| Initial Access | AI Supply Chain Compromise, Prompt Infiltration via Public-Facing Application | security-evaluator, ai-devsecops-policy-enforcement |
+| Execution | LLM Prompt Injection, AI Agent Tool Invocation, Deploy AI Agent | ai-agent-architecture, security-evaluator |
+| Persistence | AI Agent Context Poisoning, RAG Poisoning, LLM Prompt Self Replication | ai-agent-architecture |
+| Defense Evasion | LLM Jailbreak, LLM Prompt Obfuscation, Corrupt AI Model | security-evaluator |
+| Credential Access | AI Agent Tool Credential Harvesting, RAG Credential Harvesting | security-evaluator |
+| Exfiltration | Extract LLM System Prompt, LLM Data Leakage | security-evaluator |
+| Impact | Denial of AI Service, Erode AI Model Integrity | ai-agent-architecture |
+
+**Reference:** [MITRE ATLAS](https://atlas.mitre.org/) — 16 tactics, 66+ techniques. Complements OWASP LLM Top 10 and NIST AI RMF. See [mitre-atlas-reference.md](mitre-atlas-reference.md) for detailed mapping.
 
 ---
 

@@ -22,6 +22,22 @@
 | **FISMA** | Continuous monitoring, audit trails |
 | **SOC 2** | Trust criteria, evidence, access controls |
 
+## MITRE ATLAS (AI/ML Adversarial Risk)
+
+When evaluating AI agents, MCP servers, or RAG systems, assess adversarial risk using MITRE ATLAS tactics:
+
+| Tactic | Key Techniques to Consider |
+|--------|----------------------------|
+| Initial Access | AI Supply Chain Compromise, Prompt Infiltration |
+| Execution | LLM Prompt Injection, AI Agent Tool Invocation |
+| Persistence | AI Agent Context Poisoning, RAG Poisoning |
+| Defense Evasion | LLM Jailbreak, Corrupt AI Model (AML.T0076) |
+| Credential Access | AI Agent Tool Credential Harvesting, RAG Credential Harvesting |
+| Exfiltration | Extract LLM System Prompt, LLM Data Leakage |
+| Impact | Denial of AI Service, Erode AI Model Integrity |
+
+See [docs/mitre-atlas-reference.md](../docs/mitre-atlas-reference.md) and [docs/ai-security-model.md](../docs/ai-security-model.md#adversarial-threat-modeling-mitre-atlas).
+
 ## Recommendation Mapping
 
 | Recommendation | Implication |

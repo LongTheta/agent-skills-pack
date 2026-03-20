@@ -20,6 +20,8 @@ Invoke this skill when the user:
 - Mentions compliance gaps, security scorecard, or mitigation plan
 - Provides a tool, architecture, workflow, or integration to evaluate
 - Asks to assess AI risk (over-reliance, generated code, traceability)
+- Asks to assess AI agents, MCP servers, or RAG systems for adversarial risk
+- Mentions MITRE ATLAS, adversarial tactics, or AI threat modeling
 
 ## Inputs
 
@@ -74,6 +76,7 @@ Structured security evaluation with:
 | Third-party / vendor risk | Subprocessors, certifications, data sharing |
 | Operational security burden | Patching, hardening, monitoring requirements |
 | Secure-by-default posture | Default config safety, opt-in vs. opt-out |
+| **AI/ML adversarial risk (MITRE ATLAS)** | When evaluating AI agents, MCP servers, RAG: prompt injection, jailbreak, tool credential harvesting, RAG poisoning, context poisoning, supply chain compromise, model integrity. Reference ATLAS tactics (Execution, Persistence, Defense Evasion, Credential Access, Exfiltration, Impact). See [docs/mitre-atlas-reference.md](../docs/mitre-atlas-reference.md). |
 
 ### Regulated / Federal Additions
 
