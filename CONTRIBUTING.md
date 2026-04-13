@@ -12,7 +12,7 @@ Thank you for contributing to Agent Skills Pack. This guide covers how to propos
 
 - Use GitHub Issues for bugs, feature requests, or documentation improvements
 - Search existing issues before creating a new one
-- Include: steps to reproduce, expected vs actual behavior, environment (OS, Node version, Cursor version)
+- Include: steps to reproduce, expected vs actual behavior, environment (OS, Node version, editor version if relevant)
 
 ### Proposing Changes
 

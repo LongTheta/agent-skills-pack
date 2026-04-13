@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **package.json** — Name set to `jade-cicd-agent-skills-pack`
 - **skills-manifest.json** — Repo, description, and repository URL updated
 - **docs/** — ai-governance-model, authoring-guide, release-readiness, skill-authoring-standard, supply-chain-security
-- **.cursor/rules** — ai-security-enforcement, skill-authoring, project-conventions
+- **.agent/rules** — ai-security-enforcement, skill-authoring, project-conventions
 - **scripts** — generate-manifest.js, generate_manifest.py, certification-score.js
 - **sbom.json** — Package name and description
 - **SKILL_ASSESSMENT_REPORT.md** — Repository references
@@ -40,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Security & Compliance (7 skills):** ai-agent-architecture, ai-devsecops-policy-enforcement, cve-detect-and-remediate, dod-zero-trust-architect, security-evaluator, tool-evaluator, zero-trust-gitops-enforcement
 
-**IDE & Authoring (6 skills):** create-rule, create-skill, create-subagent, migrate-to-skills, shell, update-cursor-settings
+**IDE & Authoring (6 skills):** create-rule, create-skill, create-subagent, migrate-to-skills, shell, update-vscode-settings
 
 **Governance & Documentation:**
 

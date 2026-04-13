@@ -1,6 +1,6 @@
 # Agent Skills Pack
 
-**Engineering Intelligence and DevSecOps platform for AI-assisted development.** Production-ready Agent Skills for security, Zero Trust, repository lifecycle, and IDE workflows—aligned with DORA metrics, DORA AI Capabilities, Developer Experience (DX), and HEART framework. A measurable, auditable, scalable framework for Cursor and other AI agent IDEs.
+**Engineering Intelligence and DevSecOps platform for AI-assisted development.** Production-ready Agent Skills for security, Zero Trust, repository lifecycle, and IDE workflows—aligned with DORA metrics, DORA AI Capabilities, Developer Experience (DX), and HEART framework. A measurable, auditable, scalable framework for VS Code–based editors and other AI-assisted development environments.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -52,8 +52,8 @@ Agent Skills Pack delivers 20+ curated, self-contained skills that teach AI agen
 
 | Layer | Purpose |
 |-------|---------|
-| **Skills** | Domain instructions in `SKILL.md` + `examples.md` + `prompt-template.md` + `reference.md`. Loaded from `~/.cursor/skills/` or `.cursor/skills/`. |
-| **Rules** | Project-level Cursor rules in `.cursor/rules/`. Enforce conventions, security, and validation prompts. |
+| **Skills** | Domain instructions in `SKILL.md` + `examples.md` + `prompt-template.md` + `reference.md`. Loaded from `~/.agent/skills/` or `.agent/skills/` (paths may vary by IDE). |
+| **Rules** | Project-level AI rules in `.agent/rules/`. Enforce conventions, security, and validation prompts. |
 | **CI/CD** | GitHub Actions: manifest validation, Python structure checks, markdown lint, link check, certification score (threshold 7.5), SBOM generation. |
 
 Skills and rules work together: skills provide task-specific behavior; rules enforce governance and safety across the repo.
@@ -88,27 +88,30 @@ cd agent-skills-pack
 npm install
 ```
 
-**3. Link skills to Cursor**
+**3. Install skills for your AI-assisted editor**
 
 **Option A — Copy (one-time):**
 
 ```bash
 # Linux/macOS
-cp -r ai-agent-architecture security-evaluator ~/.cursor/skills/
+mkdir -p ~/.agent/skills
+cp -r ai-agent-architecture security-evaluator ~/.agent/skills/
 
 # Windows (PowerShell)
-Copy-Item -Recurse ai-agent-architecture, security-evaluator $env:APPDATA\Cursor\skills\
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agent\skills" | Out-Null
+Copy-Item -Recurse ai-agent-architecture, security-evaluator "$env:USERPROFILE\.agent\skills\"
 ```
 
 **Option B — Symlink (live updates):**
 
 ```bash
 # Linux/macOS
-ln -s "$(pwd)/ai-agent-architecture" ~/.cursor/skills/ai-agent-architecture
-ln -s "$(pwd)/security-evaluator" ~/.cursor/skills/security-evaluator
+mkdir -p ~/.agent/skills
+ln -s "$(pwd)/ai-agent-architecture" ~/.agent/skills/ai-agent-architecture
+ln -s "$(pwd)/security-evaluator" ~/.agent/skills/security-evaluator
 
 # Windows (Admin PowerShell)
-New-Item -ItemType SymbolicLink -Path "$env:APPDATA\Cursor\skills\ai-agent-architecture" -Target "$(Get-Location)\ai-agent-architecture"
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.agent\skills\ai-agent-architecture" -Target "$(Get-Location)\ai-agent-architecture"
 ```
 
 **4. Validate**
@@ -124,12 +127,12 @@ npm run score
 
 | Mode | What to Install | Use Case |
 |------|-----------------|----------|
-| **Skills only** | Copy/symlink selected skill folders into `~/.cursor/skills/` | Use skills in any project; no repo rules |
-| **Rules only** | Copy `.cursor/rules/*.mdc` into your repo's `.cursor/rules/` | Enforce conventions without skills |
-| **Skills + Rules** | Skills in `~/.cursor/skills/` + rules in `.cursor/rules/` | Full AI guidance; rules apply when working in this repo |
+| **Skills only** | Copy/symlink selected skill folders into `~/.agent/skills/` | Use skills in any project; no repo rules |
+| **Rules only** | Copy `.agent/rules/*.mdc` into your repo's `.agent/rules/` | Enforce conventions without skills |
+| **Skills + Rules** | Skills in `~/.agent/skills/` + rules in `.agent/rules/` | Full AI guidance; rules apply when working in this repo |
 | **Full DevSecOps** | Clone repo, `npm install`, symlink skills, use rules in repo | Development, contribution, CI validation |
 
-**Project-level skills:** Copy skill folders into `.cursor/skills/` at repo root to share with your team.
+**Project-level skills:** Copy skill folders into `.agent/skills/` at repo root to share with your team.
 
 ---
 
@@ -178,7 +181,7 @@ agent-skills-pack/
 ├── skills-manifest.json      # Machine-readable catalog
 ├── sbom.json                 # CycloneDX SBOM (CI-generated)
 ├── .husky/                   # pre-commit, pre-push
-├── .cursor/rules/            # Project rules (skill-authoring, ai-security-enforcement, etc.)
+├── .agent/rules/             # Optional project rules (skill-authoring, ai-security-enforcement, etc.)
 ├── .github/workflows/        # validate.yml, lint.yml, links.yml
 ├── docs/
 │   ├── README.md              # Documentation index
@@ -226,13 +229,13 @@ Each skill is a self-contained unit:
 |----------|--------|
 | **Security & Compliance** | [ai-agent-architecture](ai-agent-architecture/), [ai-devsecops-policy-enforcement](ai-devsecops-policy-enforcement/), [cve-detect-and-remediate](cve-detect-and-remediate/), [dod-zero-trust-architect](dod-zero-trust-architect/), [security-evaluator](security-evaluator/), [tool-evaluator](tool-evaluator/), [zero-trust-gitops-enforcement](zero-trust-gitops-enforcement/) |
 | **Repository Lifecycle** | [create-repo-foundation](create-repo-foundation/), [test-strategy-designer](test-strategy-designer/), [repo-docs-writer](repo-docs-writer/), [release-pipeline-designer](release-pipeline-designer/), [ai-code-review-guardrails](ai-code-review-guardrails/), [dependency-governance](dependency-governance/), [observability-bootstrap](observability-bootstrap/) |
-| **IDE & Authoring** | [create-rule](create-rule/), [create-skill](create-skill/), [create-subagent](create-subagent/), [migrate-to-skills](migrate-to-skills/), [shell](shell/), [update-cursor-settings](update-cursor-settings/) |
+| **IDE & Authoring** | [create-rule](create-rule/), [create-skill](create-skill/), [create-subagent](create-subagent/), [migrate-to-skills](migrate-to-skills/), [shell](shell/), [update-vscode-settings](update-vscode-settings/) |
 
 ---
 
 ## Rules System Overview
 
-Rules in `.cursor/rules/` apply when working in this repo:
+Rules in `.agent/rules/` apply when working in this repo (when using compatible tooling):
 
 | Rule | Purpose |
 |------|---------|

@@ -15,7 +15,6 @@ Usage:
 import json
 import re
 import sys
-from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -50,7 +49,7 @@ RISK_TIERS = {
     "create-subagent": 2,
     "migrate-to-skills": 2,
     "shell": 3,
-    "update-cursor-settings": 2,
+    "update-vscode-settings": 2,
 }
 
 # Skills requiring security review (Tier 3 or security-impacting)
@@ -60,7 +59,11 @@ SECURITY_REVIEWED_SKILLS = {
     "ai-devsecops-policy-enforcement",
     "dod-zero-trust-architect",
     "zero-trust-gitops-enforcement",
+    "shell",  # Tier 3: shell/command execution
 }
+
+# ISO date for manifest audit trail (update when governance re-reviews the pack)
+MANIFEST_LAST_REVIEWED = "2026-04-13"
 
 REQUIRED_FILES = ["SKILL.md"]
 OPTIONAL_FILES = ["examples.md", "prompt-template.md", "reference.md"]
@@ -146,12 +149,12 @@ def get_tags(skill_name: str) -> list[str]:
         "security-evaluator": ["security", "compliance", "evaluation", "scorecard", "fedramp", "nist"],
         "tool-evaluator": ["evaluation", "enterprise", "devops", "gitops"],
         "zero-trust-gitops-enforcement": ["zero-trust", "gitops", "ci-cd", "pipeline-security"],
-        "create-rule": ["cursor", "rules", "conventions"],
-        "create-skill": ["cursor", "skills", "authoring"],
-        "create-subagent": ["cursor", "subagents", "agents"],
-        "migrate-to-skills": ["cursor", "migration", "rules", "commands"],
-        "shell": ["shell", "terminal", "cursor"],
-        "update-cursor-settings": ["cursor", "vscode", "settings"],
+        "create-rule": ["ai-ide", "rules", "conventions"],
+        "create-skill": ["ai-ide", "skills", "authoring"],
+        "create-subagent": ["ai-ide", "subagents", "agents"],
+        "migrate-to-skills": ["ai-ide", "migration", "rules", "commands"],
+        "shell": ["shell", "terminal", "cli"],
+        "update-vscode-settings": ["vscode", "settings", "editor"],
     }
     return tag_map.get(skill_name, [])
 
@@ -180,7 +183,7 @@ def scan_skills() -> list[dict]:
         triggers = extract_triggers(description) if description else [name.replace("-", " ")]
         risk_tier = RISK_TIERS.get(name, 0)
         security_reviewed = name in SECURITY_REVIEWED_SKILLS
-        last_reviewed = "2025-03-18" if security_reviewed else None
+        last_reviewed = MANIFEST_LAST_REVIEWED
 
         skills.append({
             "name": name,
@@ -188,7 +191,7 @@ def scan_skills() -> list[dict]:
             "summary": infer_summary(description) if description else "",
             "triggers": triggers,
             "tags": get_tags(name),
-            "compatibility": ["cursor"],
+            "compatibility": ["vscode"],
             "risk_tier": risk_tier,
             "status": "active",
             "required_files": get_required_files(item),
@@ -205,7 +208,7 @@ def main():
 
     manifest = {
         "repo": "jade-cicd-agent-skills-pack",
-        "description": "Jade CI/CD Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.",
+        "description": "Jade CI/CD Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for VS Code–based editors and other AI-assisted development environments.",
         "version": "1.0.0",
         "repository": "https://github.com/ai-devsecops-packs/jade-cicd-agent-skills-pack",
         "license": "MIT",

@@ -1,6 +1,6 @@
 # Portability Guide
 
-How to adapt Agent Skills for use in AI IDEs other than Cursor.
+How to adapt Agent Skills for use across AI-assisted IDEs and editors.
 
 ---
 
@@ -17,10 +17,10 @@ The format is IDE-agnostic. Adaptation is mainly about **discovery** and **invoc
 
 ---
 
-## Cursor
+## Default layout (this pack)
 
-- **Discovery:** Skills in `~/.cursor/skills/` or `.cursor/skills/`; agent uses `description` for matching
-- **Invocation:** Automatic when user request matches; or explicit via slash/mention
+- **Discovery:** Skills in `~/.agent/skills/` or `.agent/skills/`; agent uses `description` for matching where supported
+- **Invocation:** Automatic when user request matches; or explicit via slash/mention per product
 - **Frontmatter:** `name`, `description`, optional `disable-model-invocation`
 
 ---
@@ -57,9 +57,9 @@ The format is IDE-agnostic. Adaptation is mainly about **discovery** and **invoc
 
 ## Mapping Table
 
-| Concept | Cursor | Generic |
-|---------|--------|---------|
-| Skill location | `~/.cursor/skills/<name>/` | Any path |
+| Concept | This pack | Generic |
+|---------|-----------|---------|
+| Skill location | `~/.agent/skills/<name>/` | Any path |
 | Discovery | `description` field | Keyword match, manual pick |
 | Invocation | Automatic or explicit | Manual or custom routing |
 | Frontmatter | `name`, `description` | Optional; use for metadata |
@@ -70,7 +70,7 @@ The format is IDE-agnostic. Adaptation is mainly about **discovery** and **invoc
 
 For maximum portability, each skill can be reduced to:
 
-1. **Instructions** — Body of SKILL.md (no Cursor-specific frontmatter)
+1. **Instructions** — Body of SKILL.md (vendor-agnostic frontmatter where possible)
 2. **Examples** — examples.md content
 3. **Template** — prompt-template.md content
 
@@ -86,6 +86,6 @@ Package as:
 
 When adding skills:
 
-- Avoid Cursor-specific paths in the skill body; use placeholders like `{skills-dir}`
-- Document Cursor-specific behavior in SKILL.md only where necessary
+- Avoid vendor-specific paths in the skill body; use placeholders like `{skills-dir}`
+- Document product-specific behavior in SKILL.md only where necessary
 - Keep `reference.md` and `examples.md` IDE-agnostic

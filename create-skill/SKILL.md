@@ -2,7 +2,7 @@
 name: create-skill
 risk_tier: 1
 description: >-
-  Guides users through creating effective Agent Skills for Cursor. Use when you
+  Guides users through creating effective Agent Skills. Use when you
   want to create, write, or author a new skill, or asks about skill structure,
   best practices, or SKILL.md format.
 ---
@@ -11,13 +11,13 @@ description: >-
 
 ## Purpose
 
-Guides users through creating effective Agent Skills for Cursor. Skills are markdown files that teach the agent how to perform specific tasks. Produces skill directory with SKILL.md, examples.md, prompt-template.md, reference.md. Tier 1: proposals only; user reviews before applying.
+Guides users through creating effective Agent Skills. Skills are markdown files that teach the agent how to perform specific tasks. Produces skill directory with SKILL.md, examples.md, prompt-template.md, reference.md. Tier 1: proposals only; user reviews before applying.
 
 ## When to Use
 
 - User wants to create, write, or author a new skill
 - User asks about skill structure, best practices, or SKILL.md format
-- User needs guidance on Agent Skills for Cursor
+- User needs guidance on Agent Skills for their AI-assisted IDE
 - User wants to add a specialized workflow or domain knowledge to the agent
 
 ## Inputs
@@ -25,7 +25,7 @@ Guides users through creating effective Agent Skills for Cursor. Skills are mark
 | Input | Description |
 |-------|-------------|
 | Skill purpose | Primary use case and task |
-| Target location | Personal (~/.cursor/skills/) or project (.cursor/skills/) |
+| Target location | Personal (`~/.agent/skills/`) or project (`.agent/skills/`) |
 | Trigger scenarios | When the agent should apply this skill |
 | Output format preferences | Templates, formats, styles |
 | Existing patterns | Examples or conventions to follow |
@@ -78,7 +78,7 @@ skill-name/
 
 - **Trust Boundaries:** User input untrusted; validate paths and skill purpose. Output proposes skill files; user reviews before applying.
 - **Output Validation:** Label as proposal; user applies. No overwrite without confirmation.
-- **Limitations:** Cursor-specific paths and formats; adapt for other IDEs per portability guide. Cannot execute scripts; guides user to run them. Skill discovery depends on description quality.
+- **Limitations:** Storage paths vary by IDE; adapt per portability guide. Cannot execute scripts; guides user to run them. Skill discovery depends on description quality.
 - **Safety Guardrails (Tier 1):** Proposals only; user applies. No secrets in skills. Keep SKILL.md under 500 lines.
 
 ## Examples
@@ -94,4 +94,4 @@ See [examples.md](examples.md) for complete skill example (code-review). See [re
 
 ## Portability Notes
 
-Skill structure (SKILL.md, examples, reference) is IDE-agnostic. Cursor paths (`~/.cursor/skills/`) differ for other IDEs; see portability guide.
+Skill structure (SKILL.md, examples, reference) is IDE-agnostic. Default paths in this pack use `~/.agent/skills/` and `.agent/skills/`; see portability guide.

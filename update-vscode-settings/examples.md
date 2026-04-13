@@ -1,6 +1,6 @@
-# Update Cursor Settings — Examples
+# Update VS Code settings — examples
 
-## Example 1: Font Size
+## Example 1: Font size
 
 ```
 Make the font bigger
@@ -8,7 +8,7 @@ Make the font bigger
 
 ---
 
-## Example 2: Format on Save
+## Example 2: Format on save
 
 ```
 Turn on format on save
@@ -16,7 +16,7 @@ Turn on format on save
 
 ---
 
-## Example 3: Theme Change
+## Example 3: Theme change
 
 ```
 Switch to dark theme
@@ -24,7 +24,7 @@ Switch to dark theme
 
 ---
 
-## Example 4: Multiple Settings
+## Example 4: Multiple settings
 
 ```
 Set font size to 14, tab size to 4, and enable word wrap

@@ -1,23 +1,15 @@
 # Migrate to Skills — Invocation Template
 
-Copy and fill in the placeholders.
-
 ```
-Migrate rules/commands to skills:
+Migrate the following to Agent Skills format:
 
-**Scope:** [project | user | both]
-**Source patterns:**
-- Rules: [e.g., **/.cursor/rules/*.mdc]
-- Commands: [e.g., .cursor/commands/*.md, ~/.cursor/commands/*.md]
+**Rules to migrate:**
+- Rules: [e.g., **/.agent/rules/*.mdc]
+- Commands: [e.g., .agent/commands/*.md, ~/.agent/commands/*.md]
 
-**Destination:** [.cursor/skills/ | ~/.cursor/skills/]
+**Destination:** [.agent/skills/ | ~/.agent/skills/]
 
-**Rules to migrate:** Applied intelligently only (has description, no globs, no alwaysApply: true)
-**Commands to migrate:** All
-
-**Preserve:** Body content exactly; no reformatting
-
-**Optional:**
-- Delete originals after migration: [yes | no]
-- Undo available: [yes]
+**Options:**
+- [ ] Delete originals after verification
+- [ ] Preserve filenames as skill names
 ```

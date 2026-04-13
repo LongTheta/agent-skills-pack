@@ -15,10 +15,10 @@ skill-name/
 
 | Type | Path | Scope |
 |------|------|-------|
-| Personal | `~/.cursor/skills/skill-name/` | All projects |
-| Project | `.cursor/skills/skill-name/` | Shared with team |
+| Personal | `~/.agent/skills/skill-name/` | All projects |
+| Project | `.agent/skills/skill-name/` | Shared with team |
 
-**Do not use:** `~/.cursor/skills-cursor/` — reserved for Cursor built-in skills.
+Use the directory your AI tooling documents for custom skills; align with vendor guidance for reserved or built-in paths.
 
 ## SKILL.md Frontmatter
 

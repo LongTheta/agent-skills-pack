@@ -1,14 +1,16 @@
-# Update Cursor Settings — Reference
+# Update VS Code settings — reference
 
-## Settings File Locations
+## Settings file locations (VS Code)
 
 | OS | Path |
 |----|------|
-| macOS | `~/Library/Application Support/Cursor/User/settings.json` |
-| Linux | `~/.config/Cursor/User/settings.json` |
-| Windows | `%APPDATA%\Cursor\User\settings.json` |
+| macOS | `~/Library/Application Support/Code/User/settings.json` |
+| Linux | `~/.config/Code/User/settings.json` |
+| Windows | `%APPDATA%\Code\User\settings.json` |
 
-## Common Settings
+Forks (e.g., VSCodium) use parallel paths under their application ID.
+
+## Common settings
 
 | Category | Examples |
 |----------|----------|
@@ -19,6 +21,6 @@
 
 ## Notes
 
-- VSCode/Cursor settings support JSON with comments
+- VS Code settings support JSON with comments
 - Some settings require window reload
 - User vs workspace: User = global; Workspace = `.vscode/settings.json`

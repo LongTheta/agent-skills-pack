@@ -91,4 +91,4 @@ See [examples.md](examples.md) for example evaluations. Use [prompt-template.md]
 
 ## Portability Notes
 
-Evaluation framework is tool-agnostic. Categories apply to any tool (SaaS, CLI, MCP, library). Cursor-specific paths or integrations mentioned only where relevant. Compatible with DevSecOps, GitOps, and regulated environments.
+Evaluation framework is tool-agnostic. Categories apply to any tool (SaaS, CLI, MCP, library). Vendor-specific paths or integrations are mentioned only where relevant. Compatible with DevSecOps, GitOps, and regulated environments.

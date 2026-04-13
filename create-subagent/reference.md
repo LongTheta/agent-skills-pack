@@ -4,8 +4,8 @@
 
 | Location | Scope | Priority |
 |----------|-------|----------|
-| `.cursor/agents/` | Current project | Higher |
-| `~/.cursor/agents/` | All projects | Lower |
+| `.agent/agents/` | Current project | Higher |
+| `~/.agent/agents/` | All projects | Lower |
 
 Project subagents override user subagents when names match.
 

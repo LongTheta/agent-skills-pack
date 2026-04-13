@@ -2,7 +2,7 @@
 
 **Release Date:** 2025-03-18
 
-Production-ready Agent Skills for AI-assisted repository creation, security, DevSecOps, Zero Trust, testing, release, and IDE workflows. End-to-end pack for repo creation, hardening, testing, release, and maintenance. Designed for Cursor and other AI agent IDEs.
+Production-ready Agent Skills for AI-assisted repository creation, security, DevSecOps, Zero Trust, testing, release, and IDE workflows. End-to-end pack for repo creation, hardening, testing, release, and maintenance. Designed for VS Code–based editors and other AI-assisted development environments.
 
 ---
 
@@ -43,14 +43,14 @@ Production-ready Agent Skills for AI-assisted repository creation, security, Dev
 | create-subagent | 2 | Create subagents for complex tasks |
 | migrate-to-skills | 2 | Migrate rules and commands to skills format |
 | shell | 3 | Shell and terminal operations |
-| update-cursor-settings | 2 | Modify Cursor/VSCode user settings |
+| update-vscode-settings | 2 | Modify VS Code user settings |
 
 ---
 
 ## Quick Start
 
 1. **Clone** the repository
-2. **Copy** or symlink skill folders into `~/.cursor/skills/` (or `.cursor/skills/` for project-level)
+2. **Copy** or symlink skill folders into `~/.agent/skills/` (or `.agent/skills/` for project-level)
 3. **Validate** (optional): `npm run validate:full`
 
 ---

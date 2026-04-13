@@ -1,7 +1,7 @@
-# Update Cursor Settings — Invocation Template
+# Update VS Code settings — invocation template
 
 ```
-Update my Cursor/VSCode settings:
+Update my VS Code settings:
 
 **Setting(s) to change:** [e.g., font size, theme, format on save]
 **Value(s):** [e.g., 16, "Default Dark Modern", true]
@@ -13,7 +13,7 @@ Update my Cursor/VSCode settings:
 ## Example
 
 ```
-Update my Cursor/VSCode settings:
+Update my VS Code settings:
 
 **Setting(s) to change:** font size, format on save
 **Value(s):** 16, true

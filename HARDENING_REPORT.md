@@ -39,7 +39,7 @@
 | zero-trust-gitops-enforcement | ✓ | ✓ | ✓ | ✓ | ✓ |
 | create-subagent | ✓ | ✓ | ✓ | ✓ | ✓ |
 | migrate-to-skills | ✓ | ✓ | ✓ | ✓ | ✓ |
-| update-cursor-settings | ✓ | ✓ | ✓ | ✓ | ✓ |
+| update-vscode-settings | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ### Tier 3 Skills (2)
 
@@ -61,7 +61,7 @@
 
 1. **Branch protection** — Cannot be set via repo files. Recommend: Settings → Branches → Add rule for `master`/`main`: require status checks (Validate, Lint, Link Check), require PR review.
 2. **tool-evaluator** — `security_reviewed: false` in manifest; Tier 0 so not required for v1, but consider for consistency.
-3. **create-rule, create-subagent, migrate-to-skills, update-cursor-settings** — `last_reviewed: null`; Tier 1/2 so not blocking, but consider populating for audit trail.
+3. **create-rule, create-subagent, migrate-to-skills, update-vscode-settings** — `last_reviewed: null`; Tier 1/2 so not blocking, but consider populating for audit trail.
 
 ---
 

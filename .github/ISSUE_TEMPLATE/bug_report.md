@@ -31,7 +31,7 @@ What actually happens.
 
 ## Environment
 
-- Cursor version (if applicable):
+- Editor / AI assistant version (if applicable):
 - OS:
 - Skill version:
 

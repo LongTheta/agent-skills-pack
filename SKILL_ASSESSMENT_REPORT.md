@@ -49,7 +49,7 @@ Assessment of the Jade CI/CD Agent Skills Pack repository using Security Evaluat
 
 **Tool/architecture name:** Jade CI/CD Agent Skills Pack  
 **Category:** Open-source skills repository / Markdown content platform  
-**Intended use case:** Reusable Agent Skills for Cursor and other AI IDEs  
+**Intended use case:** Reusable Agent Skills for VS Code–based editors and other AI-assisted IDEs  
 **Environment:** Public GitHub; consumed locally or via clone  
 **Data sensitivity:** Low — Markdown, JSON, scripts; no PII/CUI  
 **Hosting model:** GitHub-hosted; user copies/symlinks to local skills dir  

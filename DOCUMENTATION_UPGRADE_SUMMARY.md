@@ -16,8 +16,8 @@ Documentation was upgraded to enterprise-grade (10/10) standard across both **ag
 | **CONTRIBUTING.md** | Enterprise-grade: Pre-merge checklist for new skills, explicit validation steps, conventional commits, branch protection recommendations. |
 | **docs/README.md** | New: Documentation index linking all reference docs. |
 | **docs/skill-authoring-standard.md** | Updated to reflect refactored structure: Purpose, Steps/Behavior, Constraints (consolidated). |
-| **.cursor/rules/project-conventions.mdc** | Branding: "Agent Skills Pack" (generic). |
-| **.cursor/rules/skill-authoring.mdc** | Branding: "Agent Skills Pack". |
+| **.agent/rules/project-conventions.mdc** | Branding: "Agent Skills Pack" (generic). |
+| **.agent/rules/skill-authoring.mdc** | Branding: "Agent Skills Pack". |
 
 ### jade-cicd-agent-skills-pack
 

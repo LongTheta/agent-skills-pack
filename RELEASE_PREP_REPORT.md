@@ -50,7 +50,7 @@ All three run on `push` and `pull_request` to `master`/`main`. No `|| true` or `
 
 | Item | Priority |
 |------|----------|
-| **last_reviewed: null** | create-rule, create-subagent, migrate-to-skills, update-cursor-settings have `last_reviewed: null`. Tier 1/2; not blocking. Consider setting to 2025-03-18 for audit trail. |
+| **last_reviewed: null** | create-rule, create-subagent, migrate-to-skills, update-vscode-settings have `last_reviewed: null`. Tier 1/2; not blocking. Consider setting to 2025-03-18 for audit trail. |
 | **security_reviewed: false** | Several Tier 0/1/2 skills have `security_reviewed: false`. Not required for non-Tier 3. Optional for consistency. |
 | **Branch protection** | Enable in GitHub Settings → Branches before or after tag. See recommendations below. |
 

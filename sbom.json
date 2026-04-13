@@ -16,7 +16,7 @@
       "bom-ref": "pkg:npm/jade-cicd-agent-skills-pack@1.0.0",
       "name": "jade-cicd-agent-skills-pack",
       "version": "1.0.0",
-      "description": "Jade CI/CD Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.",
+      "description": "Jade CI/CD Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for VS Code–based editors and other AI-assisted development environments.",
       "purl": "pkg:npm/jade-cicd-agent-skills-pack@1.0.0",
       "licenses": [
         {

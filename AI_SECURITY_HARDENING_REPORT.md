@@ -36,14 +36,14 @@
 | create-subagent | 2 | ✓ | ✓ | ✓ |
 | migrate-to-skills | 2 | ✓ | ✓ | ✓ |
 | shell | 3 | ✓ | ✓ | ✓ |
-| update-cursor-settings | 2 | ✓ | ✓ | ✓ |
+| update-vscode-settings | 2 | ✓ | ✓ | ✓ |
 
 ### Enforcement
 
 | File | Changes |
 |------|---------|
 | `skills-manifest.json` | Expanded enforcement: tier_2, tier_3, trust_boundaries, output_validation |
-| `.cursor/rules/ai-security-enforcement.mdc` | New rule: Trust Boundaries, Output Validation, Tier 2/3 requirements, high-risk warnings |
+| `.agent/rules/ai-security-enforcement.mdc` | New rule: Trust Boundaries, Output Validation, Tier 2/3 requirements, high-risk warnings |
 | `scripts/validate_skills.py` | Added Trust Boundaries, Output Validation to RECOMMENDED_SECTIONS (strict mode) |
 
 ---
@@ -80,7 +80,7 @@
 | **Tool access control** | 10/10 | Tier-based rules; Tier 3 shell explicit |
 | **Output validation** | 10/10 | All skills include section; no fabricated data rules |
 | **Human-in-the-loop** | 10/10 | Tier 2/3 explicit; high-risk warnings |
-| **Enforcement** | 9/10 | Cursor rule + manifest; validation script recommends (not requires) new sections |
+| **Enforcement** | 9/10 | Project rule + manifest; validation script recommends (not requires) new sections |
 
 **Overall: 59/60 (98%) — Ready for v1.0.0**
 

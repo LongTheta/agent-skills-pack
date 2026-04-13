@@ -28,7 +28,7 @@ All 20 SKILL.md files in agent-skills-pack were refactored to follow a strict, c
 | create-subagent | ide-authoring | 2 |
 | migrate-to-skills | ide-authoring | 2 |
 | shell | ide-authoring | 3 |
-| update-cursor-settings | ide-authoring | 2 |
+| update-vscode-settings | ide-authoring | 2 |
 
 ### Unchanged (1)
 
@@ -74,7 +74,7 @@ All 20 SKILL.md files in agent-skills-pack were refactored to follow a strict, c
 - Skill structure, authoring principles (create-skill)
 - Subagent locations, examples (create-subagent)
 - Migration workflow, conversion format (migrate-to-skills)
-- Settings mappings (update-cursor-settings)
+- Settings mappings (update-vscode-settings)
 
 ## Gaps and Overlaps Detected
 

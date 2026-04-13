@@ -91,7 +91,7 @@ function main() {
 
   const manifest = {
     repo: 'jade-cicd-agent-skills-pack',
-    description: 'Jade CI/CD Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for Cursor and other AI agent IDEs.',
+    description: 'Jade CI/CD Agent Skills for security, DevSecOps, Zero Trust, and IDE workflows. Designed for VS Code–based editors and other AI-assisted development environments.',
     version: '0.1.0',
     repository: 'https://github.com/ai-devsecops-packs/jade-cicd-agent-skills-pack',
     license: 'MIT',

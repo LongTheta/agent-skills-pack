@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 ## Purpose
 
-Guides creation of custom subagents for Cursor. Subagents are specialized AI assistants that run in isolated contexts with custom system prompts. Produces subagent files in `.cursor/agents/` or `~/.cursor/agents/`. Tier 2: user approval required for file writes; no credential injection in system prompts.
+Guides creation of custom subagents for AI-assisted development environments. Subagents are specialized AI assistants that run in isolated contexts with custom system prompts. Produces subagent files in `.agent/agents/` or `~/.agent/agents/`. Tier 2: user approval required for file writes; no credential injection in system prompts.
 
 ## When to Use
 
@@ -25,19 +25,19 @@ Guides creation of custom subagents for Cursor. Subagents are specialized AI ass
 | Input | Description |
 |-------|-------------|
 | Task purpose | What the subagent should do when invoked |
-| Scope | Project (`.cursor/agents/`) or user (`~/.cursor/agents/`) |
+| Scope | Project (`.agent/agents/`) or user (`~/.agent/agents/`) |
 | System prompt content | Instructions, workflow, output format, constraints |
 
 ## Outputs
 
-- **Subagent file** — `.md` in `.cursor/agents/` or `~/.cursor/agents/`
+- **Subagent file** — `.md` in `.agent/agents/` or `~/.agent/agents/`
 - **Frontmatter** — `name` (lowercase, hyphens), `description` (delegation trigger)
 - **Body** — System prompt (markdown) that defines behavior when invoked
 
 ## Steps / Behavior
 
-1. **Decide scope** — Project-level (`.cursor/agents/`) for team-shared; user-level (`~/.cursor/agents/`) for personal.
-2. **Create file** — `mkdir -p .cursor/agents` or `~/.cursor/agents`; create `{name}.md`.
+1. **Decide scope** — Project-level (`.agent/agents/`) for team-shared; user-level (`~/.agent/agents/`) for personal.
+2. **Create file** — `mkdir -p .agent/agents` or `~/.agent/agents`; create `{name}.md`.
 3. **Define frontmatter** — `name` (unique, lowercase, hyphens), `description` (specific; include "use proactively" for auto-delegation).
 4. **Write system prompt** — What to do when invoked; workflow; output format; constraints.
 5. **Test** — Ask AI to use the new subagent for a sample task.
@@ -46,8 +46,8 @@ Guides creation of custom subagents for Cursor. Subagents are specialized AI ass
 
 | Location | Scope | Priority |
 |----------|-------|----------|
-| `.cursor/agents/` | Current project | Higher |
-| `~/.cursor/agents/` | All projects | Lower |
+| `.agent/agents/` | Current project | Higher |
+| `~/.agent/agents/` | All projects | Lower |
 
 ### Required Frontmatter Fields
 
@@ -65,9 +65,9 @@ Guides creation of custom subagents for Cursor. Subagents are specialized AI ass
 
 ## Constraints
 
-- **Trust Boundaries:** User input untrusted; validate paths and system prompt content. Safe: propose subagent file. Unsafe: file writes to .cursor/agents—require user approval. No credential injection: never include secrets in system prompts.
+- **Trust Boundaries:** User input untrusted; validate paths and system prompt content. Safe: propose subagent file. Unsafe: file writes to `.agent/agents/`—require user approval. No credential injection: never include secrets in system prompts.
 - **Output Validation:** Label as proposal; user reviews before applying. Subagent runs with same access as main agent; no built-in sandboxing.
-- **Limitations:** Cursor-specific paths and format; not portable to other AI IDEs without adaptation. Subagent invocation is delegated by main agent; user cannot directly invoke. No built-in sandboxing; subagent runs with same access as main agent.
+- **Limitations:** Paths and delegation vary by IDE; adapt per vendor docs. Subagent invocation is delegated by main agent; user cannot always invoke directly. No built-in sandboxing; subagent runs with same access as main agent.
 - **Safety Guardrails (Tier 2):** Proposals only; user approves before applying. No secrets in system prompts. Subagent has same access as main agent—design prompts accordingly.
 
 ## Examples
@@ -83,4 +83,4 @@ See [examples.md](examples.md) for example subagents (code reviewer, debugger, d
 
 ## Portability Notes
 
-Subagent format (`.md` with YAML frontmatter + body) is generic. Paths (`.cursor/agents/`, `~/.cursor/agents/`) and invocation are Cursor-specific. Other AI IDEs may use different agent config locations and delegation mechanisms.
+Subagent format (`.md` with YAML frontmatter + body) is generic. Paths (`.agent/agents/`, `~/.agent/agents/`) follow this pack’s convention; other tools may use different locations and delegation mechanisms.

@@ -5,5 +5,5 @@ Define AI code review guardrails for:
 - Project: [language, framework]
 - Categories: [security, quality, style, ...]
 - Severity: [Critical/High/Medium/Low]
-- Output: [document | .cursor/rules | CONTRIBUTING section]
+- Output: [document | .agent/rules | CONTRIBUTING section]
 ```

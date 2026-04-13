@@ -1,31 +1,23 @@
 # Migrate to Skills — Examples
 
-## Example 1: Migrate Project Rules
+## Example 1: Migrate applied-intelligently rules
 
 ```
-Migrate all "applied intelligently" rules from .cursor/rules/ to skills format. Preserve body content exactly. Create skills in .cursor/skills/.
-```
-
----
-
-## Example 2: Migrate User Commands
-
-```
-Migrate my slash commands from ~/.cursor/commands/ to skills. Add disable-model-invocation: true to each. Preserve content verbatim.
+Migrate all "applied intelligently" rules from .agent/rules/ to skills format. Preserve body content exactly. Create skills in .agent/skills/.
 ```
 
 ---
 
-## Example 3: Migrate Specific Rule
+## Example 2: Migrate user slash commands
 
 ```
-Migrate .cursor/rules/api-conventions.mdc to a skill. It has description but no globs. Create .cursor/skills/api-conventions/SKILL.md.
+Migrate my slash commands from ~/.agent/commands/ to skills. Add disable-model-invocation: true to each. Preserve content verbatim.
 ```
 
 ---
 
-## Example 4: Full Migration
+## Example 3: Single rule file
 
 ```
-Find all rules and commands in this project and in my user directory. Migrate eligible ones to skills. Report what was migrated and offer to undo if needed.
+Migrate .agent/rules/api-conventions.mdc to a skill. It has description but no globs. Create .agent/skills/api-conventions/SKILL.md.
 ```

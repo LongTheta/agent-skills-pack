@@ -48,7 +48,7 @@ Defines guardrails and rules for AI-assisted code review. Produces a structured 
 3. **Set severity levels** — Per category; when to block vs suggest
 4. **Define feedback format** — Inline vs summary; emoji or labels
 5. **Set boundaries** — AI proposes; human approves. No auto-merge.
-6. **Output document** — For .cursor/rules, CONTRIBUTING, or review config
+6. **Output document** — For .agent/rules, CONTRIBUTING, or review config
 
 ## Constraints
 

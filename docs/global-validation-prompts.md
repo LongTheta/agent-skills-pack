@@ -2,9 +2,9 @@
 
 Use these rules so the agent proactively prompts you to run validation when coding in any project.
 
-## Option 1: Cursor Settings > Rules (Recommended for Global)
+## Option 1: Editor user rules (recommended for global)
 
-1. Open **Cursor** → **Settings** (Ctrl+,) → **Rules for AI**
+1. Open your AI-assisted editor → **Settings** → **Rules for AI** (or equivalent; name varies by product).
 2. Add this text to your **User Rules**:
 
 ```
@@ -16,31 +16,29 @@ When I'm working in a project with validation scripts, proactively prompt me in 
 Do not be repetitive; prompt once per context. If I decline or already ran checks, don't prompt again in the same thread.
 ```
 
-## Option 2: Global Rules Folder
+## Option 2: Global rules folder
 
-If Cursor picks up rules from your user directory, place `.mdc` files in:
+If your environment loads rules from a user directory, place `.mdc` files in a path your tool documents, for example:
 
 ```
-%USERPROFILE%\.cursor\rules\
+%USERPROFILE%\.agent\rules\
 ```
 
-Example: `C:\Users\Cathy\.cursor\rules\validation-prompts-global.mdc`
+A pre-built file is in this repo at `docs/validation-prompts-global.mdc` — copy it into your user rules directory per your editor’s documentation.
 
-A pre-built file is in this repo at `docs/validation-prompts-global.mdc` — copy it to `%USERPROFILE%\.cursor\rules\` (Windows) or `~/.cursor/rules/` (macOS/Linux).
+## Option 3: Project-specific rules
 
-## Option 3: Project-Specific Rules
-
-Each project can have its own `.cursor/rules/` with project-specific commands:
+Each project can have its own `.agent/rules/` (or equivalent) with project-specific commands:
 
 | Project | Validation Commands |
 |---------|---------------------|
 | agent-skills-pack | `npm run validate`, `npm run lint:md`, `npm run score` |
 | aws-repo-well-architected-advisor | `npm run validate`, `npm run validate:schemas`, `npm run test`, `npm run score` |
 
-The AWS Well-Architected repo already has `validation-prompts.mdc` in `.cursor/rules/`.
+The AWS Well-Architected repo may ship `validation-prompts.mdc` under its project rules directory.
 
 ## Summary
 
-- **Account-level (all projects):** Use Option 1 (Settings > Rules) or Option 2 (global rules folder)
-- **AWS Well-Architected repo:** Already has `validation-prompts.mdc` with repo-specific commands
-- **agent-skills-pack:** Has `project-conventions.mdc` with validation prompts
+- **Account-level (all projects):** Use Option 1 (user rules in settings) or Option 2 (global rules folder)
+- **AWS Well-Architected repo:** May include `validation-prompts.mdc` with repo-specific commands
+- **agent-skills-pack:** May include `project-conventions.mdc` with validation prompts when using project rules

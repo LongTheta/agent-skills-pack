@@ -27,5 +27,5 @@ Create a data scientist subagent for SQL and BigQuery. It should write efficient
 ## Example 4: Documentation Writer
 
 ```
-Create a documentation subagent. When invoked, it should analyze code, generate docstrings, update README sections, and follow our doc style guide. Store in .cursor/agents/.
+Create a documentation subagent. When invoked, it should analyze code, generate docstrings, update README sections, and follow our doc style guide. Store in .agent/agents/.
 ```

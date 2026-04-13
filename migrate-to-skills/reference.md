@@ -1,30 +1,28 @@
 # Migrate to Skills — Reference
 
-## Migration Rules
+## Source → Destination
 
-| Source | Condition | Destination |
-|--------|-----------|-------------|
-| `.cursor/rules/*.mdc` | Has `description`, no `globs`, no `alwaysApply: true` | `.cursor/skills/{name}/SKILL.md` |
-| `.cursor/commands/*.md` | All | `.cursor/skills/{name}/SKILL.md` |
-| `~/.cursor/commands/*.md` | All | `~/.cursor/skills/{name}/SKILL.md` |
+| Source pattern | Migrate when | Destination |
+|----------------|--------------|-------------|
+| `.agent/rules/*.mdc` | Has `description`, no `globs`, no `alwaysApply: true` | `.agent/skills/{name}/SKILL.md` |
+| `.agent/commands/*.md` | All | `.agent/skills/{name}/SKILL.md` |
+| `~/.agent/commands/*.md` | All | `~/.agent/skills/{name}/SKILL.md` |
 
-## Conversion Summary
+## Frontmatter Mapping
 
-### Rule → Skill
+**Rules (.mdc → SKILL.md):**
 
-- Add `name` (from filename)
 - Keep `description`
-- Remove `globs`, `alwaysApply`
-- Copy body verbatim
+- Add `name` from filename (lowercase, hyphens)
+- Remove `globs`, `alwaysApply` if present
+- Body: verbatim
 
-### Command → Skill
+**Commands (.md → SKILL.md):**
 
-- Add `name` (from filename)
-- Add `description` (infer from first heading)
-- Add `disable-model-invocation: true`
-- Copy body verbatim
+- Add `name`, `description` (infer from content)
+- Add `disable-model-invocation: true` when appropriate
+- Body: verbatim
 
-## Exclusions
+## Ignore
 
-- `~/.cursor/worktrees`
-- `~/.cursor/skills-cursor`
+- Vendor cache, worktrees, and built-in skill dirs per your environment’s documentation.

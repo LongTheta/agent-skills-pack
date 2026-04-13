@@ -30,7 +30,7 @@ All skills pass standard validation. Defects identified by the validator have be
 | **migrate-to-skills** | When to Use | Added When to Use |
 | **shell** | When to Use | Added When to Use |
 | **tool-evaluator** | Safety Guardrails | Added Safety Guardrails |
-| **update-cursor-settings** | When to Use | Added When to Use |
+| **update-vscode-settings** | When to Use | Added When to Use |
 
 ### 3. Broken Links
 
@@ -51,7 +51,7 @@ To align with full SKILL.md standards, the following sections were added where m
 | **migrate-to-skills** | Inputs, Outputs, Limitations, Portability Notes |
 | **shell** | Inputs, Outputs, Limitations, Validation Checklist, Portability Notes |
 | **tool-evaluator** | Inputs, Outputs, Limitations, Validation Checklist, Portability Notes |
-| **update-cursor-settings** | Inputs, Outputs, Limitations, Portability Notes |
+| **update-vscode-settings** | Inputs, Outputs, Limitations, Portability Notes |
 
 ---
 
