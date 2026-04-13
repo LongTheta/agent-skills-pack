@@ -10,7 +10,7 @@
     "validate:full": "node scripts/validate-skills.js && python scripts/validate_skills.py",
     "generate-manifest": "node scripts/generate-manifest.js",
     "generate-manifest:py": "python scripts/generate_manifest.py",
-    "lint:md": "markdownlint '**/*.md' --config .markdownlint.json --ignore node_modules --ignore .git",
+    "lint:md": "markdownlint . --dot --config .markdownlint.json --ignore node_modules --ignore .git",
     "lint:md:staged": "markdownlint --config .markdownlint.json",
     "prepush": "npm run validate && npm run lint:md",
     "score": "node scripts/certification-score.js",

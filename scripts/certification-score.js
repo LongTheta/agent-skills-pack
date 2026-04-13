@@ -8,6 +8,8 @@
  *   node scripts/certification-score.js
  *   node scripts/certification-score.js --threshold 8.0
  *   node scripts/certification-score.js --json
+ *   node scripts/certification-score.js --json   # includes skillStandardizationBySkill
+ *   node scripts/certification-score.js --standardization-detail  # text: per-skill gaps table
  */
 
 const fs = require('fs');
@@ -17,6 +19,7 @@ const ROOT = path.resolve(__dirname, '..');
 const thresholdArg = process.argv.find(a => a.startsWith('--threshold='));
 const THRESHOLD = thresholdArg ? parseFloat(thresholdArg.split('=')[1]) : parseFloat(process.env.CERT_THRESHOLD || '7.5');
 const JSON_OUTPUT = process.argv.includes('--json');
+const STANDARDIZATION_DETAIL = process.argv.includes('--standardization-detail');
 
 const WEIGHTS = {
   structure: 0.10,
@@ -42,6 +45,7 @@ const REQUIRED_SECTIONS = [
 ];
 const SECTION_ALTERNATIVES = {
   'Steps': ['Steps', 'Steps / Behavior', 'Workflow', 'Evaluation Workflow', 'Process', 'Behavior', 'Gather Requirements'],
+  'Behavior': ['Behavior', 'Steps / Behavior'],
   'Constraints': ['Constraints', 'Safety Guardrails', 'Enforcement'],
 };
 
@@ -159,12 +163,16 @@ function scoreValidation(issues) {
   return (passed / total) * 10;
 }
 
-function scoreSkillStandardization(issues) {
+/**
+ * Per-skill section coverage (same rules as scoring). `missingSections` uses canonical REQUIRED_SECTIONS labels.
+ * @returns {{ score: number, bySkill: Array<{ skill: string, sectionScore: number, missingSections: string[] }> }}
+ */
+function computeSkillStandardization(issues) {
   const dirs = getSkillDirs();
-  if (dirs.length === 0) return 0;
+  if (dirs.length === 0) return { score: 0, bySkill: [] };
   let totalScore = 0;
+  const bySkill = [];
   for (const dir of dirs) {
-    const skillPath = path.join(ROOT, dir, 'SKILL.md');
     if (!exists(path.join(dir, 'SKILL.md'))) {
       issues.block.push(`${dir}: SKILL.md missing`);
       continue;
@@ -176,12 +184,20 @@ function scoreSkillStandardization(issues) {
       continue;
     }
     let skillScore = 0;
+    const missingSections = [];
     for (const section of REQUIRED_SECTIONS) {
       if (hasSection(content, section)) skillScore++;
+      else missingSections.push(section);
     }
-    totalScore += (skillScore / REQUIRED_SECTIONS.length) * 10;
+    const weighted = (skillScore / REQUIRED_SECTIONS.length) * 10;
+    totalScore += weighted;
+    bySkill.push({
+      skill: dir,
+      sectionScore: Math.round(weighted * 100) / 100,
+      missingSections,
+    });
   }
-  return totalScore / dirs.length;
+  return { score: totalScore / dirs.length, bySkill };
 }
 
 function scoreAiSecurity(issues) {
@@ -284,7 +300,8 @@ function run() {
 
   scores.structure = scoreStructure(issues);
   scores.validation = scoreValidation(issues);
-  scores.skillStandardization = scoreSkillStandardization(issues);
+  const standardization = computeSkillStandardization(issues);
+  scores.skillStandardization = standardization.score;
   scores.aiSecurity = scoreAiSecurity(issues);
   scores.trustBoundaries = scoreTrustBoundaries(issues);
   scores.outputValidation = scoreOutputValidation(issues);
@@ -300,13 +317,18 @@ function run() {
   const passed = total >= THRESHOLD;
 
   if (JSON_OUTPUT) {
-    console.log(JSON.stringify({
+    const payload = {
       score: Math.round(total * 10) / 10,
       threshold: THRESHOLD,
       passed,
       scores,
       issues,
-    }, null, 2));
+      skillStandardizationBySkill: standardization.bySkill,
+    };
+    if (STANDARDIZATION_DETAIL) {
+      payload.skillStandardizationRequiredSections = REQUIRED_SECTIONS;
+    }
+    console.log(JSON.stringify(payload, null, 2));
   } else {
     console.log('\nCertification Score: ' + (Math.round(total * 10) / 10) + ' / 10\n');
     console.log('Per-category breakdown:');
@@ -334,6 +356,15 @@ function run() {
     if (issues.info.length > 0) {
       console.log('INFO:');
       issues.info.forEach(i => console.log('  - ' + i));
+      console.log('');
+    }
+
+    if (STANDARDIZATION_DETAIL) {
+      console.log('Skill standardization (per skill, missing canonical sections):');
+      for (const row of standardization.bySkill) {
+        const miss = row.missingSections.length ? row.missingSections.join(', ') : '(none)';
+        console.log(`  - ${row.skill}: ${row.sectionScore}/10 — missing: ${miss}`);
+      }
       console.log('');
     }
   }
