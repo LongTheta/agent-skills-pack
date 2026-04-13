@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "server",
+  "dolt_database": "agent_skills_pack",
+  "project_id": "5112db7c-c648-45b5-aaf0-6838239e5cc3"
+}
